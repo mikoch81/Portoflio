@@ -13,15 +13,16 @@ export function ContactSection() {
         <FadeIn>
           <div className="max-w-xl space-y-5">
             <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan/60">
-              Contact
+              Next step
             </p>
             <h2 className="text-3xl font-bold tracking-[-0.03em] sm:text-4xl lg:text-[2.75rem] leading-[1.1]">
-              Get in touch
+              Let&apos;s solve a quality problem
             </h2>
             <p className="text-[15px] leading-[1.8] text-muted-foreground">
-              Open to roles in test automation architecture, performance
-              engineering, or AI-assisted quality systems. Available for
-              both contract and permanent positions.
+              I help engineering teams ship faster by building test
+              automation architectures, performance pipelines, and
+              AI-driven quality systems. If your release cycle needs
+              unblocking&nbsp;&mdash; let&apos;s talk scope.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-4">
@@ -33,7 +34,7 @@ export function ContactSection() {
                 )}
               >
                 <Mail className="mr-2 h-4 w-4" />
-                Email me
+                Start a conversation
               </a>
               <a
                 href={siteConfig.linkedin}

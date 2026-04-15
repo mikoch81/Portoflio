@@ -81,7 +81,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
               {study.stack.flatMap((g) => g.items).slice(0, 8).map((item) => (
                 <span
                   key={item}
-                  className="inline-flex items-center rounded-md border border-border/25 px-2 py-0.5 text-[10px] text-muted-foreground/35 font-mono"
+                  className="inline-flex items-center rounded-md border border-border/30 px-2 py-0.5 text-[10px] text-muted-foreground/40 font-mono"
                 >
                   {item}
                 </span>
@@ -94,7 +94,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         <FadeIn>
           <section aria-label="Overview" className="mb-0">
             <SectionLabel>Overview</SectionLabel>
-            <p className="text-[14px] sm:text-[15px] leading-[1.9] text-muted-foreground/80">
+            <p className="text-[14px] sm:text-[15px] leading-[1.85] text-muted-foreground/75 max-w-2xl">
               {study.overview}
             </p>
           </section>
@@ -106,19 +106,19 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         <FadeIn>
           <section aria-label="Challenge">
             <SectionLabel>Challenge</SectionLabel>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {study.challenge.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-4 rounded-xl border border-border/30 bg-card/30 backdrop-blur-sm px-5 py-4 sm:px-6 sm:py-5"
+                  className="flex items-start gap-4 rounded-lg border border-border/25 bg-card/20 px-5 py-3.5 sm:px-6 sm:py-4"
                 >
                   <span
-                    className="text-[11px] font-mono text-cyan/25 pt-0.5 shrink-0 tabular-nums"
+                    className="text-[11px] font-mono text-cyan/30 pt-0.5 shrink-0 tabular-nums"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-[13px] sm:text-[14px] leading-[1.8] text-muted-foreground/70">
+                  <p className="text-[13px] sm:text-[14px] leading-[1.75] text-muted-foreground/65">
                     {item}
                   </p>
                 </div>
@@ -136,18 +136,18 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             <div className="relative">
               {/* Vertical timeline line */}
               <div
-                className="absolute left-[5px] top-3 bottom-3 w-px bg-gradient-to-b from-cyan/20 via-border/40 to-transparent"
+                className="absolute left-[5px] top-2 bottom-2 w-px bg-gradient-to-b from-cyan/25 via-border/30 to-transparent"
                 aria-hidden="true"
               />
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {study.approach.map((item, i) => (
                   <div key={i} className="relative pl-7 sm:pl-8">
                     {/* Timeline dot */}
                     <div
-                      className="absolute left-0 top-[7px] h-[11px] w-[11px] rounded-full border-2 border-cyan/30 bg-background"
+                      className="absolute left-0 top-[6px] h-[11px] w-[11px] rounded-full border-2 border-cyan/30 bg-background"
                       aria-hidden="true"
                     />
-                    <p className="text-[13px] sm:text-[14px] leading-[1.8] text-muted-foreground/75">
+                    <p className="text-[13px] sm:text-[14px] leading-[1.75] text-muted-foreground/70">
                       {item}
                     </p>
                   </div>
@@ -167,16 +167,16 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
               {study.stack.map((group) => (
                 <div
                   key={group.category}
-                  className="rounded-xl border border-border/30 bg-card/25 backdrop-blur-sm p-5 sm:p-6 space-y-3.5"
+                  className="rounded-xl border border-border/30 bg-card/30 backdrop-blur-sm p-5 sm:p-6 space-y-3"
                 >
-                  <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/50">
+                  <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan/45">
                     {group.category}
                   </h3>
                   <div className="flex flex-wrap gap-1.5">
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="inline-flex items-center rounded-md border border-border/40 px-2.5 py-1 text-[10px] sm:text-[11px] text-muted-foreground/55 font-mono"
+                        className="inline-flex items-center rounded-md border border-border/50 bg-card/40 px-2.5 py-1 text-[10px] sm:text-[11px] text-foreground/60 font-mono"
                       >
                         {item}
                       </span>
@@ -197,10 +197,10 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             <FadeInStagger className="space-y-3" staggerDelay={0.08}>
               {study.outcomes.map((item, i) => (
                 <FadeInStaggerChild key={i}>
-                  <div className="flex items-start gap-4 sm:gap-5 rounded-xl border border-border/30 bg-card/30 backdrop-blur-sm px-5 py-4 sm:px-6 sm:py-5 transition-colors duration-300 hover:border-cyan/15 hover:bg-card/45">
-                    <div className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full border border-cyan/20 bg-cyan/[0.04]">
+                  <div className="flex items-start gap-4 sm:gap-5 rounded-xl border border-border/25 bg-card/25 backdrop-blur-sm px-5 py-4 sm:px-6 sm:py-5 transition-colors duration-300 hover:border-cyan/15 hover:bg-card/40">
+                    <div className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full border border-cyan/25 bg-cyan/[0.05]">
                       <span
-                        className="text-[9px] font-mono text-cyan/50 tabular-nums"
+                        className="text-[9px] font-mono text-cyan/55 tabular-nums"
                         aria-hidden="true"
                       >
                         {String(i + 1).padStart(2, "0")}

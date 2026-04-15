@@ -54,7 +54,7 @@ export function ProjectsSection() {
               <Link
                 href={`/projects/${project.slug}`}
                 aria-label={`View case study: ${project.title}`}
-                className="group relative flex flex-col h-full rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:-translate-y-0.5 hover:border-border/70 hover:bg-card/60 hover:shadow-[0_0_40px_-12px_rgba(34,211,238,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="group relative flex flex-col h-full rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.008] hover:border-border/70 hover:bg-card/60 hover:shadow-[0_8px_40px_-12px_rgba(34,211,238,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {/* Top accent line */}
                 <div
@@ -79,27 +79,27 @@ export function ProjectsSection() {
                   </h3>
 
                   {/* Problem & Solution */}
-                  <div className="space-y-5 mb-8 flex-1">
-                    <div className="space-y-2">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/35">
+                  <div className="space-y-4 mb-7 flex-1">
+                    <div className="space-y-1.5">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/30">
                         Problem
                       </p>
-                      <p className="text-[13px] leading-[1.75] text-muted-foreground/60">
+                      <p className="text-[13px] leading-[1.7] text-muted-foreground/55">
                         {project.problem}
                       </p>
                     </div>
-                    <div className="space-y-2">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/35">
+                    <div className="space-y-1.5">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/30">
                         Solution
                       </p>
-                      <p className="text-[13px] leading-[1.75] text-muted-foreground/60">
+                      <p className="text-[13px] leading-[1.7] text-muted-foreground/55">
                         {project.summary}
                       </p>
                     </div>
                   </div>
 
                   {/* Stack */}
-                  <div className="flex flex-wrap gap-1.5 mb-7">
+                  <div className="flex flex-wrap gap-1.5 mb-6">
                     {project.tech.slice(0, 5).map((t) => (
                       <span
                         key={t}
@@ -116,17 +116,17 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Outcome + CTA */}
-                  <div className="mt-auto pt-6 border-t border-border/30">
+                  <div className="mt-auto pt-5 border-t border-border/30">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan/40 mb-1.5">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan/50 mb-2">
                           Outcome
                         </p>
-                        <p className="text-[13px] leading-[1.7] text-foreground/75">
+                        <p className="text-[13.5px] leading-[1.65] text-foreground/80 font-medium">
                           {project.outcome}
                         </p>
                       </div>
-                      <div className="shrink-0 mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-cyan/70 transition-all duration-500 group-hover:text-cyan/90">
+                      <div className="shrink-0 mt-5 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-cyan/70 transition-all duration-500 group-hover:text-cyan/90 group-hover:gap-2.5">
                         <span>View case</span>
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:-translate-y-px group-hover:translate-x-px" />
                       </div>

@@ -1,40 +1,40 @@
 export const siteConfig = {
   name: "Michał Kochaniak",
   title: "Senior Test Automation Engineer",
-  subtitle: "Automation Architecture · Performance Engineering · AI-Assisted QA",
+  subtitle: "AI-Driven Quality Systems · Performance Engineering · Automation Architecture",
   description:
-    "I build test automation frameworks, performance analysis pipelines, and AI-augmented quality workflows. Focus on systems that produce reliable signals and clear reporting.",
-  email: "michal.kochaniak@example.com",
-  linkedin: "https://linkedin.com/in/michalkochaniak",
-  github: "https://github.com/michalkochaniak",
+    "I design and build automation frameworks, performance reporting systems, and AI-assisted quality workflows.",
+  email: "mkochaniak81@gmail.com",
+  linkedin: "https://linkedin.com/in/michal-kochaniak",
+  github: "https://github.com/mikoch81",
 };
 
 export const credibilityItems = [
   "Automation Engineering",
-  "Mobile & Web QA",
-  "Performance Testing",
-  "Reporting Systems",
+  "Performance Engineering",
+  "AI-Driven QA Systems",
+  "Mobile & Web Testing",
+  "Reporting Pipelines",
   "CI/CD Integrations",
-  "AI Agent Workflows",
 ];
 
 export const pillars = [
   {
     title: "Automation Architecture",
     description:
-      "Framework design for web and mobile testing — structured for long-term maintainability, cross-platform coverage, and direct integration into CI/CD pipelines.",
+      "Designing maintainable web and mobile automation frameworks built for long-term stability, cross-platform coverage, and CI/CD integration.",
     technologies: ["Java", "Selenium", "Appium", "Maven", "TestNG"],
   },
   {
     title: "Performance Engineering",
     description:
-      "Load testing, result analysis, and automated reporting. Turning raw JMeter data into structured deliverables with statistical rigour and clear conclusions.",
+      "Turning raw JMeter results into structured analysis, visual reporting, and decision-ready performance insights.",
     technologies: ["JMeter", "CSV/JTL Analysis", "Python", "DOCX/PDF Generation"],
   },
   {
     title: "Applied AI in QA",
     description:
-      "Using local LLMs and agent patterns to support test analysis, report generation, and engineering decisions — without sending data off-premises.",
+      "Using local LLMs and agent workflows to support test analysis, reporting, and engineering decisions without external data exposure.",
     technologies: ["LLMs", "Ollama", "Agent Orchestration", "Prompt Engineering"],
   },
 ];
@@ -44,48 +44,48 @@ export const projects = [
     slug: "ai-performance-reporting",
     title: "AI Performance Reporting System",
     problem:
-      "Raw JTL/CSV output required hours of manual analysis per cycle. Reports were inconsistent and stakeholders couldn't self-serve.",
+      "Raw JTL and CSV outputs required hours of manual analysis, while reporting quality varied between cycles and stakeholders lacked self-service visibility.",
     summary:
-      "Automated Python pipeline — statistical analysis, chart generation, and structured DOCX/PDF output. LLM layer via Ollama for narrative summaries and anomaly flagging.",
+      "Built an automated Python pipeline for performance analysis, chart generation, and structured DOCX/PDF reporting, with a local LLM layer for narrative summaries and anomaly flagging.",
     tech: ["Python", "JMeter", "pandas", "Ollama", "DOCX/PDF"],
     outcome:
-      "Reduced analysis from hours to minutes. Consistent, stakeholder-ready reporting on every cycle.",
+      "Reduced reporting time from hours to minutes and established a consistent, stakeholder-ready reporting workflow.",
     category: "Performance Engineering",
   },
   {
     slug: "mobile-test-automation",
-    title: "Mobile Test Automation — Banking App",
+    title: "Mobile Test Automation for Banking App",
     problem:
-      "Hybrid native/webview banking app with complex auth flows lacked reliable automated regression across Android and iOS.",
+      "A hybrid banking app with native and webview flows required reliable automated regression across Android and iOS under frequent UI change.",
     summary:
-      "Layered framework with cross-platform page objects, webview context-switching, and data-driven test patterns. CI-integrated via Jenkins for every release candidate.",
+      "Designed a layered automation framework with cross-platform abstractions, webview context handling, and CI-ready execution patterns.",
     tech: ["Java", "Appium", "Selenium", "Maven", "TestNG"],
     outcome:
-      "Stable cross-platform suite that survived multiple major UI redesigns with minimal maintenance.",
+      "Delivered stable automation coverage for critical user flows with low maintenance overhead across major UI updates.",
     category: "Automation Architecture",
   },
   {
     slug: "jira-zephyr-ci",
     title: "Jira + Zephyr + CI Quality Pipeline",
     problem:
-      "Test results lived in CI logs, disconnected from Jira workflows. Manual Zephyr updates were slow, often skipped, traceability unreliable.",
+      "Automated test results were disconnected from Jira workflows, making traceability, reporting, and quality visibility inconsistent.",
     summary:
-      "Custom integration — Zephyr Scale API and TestNG listeners auto-create test cycles, post results, and maintain requirement-level traceability on every build.",
+      "Implemented a CI-integrated quality pipeline that publishes automated results to Zephyr Scale and maintains requirement-level traceability in Jira.",
     tech: ["Java", "Maven", "Jenkins", "GitHub Actions", "Zephyr Scale"],
     outcome:
-      "Full test-to-requirement traceability with zero manual sync. Quality metrics visible in Jira in real time.",
+      "Established real-time quality visibility and removed manual result synchronisation from the delivery workflow.",
     category: "CI/CD Integration",
   },
   {
     slug: "agentic-qa-assistant",
     title: "Agentic QA Assistant",
     problem:
-      "Engineers spent significant time on repetitive analysis — reading logs, comparing baselines, formatting reports — all following automatable patterns.",
+      "Senior QA time was repeatedly spent on routine tasks — reviewing logs, comparing baselines, and preparing reports.",
     summary:
-      "Locally-hosted LLM system using Ollama for test result analysis, performance report interpretation, and multi-step reasoning chains. All data stays on-premises.",
-    tech: ["Ollama", "LLM Orchestration", "Python", "Prompt Engineering"],
+      "Designed a locally hosted LLM-based assistant to support result interpretation, regression analysis, and QA reporting workflows in privacy-sensitive environments.",
+    tech: ["Ollama", "LLM Orchestration", "Python", "Prompt Design"],
     outcome:
-      "Routine analysis time reduced significantly. Reusable agent framework, fully private — no data leaves the network.",
+      "Reduced routine analysis effort and created a reusable foundation for domain-specific QA support with fully local processing.",
     category: "Applied AI",
   },
 ];
@@ -100,8 +100,8 @@ export const capabilities = [
       "Maven",
       "TestNG / JUnit",
       "Page Object Model",
+      "Cross-Platform Test Design",
       "Data-Driven Testing",
-      "BDD Frameworks",
     ],
   },
   {
@@ -110,7 +110,7 @@ export const capabilities = [
       "Apache JMeter",
       "CSV / JTL Analysis",
       "Performance Reporting",
-      "Load & Stress Testing",
+      "Trend Comparison",
       "Result Visualization",
     ],
   },
@@ -119,10 +119,10 @@ export const capabilities = [
     items: [
       "Jenkins",
       "GitHub Actions",
-      "Maven Build Pipelines",
+      "Build Pipelines",
       "Jira Integration",
       "Zephyr Scale",
-      "Git",
+      "Git Workflow",
     ],
   },
   {
@@ -138,10 +138,10 @@ export const capabilities = [
 ];
 
 export const impactItems = [
-  "Delivered stable automation for critical banking flows across Android and iOS",
-  "Built automated reporting pipelines used by both engineering and executive stakeholders",
-  "Connected test execution to Jira/Zephyr for end-to-end quality traceability",
-  "Designed local AI workflows for QA analysis without cloud dependency",
+  "Delivered maintainable automation for critical banking flows across Android and iOS",
+  "Built reporting pipelines used by both engineering teams and executive stakeholders",
+  "Connected automated test execution with Jira and Zephyr for end-to-end traceability",
+  "Designed privacy-safe local AI workflows for QA analysis and engineering support",
 ];
 
 export const processSteps = [
@@ -149,25 +149,25 @@ export const processSteps = [
     step: "01",
     title: "Assess",
     description:
-      "Map the system under test, identify risk areas, and define what quality means in context before writing any automation.",
+      "Understand the system, identify risk areas, and define what quality means before building automation.",
   },
   {
     step: "02",
     title: "Architect",
     description:
-      "Design framework structures and patterns that survive product changes — not scripts that break on the next release.",
+      "Design framework patterns that remain stable across product change, not scripts that break on the next release.",
   },
   {
     step: "03",
     title: "Automate",
     description:
-      "Target high-value flows and integration points where automation provides real confidence in deployment readiness.",
+      "Focus on high-value flows and integration points where automation improves delivery confidence.",
   },
   {
     step: "04",
     title: "Report",
     description:
-      "Convert test outputs and performance data into structured reports that inform engineering and release decisions.",
+      "Turn execution data and performance results into structured signals that support engineering decisions.",
   },
 ];
 
@@ -191,9 +191,9 @@ export const caseStudies: Record<string, CaseStudy> = {
   "ai-performance-reporting": {
     slug: "ai-performance-reporting",
     title: "AI Performance Reporting System",
-    subtitle: "Automated pipeline turning raw JMeter data into structured, stakeholder-ready reports",
+    subtitle: "Automated pipeline turning raw JMeter output into structured, stakeholder-ready performance reports",
     overview:
-      "Performance testing generates large volumes of raw data — JTL files, CSV exports, server logs — that require skilled interpretation before they become useful. This project replaced a manual analysis workflow with an automated pipeline that ingests JMeter results, applies statistical analysis, generates visualisations, and produces structured DOCX/PDF reports with conclusions and recommendations. An LLM layer provides narrative summaries, flagging anomalies and offering plain-language interpretation for non-technical readers.",
+      "Performance testing produces large volumes of raw data — JTL files, CSV exports, server-side metrics — that need skilled interpretation before they become actionable. This project replaced a manual analysis workflow with an automated Python pipeline that ingests JMeter results, computes statistical metrics, generates charts, and produces structured DOCX/PDF reports. An LLM layer via Ollama adds narrative summaries, flags anomalies, and provides plain-language interpretation for non-technical readers.",
     challenge: [
       "Manual analysis of JMeter results consumed hours per test cycle and was inconsistent between analysts.",
       "Reports varied in structure, depth, and quality depending on who wrote them.",
@@ -202,7 +202,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     approach: [
       "Designed a Python pipeline to parse JTL/CSV result files and compute key performance metrics — response times, throughput, error rates, and percentile distributions.",
-      "Built automated chart generation (response time distributions, throughput over time, error breakdowns) using matplotlib and integrated them directly into report templates.",
+      "Built chart generation — response time distributions, throughput curves, error breakdowns — using matplotlib, embedded directly into report templates.",
       "Created DOCX/PDF report templates with consistent structure: executive summary, detailed metrics, trend comparison, conclusions, and recommendations.",
       "Integrated an LLM layer (via Ollama) to generate narrative analysis sections — translating statistical data into clear, human-readable conclusions.",
       "Added historical comparison logic to automatically surface regressions and improvements across test runs.",
@@ -220,15 +220,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Historical trend detection surfaced regressions that were previously missed in manual reviews.",
     ],
     conclusion:
-      "The value of performance engineering comes not from running tests, but from how efficiently results are communicated. Automating the analysis-to-report pipeline and adding AI-assisted narrative turned raw test data into a deliverable that informed release decisions and resource allocation.",
+      "The value of performance engineering is in how efficiently results reach decision-makers. Automating the analysis-to-report pipeline — with AI-assisted narrative — turned raw data into structured deliverables that directly supported release decisions.",
   },
 
   "mobile-test-automation": {
     slug: "mobile-test-automation",
     title: "Mobile Test Automation for Banking App",
-    subtitle: "Scalable framework for critical banking flows across Android and iOS",
+    subtitle: "Cross-platform automation framework for critical banking flows on Android and iOS",
     overview:
-      "A banking application required reliable automated coverage across Android and iOS. The app combined native elements, hybrid webviews, and complex authentication flows — creating real challenges for automation stability. This project involved designing a test framework from the ground up, prioritising maintainability, cross-platform coverage, and integration with the team's delivery pipeline.",
+      "A banking application needed reliable automated regression across Android and iOS. The app combined native UI, hybrid webview screens, and multi-step authentication — creating real challenges for automation stability. This project involved designing a test framework from scratch, with a focus on maintainability, cross-platform reuse, and CI/CD integration.",
     challenge: [
       "Hybrid app architecture with native and webview contexts required careful handling of context switching during test execution.",
       "Complex authentication flows (biometrics, OTP, session management) created flaky automation scenarios.",
@@ -255,15 +255,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Provided the team with clear, automated pass/fail signals integrated directly into release pipelines.",
     ],
     conclusion:
-      "Mobile automation in a banking context demands thoughtful architecture that handles real-world complexity: hybrid apps, unreliable networks, complex auth flows, and constant UI evolution. This framework was designed for durability, and its structure proved resilient across multiple release cycles and platform changes.",
+      "Mobile automation in banking demands architecture built for real-world complexity — hybrid apps, complex auth, constant UI evolution. This framework prioritised durability, and its layered structure held up across multiple major releases.",
   },
 
   "jira-zephyr-ci": {
     slug: "jira-zephyr-ci",
     title: "Jira + Zephyr + CI Quality Pipeline",
-    subtitle: "Automated pipeline connecting test execution to Jira/Zephyr for full traceability",
+    subtitle: "Connecting automated test execution to Jira and Zephyr Scale for real-time quality traceability",
     overview:
-      "Automated tests produce valuable quality signals, but those signals are often disconnected from the tools where teams plan and make decisions. This project built a pipeline connecting test execution (Maven/TestNG) with Jira and Zephyr Scale — automatically updating test cycles, linking results to requirements, and surfacing quality metrics within the existing workflow. The goal: make quality visible without manual data synchronisation.",
+      "Automated tests produce valuable quality signals, but those signals often stay trapped in CI logs — disconnected from where teams plan and decide. This project built a pipeline connecting Maven/TestNG execution with Jira and Zephyr Scale to automatically create test cycles, post results, link to requirements, and surface quality metrics inside the delivery workflow.",
     challenge: [
       "Test results lived in CI logs and HTML reports — disconnected from the Jira-based workflow where decisions were made.",
       "Manual updating of Zephyr test cycles after automated runs was slow, error-prone, and often skipped.",
@@ -296,11 +296,11 @@ export const caseStudies: Record<string, CaseStudy> = {
   "agentic-qa-assistant": {
     slug: "agentic-qa-assistant",
     title: "Agentic QA Assistant",
-    subtitle: "Locally-hosted AI system for test analysis and QA workflow support",
+    subtitle: "On-premises LLM system for test result analysis, report interpretation, and QA decision support",
     overview:
-      "Quality engineering benefits from intelligent assistants that accelerate analysis, surface patterns, and reduce repetitive cognitive work. This project designed and developed a locally-hosted, LLM-powered system that analyses test results, interprets performance reports, suggests investigation paths, and supports day-to-day QA decisions — all without sending data to external services.",
+      "Quality engineering involves repetitive cognitive work — parsing logs, comparing test runs, writing reports. This project designed a locally-hosted LLM assistant that analyses results, interprets performance data, suggests investigation paths, and supports day-to-day QA decisions. All inference runs on-premises via Ollama — no data leaves the network.",
     challenge: [
-      "QA engineers spend significant time on repetitive analysis — reading logs, comparing results, formatting reports — that follows predictable patterns.",
+      "A significant share of QA effort goes to predictable, pattern-based tasks — log review, baseline comparison, report formatting.",
       "Performance report interpretation requires domain context that is difficult to transfer to new team members.",
       "Cloud-based AI tools raised data privacy concerns when processing internal test data and system information.",
       "Generic AI assistants lack the domain knowledge needed to provide useful QA guidance without extensive prompting.",
@@ -325,6 +325,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Established patterns for human-AI collaboration in quality engineering — augmenting judgment, not replacing it.",
     ],
     conclusion:
-      "Practical, privacy-respecting AI assistants can meaningfully improve QA workflows — not through automating testing itself, but through smarter analysis, faster interpretation, and better decision support.",
+      "AI in QA works best when it accelerates analysis rather than replacing judgment. A locally-hosted, domain-aware assistant reduced repetitive cognitive work while keeping all data under team control.",
   },
 };
