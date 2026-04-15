@@ -4,8 +4,8 @@ export const siteConfig = {
   subtitle: "AI-Driven Quality Systems · Performance Engineering · Automation Architecture",
   description:
     "I design and build automation frameworks, performance reporting systems, and AI-assisted quality workflows.",
-  email: "mkochaniak81@gmail.com",
-  linkedin: "https://linkedin.com/in/michal-kochaniak",
+  email: "kochaniakmichal@gmail.com",
+  linkedin: "https://linkedin.com/in/michalkochaniak",
   github: "https://github.com/mikoch81",
 };
 
