@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Michał Kochaniak — Senior Test Automation Engineer",
     description:
-      "Automation · Performance · AI-Driven Quality Systems · CI/CD · AI-assisted QA",
+      "Senior Test Automation Engineer specializing in automation architecture, performance engineering, and AI-driven quality systems. Designing scalable frameworks, reporting pipelines, and practical AI workflows.",
     url: "https://michalkochaniak.dev",
     type: "website",
     locale: "en_US",
