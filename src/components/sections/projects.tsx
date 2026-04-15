@@ -37,11 +37,11 @@ export function ProjectsSection() {
             </div>
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-12">
               <h2 className="text-3xl font-bold tracking-[-0.035em] sm:text-4xl lg:text-[2.75rem] leading-[1.08]">
-                Engineering work that shipped
+                Featured Work in Automation, Performance, and AI
               </h2>
               <p className="text-[13px] text-muted-foreground/50 max-w-sm leading-relaxed lg:text-right">
-                Each project solved a real quality engineering problem —
-                with measurable outcomes and production-grade implementation.
+                Selected projects across test automation, performance analysis,
+                reporting systems, and AI-assisted engineering workflows.
               </p>
             </div>
           </div>
@@ -53,7 +53,8 @@ export function ProjectsSection() {
             <FadeInStaggerChild key={project.slug}>
               <Link
                 href={`/projects/${project.slug}`}
-                className="group relative flex flex-col h-full rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-border/70 hover:bg-card/60 hover:shadow-[0_0_40px_-12px_rgba(34,211,238,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                aria-label={`View case study: ${project.title}`}
+                className="group relative flex flex-col h-full rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:-translate-y-0.5 hover:border-border/70 hover:bg-card/60 hover:shadow-[0_0_40px_-12px_rgba(34,211,238,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {/* Top accent line */}
                 <div
@@ -73,7 +74,7 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-[17px] sm:text-lg font-semibold tracking-[-0.02em] leading-snug mb-7 group-hover:text-foreground transition-colors duration-300">
+                  <h3 className="text-[18px] sm:text-[20px] font-semibold tracking-[-0.025em] leading-snug mb-6 group-hover:text-foreground transition-colors duration-300">
                     {project.title}
                   </h3>
 
@@ -83,7 +84,7 @@ export function ProjectsSection() {
                       <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/35">
                         Problem
                       </p>
-                      <p className="text-[13px] leading-[1.8] text-muted-foreground/70">
+                      <p className="text-[13px] leading-[1.75] text-muted-foreground/60">
                         {project.problem}
                       </p>
                     </div>
@@ -91,7 +92,7 @@ export function ProjectsSection() {
                       <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/35">
                         Solution
                       </p>
-                      <p className="text-[13px] leading-[1.8] text-muted-foreground/70">
+                      <p className="text-[13px] leading-[1.75] text-muted-foreground/60">
                         {project.summary}
                       </p>
                     </div>
@@ -99,7 +100,7 @@ export function ProjectsSection() {
 
                   {/* Stack */}
                   <div className="flex flex-wrap gap-1.5 mb-7">
-                    {project.tech.map((t) => (
+                    {project.tech.slice(0, 5).map((t) => (
                       <span
                         key={t}
                         className="inline-flex items-center rounded-md border border-border/25 px-2 py-0.5 text-[10px] text-muted-foreground/40 font-mono transition-colors duration-300 group-hover:text-muted-foreground/55 group-hover:border-border/40"
@@ -107,6 +108,11 @@ export function ProjectsSection() {
                         {t}
                       </span>
                     ))}
+                    {project.tech.length > 5 && (
+                      <span className="inline-flex items-center rounded-md border border-border/25 px-2 py-0.5 text-[10px] text-muted-foreground/30 font-mono">
+                        +{project.tech.length - 5}
+                      </span>
+                    )}
                   </div>
 
                   {/* Outcome + CTA */}
@@ -116,12 +122,13 @@ export function ProjectsSection() {
                         <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan/40 mb-1.5">
                           Outcome
                         </p>
-                        <p className="text-[13px] leading-[1.7] text-muted-foreground/65">
+                        <p className="text-[13px] leading-[1.7] text-foreground/75">
                           {project.outcome}
                         </p>
                       </div>
-                      <div className="shrink-0 mt-4 flex items-center justify-center h-9 w-9 rounded-full border border-border/40 bg-card/60 transition-all duration-500 group-hover:border-cyan/30 group-hover:bg-cyan/[0.06] group-hover:shadow-[0_0_12px_-3px_rgba(34,211,238,0.15)]">
-                        <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/30 transition-all duration-500 group-hover:text-cyan/80 group-hover:-translate-y-px group-hover:translate-x-px" />
+                      <div className="shrink-0 mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-cyan/70 transition-all duration-500 group-hover:text-cyan/90">
+                        <span>View case</span>
+                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:-translate-y-px group-hover:translate-x-px" />
                       </div>
                     </div>
                   </div>
