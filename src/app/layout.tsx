@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Michał Kochaniak",
   },
   description:
-    "Senior Test Automation Engineer. Automation frameworks, performance analysis pipelines, and AI-augmented quality workflows.",
+    "Automation frameworks, performance reporting systems, and AI-driven quality engineering workflows.",
   keywords: [
     "test automation",
     "QA engineer",
@@ -45,16 +45,26 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Michał Kochaniak — Senior Test Automation Engineer",
     description:
-      "Automation frameworks, performance analysis pipelines, and AI-augmented quality workflows.",
+      "Automation · Performance · AI-driven Quality Systems",
+    url: "https://michalkochaniak.dev",
     type: "website",
     locale: "en_US",
     siteName: "Michał Kochaniak",
+    images: [
+      {
+        url: "/api/og",
+        width: 1200,
+        height: 630,
+        alt: "Michał Kochaniak — Senior Test Automation Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Michał Kochaniak — Senior Test Automation Engineer",
     description:
       "Automation frameworks, performance analysis pipelines, and AI-augmented quality workflows.",
+    images: ["/api/og"],
   },
 };
 
