@@ -44,45 +44,49 @@ export const projects = [
     slug: "ai-performance-reporting",
     title: "AI Performance Reporting System",
     problem:
-      "Performance testing generated raw JTL/CSV data that required hours of manual analysis per cycle. Reports were inconsistent, and non-technical stakeholders couldn't extract conclusions without engineer involvement.",
+      "Raw JTL/CSV output required hours of manual analysis per cycle. Reports were inconsistent and stakeholders couldn't self-serve.",
     summary:
-      "Built an automated Python pipeline that ingests JMeter results, applies statistical analysis, generates charts, and produces structured DOCX/PDF reports. Added an LLM layer via Ollama for narrative summaries and anomaly detection.",
+      "Automated Python pipeline — statistical analysis, chart generation, and structured DOCX/PDF output. LLM layer via Ollama for narrative summaries and anomaly flagging.",
     tech: ["Python", "JMeter", "pandas", "Ollama", "DOCX/PDF"],
     outcome:
-      "Analysis time dropped from hours to minutes. Reporting became consistent and self-serve for stakeholders.",
+      "Reduced analysis from hours to minutes. Consistent, stakeholder-ready reporting on every cycle.",
+    category: "Performance Engineering",
   },
   {
     slug: "mobile-test-automation",
-    title: "Mobile Test Automation — Banking",
+    title: "Mobile Test Automation — Banking App",
     problem:
-      "A banking app with hybrid native/webview architecture, complex auth flows, and frequent UI changes had no reliable automated regression coverage across Android and iOS.",
+      "Hybrid native/webview banking app with complex auth flows lacked reliable automated regression across Android and iOS.",
     summary:
-      "Designed a layered framework with cross-platform page objects, robust context-switching for webview transitions, and data-driven test patterns. Integrated with Jenkins for automated regression on every release candidate.",
+      "Layered framework with cross-platform page objects, webview context-switching, and data-driven test patterns. CI-integrated via Jenkins for every release candidate.",
     tech: ["Java", "Appium", "Selenium", "Maven", "TestNG"],
     outcome:
-      "Stable cross-platform regression suite that survived multiple major UI redesigns with minimal locator maintenance.",
+      "Stable cross-platform suite that survived multiple major UI redesigns with minimal maintenance.",
+    category: "Automation Architecture",
   },
   {
     slug: "jira-zephyr-ci",
-    title: "Jira + Zephyr CI Pipeline",
+    title: "Jira + Zephyr + CI Quality Pipeline",
     problem:
-      "Test results lived in CI logs, disconnected from the Jira-based workflow where decisions were made. Manual Zephyr updates were slow, often skipped, and traceability was unreliable.",
+      "Test results lived in CI logs, disconnected from Jira workflows. Manual Zephyr updates were slow, often skipped, traceability unreliable.",
     summary:
-      "Built a custom integration using Zephyr Scale API and TestNG listeners to automatically create test cycles, post results, and maintain requirement-level traceability on every CI build.",
+      "Custom integration — Zephyr Scale API and TestNG listeners auto-create test cycles, post results, and maintain requirement-level traceability on every build.",
     tech: ["Java", "Maven", "Jenkins", "GitHub Actions", "Zephyr Scale"],
     outcome:
       "Full test-to-requirement traceability with zero manual sync. Quality metrics visible in Jira in real time.",
+    category: "CI/CD Integration",
   },
   {
     slug: "agentic-qa-assistant",
     title: "Agentic QA Assistant",
     problem:
-      "Engineers spent significant time on repetitive analysis — reading logs, comparing baselines, formatting reports — following patterns that could be partially automated with domain-aware AI.",
+      "Engineers spent significant time on repetitive analysis — reading logs, comparing baselines, formatting reports — all following automatable patterns.",
     summary:
-      "Designed a locally-hosted LLM system using Ollama that analyses test results, interprets performance reports, and chains multi-step reasoning for investigation support. All data stays on-premises.",
+      "Locally-hosted LLM system using Ollama for test result analysis, performance report interpretation, and multi-step reasoning chains. All data stays on-premises.",
     tech: ["Ollama", "LLM Orchestration", "Python", "Prompt Engineering"],
     outcome:
-      "Routine analysis time reduced. Reusable agent framework adaptable across project contexts, fully private.",
+      "Routine analysis time reduced significantly. Reusable agent framework, fully private — no data leaves the network.",
+    category: "Applied AI",
   },
 ];
 
