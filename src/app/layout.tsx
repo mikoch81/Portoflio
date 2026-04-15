@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Michał Kochaniak",
   },
   description:
-  "Senior Test Automation Engineer specializing in automation architecture, performance engineering, and AI-driven quality systems. Building scalable frameworks, data-driven reporting pipelines, and practical AI workflows for modern software delivery.",
+    "Senior Test Automation Engineer specializing in automation architecture, performance engineering, and AI-driven quality systems. Designing scalable frameworks, building data-driven reporting pipelines, and applying practical AI workflows in modern software delivery environments.",
   keywords: [
     "test automation",
     "QA engineer",
