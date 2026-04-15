@@ -137,6 +137,49 @@ export const capabilities = [
   },
 ];
 
+export const aiUseCases = [
+  {
+    title: "Test Result Analysis",
+    description:
+      "Parsing logs, clustering failures, and surfacing root causes — faster than manual triage.",
+    details: [
+      "Summarising test failures across suites",
+      "Grouping similar errors by pattern",
+      "Identifying likely root causes from stack traces",
+    ],
+  },
+  {
+    title: "Performance Report Interpretation",
+    description:
+      "Interpreting JMeter results and performance baselines into actionable observations.",
+    details: [
+      "Explaining throughput and latency anomalies",
+      "Comparing runs against historical baselines",
+      "Generating stakeholder-readable summaries",
+    ],
+  },
+  {
+    title: "AI-Assisted Reporting",
+    description:
+      "Structured reports from raw test data — consistent format, no manual writing.",
+    details: [
+      "Narrative summaries from execution data",
+      "Executive-level conclusions and risk flags",
+      "Consistent formatting across report cycles",
+    ],
+  },
+  {
+    title: "Local AI / On-Prem Systems",
+    description:
+      "Running models locally via Ollama. Sensitive data never leaves the environment.",
+    details: [
+      "No external API calls for analysis",
+      "Sensitive data stays inside the network",
+      "Reproducible and version-controlled workflows",
+    ],
+  },
+];
+
 export const impactItems = [
   "Delivered maintainable automation for critical banking flows across Android and iOS",
   "Built reporting pipelines used by both engineering teams and executive stakeholders",

@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/sections/hero";
 import { CredibilityStrip } from "@/components/sections/credibility";
 import { AboutSection } from "@/components/sections/about";
 import { ProjectsSection } from "@/components/sections/projects";
+import { AiSection } from "@/components/sections/ai";
 import { CapabilitiesSection } from "@/components/sections/capabilities";
 import { ImpactSection } from "@/components/sections/impact";
 import { ProcessSection } from "@/components/sections/process";
@@ -14,6 +15,7 @@ export default function Home() {
       <CredibilityStrip />
       <AboutSection />
       <ProjectsSection />
+      <AiSection />
       <CapabilitiesSection />
       <ImpactSection />
       <ProcessSection />
