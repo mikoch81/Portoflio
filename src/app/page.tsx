@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/sections/hero";
+import { ForRecruitersSection } from "@/components/sections/for-recruiters";
 import { CredibilityStrip } from "@/components/sections/credibility";
 import { AboutSection } from "@/components/sections/about";
 import { ProjectsSection } from "@/components/sections/projects";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <ForRecruitersSection />
       <CredibilityStrip />
       <AboutSection />
       <ProjectsSection />
