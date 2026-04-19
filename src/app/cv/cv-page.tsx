@@ -1,164 +1,74 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import { siteConfig } from "@/lib/data";
 import { FadeIn } from "@/components/motion";
-import { Download, Mail, ArrowUpRight, ArrowLeft } from "lucide-react";
+import { Download, Mail, ArrowLeft } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import {
+  certifications,
+  education,
+  experience,
+  headline,
+  interests,
+  signatureAreas,
+  snapshot,
+  strengths,
+  summary,
+  technologyGroups,
+} from "./cv-data";
 
-/* ── Data ── */
+const pageOneExperience = experience.slice(0, 1);
+const pageTwoExperience = experience.slice(1);
 
-const summary =
-  "Senior QA Automation Engineer with 8+ years building and scaling test automation frameworks, performance testing ecosystems, and AI-assisted quality workflows in regulated fintech environments. I focus on automation architecture that teams actually use, reporting that drives decisions, and AI tooling that stays private and practical.";
-
-const experience = [
-  {
-    role: "Senior QA Automation Engineer",
-    company: "Bank Pekao S.A.",
-    period: "2019 – Present",
-    highlights: [
-      "Designed and scaled an E2E automation framework (~200 tests) adopted by 10+ QA engineers and business stakeholders during release cycles",
-      "Architected modular test infrastructure supporting 3 banking applications — web, mobile (WebView), and API (RestAssured)",
-      "Built a JMeter-based performance testing ecosystem covering 3 applications, used by the QA team for load and regression analysis",
-      "Integrated automation into CI/CD pipelines (Jenkins, GitHub Actions) with Jira/Zephyr traceability for end-to-end visibility",
-      "Delivered multi-format reporting (Allure, Zephyr Scale, ExtentReports) consumed by both engineering and executive stakeholders",
-      "Implemented AI-driven test analysis workflows using local LLMs (Ollama) — automated failure summarisation, report generation, and root-cause triage",
-      "Reduced flaky test rate through systematic stability improvements and enhanced debugging processes",
-    ],
-  },
-  {
-    role: "QA Automation Engineer",
-    company: "T-Mobile",
-    period: "2017 – 2019",
-    highlights: [
-      "Built and maintained automation suites using Selenium, UFT, and Eggplant across telecom platforms",
-      "Developed RPA solutions and internal reporting tools (.NET) that reduced manual QA overhead",
-      "Managed test execution and defect workflows in HP ALM and Jira",
-    ],
-  },
-  {
-    role: "Frontend Developer / QA Engineer",
-    company: "Tsunami",
-    period: "2016 – 2017",
-    highlights: [
-      "Developed web applications (JavaScript, Java) while simultaneously owning QA — UAT, functional, and regression testing",
-      "Bridged development and testing workflows, improving defect detection during active sprints",
-    ],
-  },
-  {
-    role: "Web Applications Specialist",
-    company: "Agora",
-    period: "2011 – 2016",
-    highlights: [
-      "Built and maintained web applications for one of Poland's largest media companies",
-      "Introduced automated testing practices into previously manual-only QA workflows",
-    ],
-  },
-  {
-    role: "Team Leader",
-    company: "AQ Wiring Systems",
-    period: "2006 – 2011",
-    highlights: [
-      "Managed a team of ~50 employees in a manufacturing environment",
-      "Led process optimisation initiatives (LEAN, 5S) that improved production efficiency",
-    ],
-  },
-];
-
-const keyAchievements = [
-  "Scaled automation framework to ~200 E2E tests used by 10+ engineers during every release",
-  "Built performance testing ecosystem (JMeter) adopted across 3 banking applications",
-  "Implemented local-AI reporting pipeline that reduced manual analysis effort significantly",
-  "Standardised QA processes and automation architecture across multiple project teams",
-  "Delivered reporting consumed by both engineering teams and C-level stakeholders",
-];
-
-const techStack = [
-  { category: "Languages & Frameworks", items: "Java · Selenium · Appium · JUnit · TestNG · Maven · RestAssured" },
-  { category: "Performance", items: "JMeter · Load Testing · Baseline Analysis · Performance Reporting" },
-  { category: "CI/CD & Tooling", items: "Jenkins · GitHub Actions · Jira · Zephyr Scale · Allure · ExtentReports" },
-  { category: "AI & Automation", items: "Ollama · Local LLMs · Prompt Engineering · Workflow Orchestration" },
-];
-
-/* ── Helpers ── */
-
-function SectionTitle({ children }: { children: React.ReactNode }) {
+function SectionTitle({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-center gap-3 mb-6">
-      <div className="h-px w-5 bg-cyan/30" aria-hidden="true" />
-      <h2 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan/60">
+    <div className="mb-5 flex items-center gap-3">
+      <div className="h-px w-6 bg-[#2d5b59]" aria-hidden="true" />
+      <h2 className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#2d5b59]">
         {children}
       </h2>
     </div>
   );
 }
 
-/* ── Component ── */
+function MetaList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-2.5 text-[13px] leading-[1.65] text-[#495662]">
+      {items.map((item) => (
+        <li key={item} className="flex gap-3">
+          <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2d5b59]" aria-hidden="true" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function CvPage() {
   return (
-    <div className="min-h-screen py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl px-6">
-        {/* Back link */}
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.14),transparent_24%),linear-gradient(180deg,#06080d_0%,#0b1016_100%)] py-10 sm:py-14 print:bg-white print:py-0">
+      <div className="mx-auto max-w-[1180px] px-4 sm:px-6 print:max-w-none print:px-0">
         <FadeIn>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 text-[12px] text-muted-foreground/50 hover:text-foreground/70 transition-colors mb-12"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to portfolio
-          </Link>
-        </FadeIn>
+          <div className="no-print mb-8 flex flex-wrap items-center justify-between gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-[12px] text-white/60 transition-colors hover:text-white/85"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Back to portfolio
+            </Link>
 
-        {/* ── Header ── */}
-        <FadeIn>
-          <header className="mb-16">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] leading-[1.1] mb-3">
-              {siteConfig.name}
-            </h1>
-            <p className="text-[17px] font-medium text-foreground/80 mb-2">
-              {siteConfig.title}
-            </p>
-            <p className="text-[12px] uppercase tracking-[0.15em] text-muted-foreground/45 mb-6">
-              Łódź, Poland · Remote · Open to opportunities
-            </p>
-
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-muted-foreground/60">
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="hover:text-foreground/80 transition-colors"
-              >
-                {siteConfig.email}
-              </a>
-              <span className="text-border/40">·</span>
-              <a
-                href={siteConfig.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground/80 transition-colors"
-              >
-                linkedin.com/in/michalkochaniak
-              </a>
-              <span className="text-border/40">·</span>
-              <a
-                href={siteConfig.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground/80 transition-colors"
-              >
-                github.com/mikoch81
-              </a>
-            </div>
-
-            {/* Action buttons */}
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div className="flex flex-wrap gap-3">
               <a
                 href="/Michal_Kochaniak_CV.pdf"
                 download
                 className={cn(
                   buttonVariants({ variant: "default", size: "sm" }),
-                  "bg-cyan text-background hover:bg-cyan/90 font-medium px-5 h-9 text-[13px] shadow-[0_0_20px_-4px_rgba(34,211,238,0.3)]"
+                  "h-9 bg-cyan px-5 text-[13px] font-medium text-background hover:bg-cyan/90"
                 )}
               >
                 <Download className="mr-1.5 h-3.5 w-3.5" />
@@ -168,120 +78,191 @@ export function CvPage() {
                 href={`mailto:${siteConfig.email}`}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "sm" }),
-                  "px-5 h-9 text-[13px] border-border/50 text-muted-foreground hover:text-foreground"
+                  "h-9 border-white/15 px-5 text-[13px] text-white/75 hover:bg-white/5 hover:text-white"
                 )}
               >
                 <Mail className="mr-1.5 h-3.5 w-3.5" />
                 Contact
               </a>
             </div>
-          </header>
+          </div>
         </FadeIn>
 
-        <div className="h-px bg-border/20 mb-14" />
-
-        {/* ── Summary ── */}
         <FadeIn>
-          <section className="mb-14">
-            <SectionTitle>Summary</SectionTitle>
-            <p className="text-[14px] leading-[1.8] text-muted-foreground/75 max-w-2xl">
-              {summary}
-            </p>
-          </section>
-        </FadeIn>
+          <div className="cv-stack space-y-8 print:space-y-0">
+            <article className="cv-paper overflow-hidden rounded-[30px] border border-white/10 bg-[#f6f1e8] text-[#1c252d] shadow-[0_34px_90px_-38px_rgba(0,0,0,0.72)] print:rounded-none print:border-0 print:shadow-none">
+              <div className="grid gap-0 lg:grid-cols-[1.7fr_0.92fr] print:grid-cols-[1.7fr_0.92fr]">
+                <div className="border-b border-[#d8cfc2] p-8 sm:p-10 lg:border-b-0 lg:border-r print:border-b-0 print:border-r print:border-[#d8cfc2]">
+                  <header className="mb-9">
+                    <div className="mb-7 flex items-start justify-between gap-6 border-b border-[#d8cfc2] pb-6">
+                      <div className="max-w-2xl">
+                        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#285b59]">
+                          QA Automation / Software Quality / Enterprise Delivery
+                        </p>
+                        <h1 className="mb-2 text-[2.9rem] font-semibold tracking-[-0.05em] text-[#10202a] sm:text-[3.3rem] leading-none">
+                          {siteConfig.name}
+                        </h1>
+                        <p className="mb-4 text-[18px] font-medium leading-[1.35] text-[#213843]">
+                          {headline}
+                        </p>
+                        <p className="max-w-3xl text-[14px] leading-[1.78] text-[#4e5b64]">
+                          {summary}
+                        </p>
+                      </div>
 
-        {/* ── Key Achievements ── */}
-        <FadeIn>
-          <section className="mb-14">
-            <SectionTitle>Key Achievements</SectionTitle>
-            <ul className="space-y-2.5">
-              {keyAchievements.map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 text-[13px] leading-[1.7] text-foreground/75"
-                >
-                  <span className="shrink-0 mt-[7px] h-1.5 w-1.5 rounded-full bg-cyan/40" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </section>
-        </FadeIn>
-
-        <div className="h-px bg-border/20 mb-14" />
-
-        {/* ── Experience ── */}
-        <FadeIn>
-          <section className="mb-14">
-            <SectionTitle>Experience</SectionTitle>
-            <div className="space-y-10">
-              {experience.map((job) => (
-                <div key={job.company} className="relative">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4">
-                    <div>
-                      <h3 className="text-[15px] font-semibold text-foreground/90 tracking-[-0.01em]">
-                        {job.role}
-                      </h3>
-                      <p className="text-[13px] text-muted-foreground/60">
-                        {job.company}
-                      </p>
+                      <div className="hidden min-w-[180px] border-l border-[#d8cfc2] pl-6 lg:block">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#285b59]">
+                          Contact
+                        </p>
+                        <div className="mt-4 space-y-3 text-[12px] uppercase tracking-[0.08em] text-[#65727a]">
+                          <p>Lodz, Poland</p>
+                          <p>{siteConfig.email}</p>
+                          <p>linkedin.com/in/michalkochaniak</p>
+                          <p>github.com/mikoch81</p>
+                        </div>
+                      </div>
                     </div>
-                    <span className="text-[12px] font-mono text-muted-foreground/40 shrink-0">
-                      {job.period}
-                    </span>
-                  </div>
-                  <ul className="space-y-2">
-                    {job.highlights.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-[13px] leading-[1.7] text-muted-foreground/65"
-                      >
-                        <span className="shrink-0 mt-[7px] h-px w-3 bg-border/50" aria-hidden="true" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+
+                    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                      {signatureAreas.map((item) => (
+                        <div key={item} className="rounded-[18px] border border-[#d8cfc2] bg-white/55 px-4 py-3 text-[12px] font-medium uppercase tracking-[0.11em] text-[#31424b]">
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </header>
+
+                  <section>
+                    <SectionTitle>Professional Experience</SectionTitle>
+                    <div className="space-y-9">
+                      {pageOneExperience.map((job) => (
+                        <div key={`${job.company}-${job.role}`} className="break-inside-avoid-page">
+                          <div className="mb-3 flex flex-col gap-2 border-b border-[#e7ddd0] pb-4 sm:flex-row sm:items-start sm:justify-between">
+                            <div>
+                              <h3 className="text-[22px] font-semibold tracking-[-0.03em] text-[#11212a]">
+                                {job.role}
+                              </h3>
+                              <p className="mt-1 text-[14px] font-medium text-[#2e4954]">{job.company}</p>
+                              <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#6a767f]">{job.meta}</p>
+                            </div>
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6a767f]">
+                              {job.period}
+                            </p>
+                          </div>
+                          <MetaList items={job.highlights} />
+                        </div>
+                      ))}
+                    </div>
+                  </section>
                 </div>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
 
-        <div className="h-px bg-border/20 mb-14" />
+                <aside className="bg-[linear-gradient(180deg,rgba(255,255,255,0.62)_0%,rgba(255,255,255,0.2)_100%)] p-8 sm:p-10 print:bg-transparent print:p-8">
+                  <section className="mb-8 rounded-[24px] border border-[#d8cfc2] bg-[#1d3138] px-6 py-6 text-[#eff3ef] shadow-[0_18px_40px_-28px_rgba(0,0,0,0.45)]">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9fd0c8]">
+                      Current Position
+                    </p>
+                    <p className="mt-3 text-[18px] font-semibold tracking-[-0.02em]">Bank Pekao S.A.</p>
+                    <p className="mt-3 text-[13px] leading-[1.72] text-white/78">
+                      Currently working in test and quality assurance, focused on enterprise banking systems, test automation, and web/mobile application quality.
+                    </p>
+                  </section>
 
-        {/* ── Tech Stack ── */}
-        <FadeIn>
-          <section className="mb-14">
-            <SectionTitle>Technology Stack</SectionTitle>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {techStack.map((group) => (
-                <div
-                  key={group.category}
-                  className="rounded-xl border border-border/25 bg-card/20 p-5 space-y-2.5"
-                >
-                  <h3 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-cyan/45">
-                    {group.category}
-                  </h3>
-                  <p className="text-[13px] leading-[1.7] text-muted-foreground/60 font-mono">
-                    {group.items}
-                  </p>
+                  <section className="mb-8 rounded-[24px] border border-[#d8cfc2] bg-white/55 p-6">
+                    <SectionTitle>Education</SectionTitle>
+                    <div className="space-y-5">
+                      {education.map((item) => (
+                        <div key={item.title} className="break-inside-avoid-page border-b border-[#e7ddd0] pb-4 last:border-b-0 last:pb-0">
+                          <p className="text-[14px] font-semibold text-[#14212b]">{item.title}</p>
+                          <p className="text-[13px] text-[#2c4651]">{item.subtitle}</p>
+                          <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#6c7880]">{item.period}</p>
+                          <p className="mt-2 text-[13px] leading-[1.65] text-[#495662]">{item.details}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="rounded-[24px] border border-[#d8cfc2] bg-white/55 p-6">
+                    <SectionTitle>Certifications</SectionTitle>
+                    <MetaList items={certifications} />
+                  </section>
+                </aside>
+              </div>
+            </article>
+
+            <article className="cv-paper overflow-hidden rounded-[30px] border border-white/10 bg-[#f6f1e8] text-[#1c252d] shadow-[0_34px_90px_-38px_rgba(0,0,0,0.72)] print:rounded-none print:border-0 print:shadow-none print:break-before-page">
+              <div className="grid gap-0 lg:grid-cols-[1.62fr_1fr] print:grid-cols-[1.62fr_1fr]">
+                <div className="border-b border-[#d8cfc2] p-8 sm:p-10 lg:border-b-0 lg:border-r print:border-b-0 print:border-r print:border-[#d8cfc2]">
+                  <header className="mb-8 border-b border-[#d8cfc2] pb-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#285b59]">
+                      Career History
+                    </p>
+                    <h2 className="mt-3 text-[28px] font-semibold tracking-[-0.03em] text-[#10202a]">
+                      Earlier Experience and Technical Foundation
+                    </h2>
+                  </header>
+
+                  <section>
+                    <SectionTitle>Professional Experience</SectionTitle>
+                    <div className="space-y-8">
+                      {pageTwoExperience.map((job) => (
+                        <div key={`${job.company}-${job.role}`} className="break-inside-avoid-page">
+                          <div className="mb-3 flex flex-col gap-2 border-b border-[#e7ddd0] pb-4 sm:flex-row sm:items-start sm:justify-between">
+                            <div>
+                              <h3 className="text-[19px] font-semibold tracking-[-0.025em] text-[#11212a]">
+                                {job.role}
+                              </h3>
+                              <p className="mt-1 text-[14px] font-medium text-[#2e4954]">{job.company}</p>
+                              <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#6a767f]">{job.meta}</p>
+                            </div>
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6a767f]">
+                              {job.period}
+                            </p>
+                          </div>
+                          <MetaList items={job.highlights} />
+                        </div>
+                      ))}
+                    </div>
+                  </section>
                 </div>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
 
-        <div className="h-px bg-border/20 mb-14" />
+                <aside className="bg-[linear-gradient(180deg,rgba(255,255,255,0.58)_0%,rgba(255,255,255,0.18)_100%)] p-8 sm:p-10 print:bg-transparent print:p-8">
+                  <section className="mb-8 rounded-[24px] border border-[#d8cfc2] bg-white/55 p-6">
+                    <SectionTitle>Profile Snapshot</SectionTitle>
+                    <MetaList items={snapshot} />
+                  </section>
 
-        {/* ── Footer ── */}
-        <FadeIn>
-          <div className="text-center space-y-4 py-8">
-            <p className="text-[13px] text-muted-foreground/40">
-              Full portfolio and case studies at{" "}
-              <Link href="/" className="text-cyan/60 hover:text-cyan/80 transition-colors">
-                michalkochaniak.dev
-              </Link>
-            </p>
+                  <section className="mb-8 rounded-[24px] border border-[#d8cfc2] bg-white/55 p-6">
+                    <SectionTitle>Core Strengths</SectionTitle>
+                    <div className="grid gap-y-3">
+                      {strengths.map((item) => (
+                        <div key={item} className="border-b border-[#e7ddd0] pb-3 text-[13px] leading-[1.55] text-[#33444d] last:border-b-0 last:pb-0">
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="mb-8 rounded-[24px] border border-[#d8cfc2] bg-white/55 p-6">
+                    <SectionTitle>Selected Tools & Technologies</SectionTitle>
+                    <div className="space-y-4">
+                      {technologyGroups.map((group) => (
+                        <div key={group.category} className="break-inside-avoid-page rounded-[18px] border border-[#ddd4c7] bg-[#fbf8f3] p-4">
+                          <h3 className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2d5b59]">
+                            {group.category}
+                          </h3>
+                          <p className="text-[13px] leading-[1.72] text-[#495662]">{group.items}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="rounded-[24px] border border-[#d8cfc2] bg-white/55 p-6">
+                    <SectionTitle>Interests</SectionTitle>
+                    <MetaList items={interests} />
+                  </section>
+                </aside>
+              </div>
+            </article>
           </div>
         </FadeIn>
       </div>

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cv:pdf": "bash ./tools/generate-cv-pdf.sh",
+    "cv:portrait:ai": "node ./tools/retouch-portrait.mjs",
+    "cv:pdf:ai": "bash ./tools/retouch-and-generate-cv.sh"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",

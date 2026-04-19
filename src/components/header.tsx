@@ -4,6 +4,7 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/data";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -14,6 +15,11 @@ const navLinks = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/cv")) {
+    return null;
+  }
 
   // Close mobile nav on resize to desktop
   useEffect(() => {

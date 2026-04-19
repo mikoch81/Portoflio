@@ -1,6 +1,15 @@
+"use client";
+
 import { siteConfig } from "@/lib/data";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/cv")) {
+    return null;
+  }
+
   return (
     <footer className="py-14" role="contentinfo">
       <div className="mx-auto max-w-6xl px-6">
