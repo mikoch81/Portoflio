@@ -1,11 +1,11 @@
 "use client";
 
-import { type CaseStudy, projects } from "@/lib/data";
 import { FadeIn, FadeInStagger, FadeInStaggerChild } from "@/components/motion";
 import { buttonVariants } from "@/components/ui/button";
+import { type CaseStudy, projects } from "@/lib/data";
+import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -21,7 +21,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function SectionDivider() {
   return (
     <div
-      className="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent my-14 sm:my-16"
+      className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent my-14 sm:my-16"
       aria-hidden="true"
     />
   );
@@ -37,11 +37,11 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
     <article className="relative pt-28 pb-24 sm:pt-32 sm:pb-28 md:pt-40 md:pb-36">
       {/* Background depth layers */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background"
+        className="pointer-events-none absolute inset-0 bg-linear-to-b from-background via-card/30 to-background"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute top-48 left-1/2 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-cyan/[0.015] blur-[160px]"
+        className="pointer-events-none absolute top-48 left-1/2 -translate-x-1/2 h-150 w-225 rounded-full bg-cyan/1.5 blur-[160px]"
         aria-hidden="true"
       />
 
@@ -136,7 +136,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             <div className="relative">
               {/* Vertical timeline line */}
               <div
-                className="absolute left-[5px] top-2 bottom-2 w-px bg-gradient-to-b from-cyan/25 via-border/30 to-transparent"
+                className="absolute left-1.25 top-2 bottom-2 w-px bg-linear-to-b from-cyan/25 via-border/30 to-transparent"
                 aria-hidden="true"
               />
               <div className="space-y-5">
@@ -144,7 +144,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
                   <div key={i} className="relative pl-7 sm:pl-8">
                     {/* Timeline dot */}
                     <div
-                      className="absolute left-0 top-[6px] h-[11px] w-[11px] rounded-full border-2 border-cyan/30 bg-background"
+                      className="absolute left-0 top-1.5 h-2.75 w-2.75 rounded-full border-2 border-cyan/30 bg-background"
                       aria-hidden="true"
                     />
                     <p className="text-[13px] sm:text-[14px] leading-[1.75] text-muted-foreground/70">
@@ -198,7 +198,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
               {study.outcomes.map((item, i) => (
                 <FadeInStaggerChild key={i}>
                   <div className="flex items-start gap-4 sm:gap-5 rounded-xl border border-border/25 bg-card/25 backdrop-blur-sm px-5 py-4 sm:px-6 sm:py-5 transition-colors duration-300 hover:border-cyan/15 hover:bg-card/40">
-                    <div className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full border border-cyan/25 bg-cyan/[0.05]">
+                    <div className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full border border-cyan/25 bg-cyan/5">
                       <span
                         className="text-[9px] font-mono text-cyan/55 tabular-nums"
                         aria-hidden="true"
@@ -225,11 +225,11 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             <div className="relative rounded-xl border border-border/30 bg-card/25 backdrop-blur-sm p-6 sm:p-8">
               {/* Accent corner */}
               <div
-                className="absolute top-0 left-0 h-12 w-px bg-gradient-to-b from-cyan/30 to-transparent"
+                className="absolute top-0 left-0 h-12 w-px bg-linear-to-b from-cyan/30 to-transparent"
                 aria-hidden="true"
               />
               <div
-                className="absolute top-0 left-0 h-px w-12 bg-gradient-to-r from-cyan/30 to-transparent"
+                className="absolute top-0 left-0 h-px w-12 bg-linear-to-r from-cyan/30 to-transparent"
                 aria-hidden="true"
               />
               <p className="text-[14px] sm:text-[15px] leading-[1.9] text-muted-foreground/80">
@@ -242,7 +242,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         {/* ── Navigation ── */}
         <FadeIn>
           <div
-            className="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent mb-8 sm:mb-10"
+            className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent mb-8 sm:mb-10"
             aria-hidden="true"
           />
           <nav

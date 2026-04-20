@@ -1,7 +1,7 @@
 "use client";
 
-import { pillars } from "@/lib/data";
 import { FadeIn, FadeInStagger, FadeInStaggerChild } from "@/components/motion";
+import { pillars } from "@/lib/data";
 
 export function AboutSection() {
   return (
@@ -30,7 +30,7 @@ export function AboutSection() {
             <FadeInStaggerChild key={pillar.title}>
               <div className="group relative rounded-xl border border-border/40 bg-card/40 p-7 sm:p-8 space-y-4 h-full transition-colors duration-300 hover:border-border/60 hover:bg-card/50">
                 {/* Left accent */}
-                <div className="absolute left-0 top-7 bottom-7 w-px bg-gradient-to-b from-cyan/30 via-cyan/10 to-transparent" aria-hidden="true" />
+                <div className="absolute left-0 top-7 bottom-7 w-px bg-linear-to-b from-cyan/30 via-cyan/10 to-transparent" aria-hidden="true" />
 
                 <h3 className="text-[15px] font-semibold tracking-tight pl-5">{pillar.title}</h3>
                 <p className="text-[13px] leading-[1.75] text-muted-foreground/80 pl-5">

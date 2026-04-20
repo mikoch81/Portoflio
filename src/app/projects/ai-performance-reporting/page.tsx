@@ -1,6 +1,5 @@
-import { caseStudies } from "@/lib/data";
 import { CaseStudyPage } from "@/components/case-study";
-import { notFound } from "next/navigation";
+import { caseStudies } from "@/lib/data";
 import type { Metadata } from "next";
 
 const study = caseStudies["ai-performance-reporting"];
@@ -12,10 +11,14 @@ export const metadata: Metadata = {
     title: `${study.title} — Michał Kochaniak`,
     description: study.subtitle,
     type: "article",
+    images: [{ url: "/api/og", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/api/og"],
   },
 };
 
 export default function AiPerformanceReportingPage() {
-  if (!study) notFound();
   return <CaseStudyPage study={study} />;
 }

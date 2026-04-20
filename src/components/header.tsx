@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { siteConfig } from "@/lib/data";
-import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -16,10 +16,6 @@ const navLinks = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-
-  if (pathname?.startsWith("/cv")) {
-    return null;
-  }
 
   // Close mobile nav on resize to desktop
   useEffect(() => {
@@ -35,9 +31,13 @@ export function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  if (pathname?.startsWith("/cv")) {
+    return null;
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-xl">
-        <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-6">
+        <div className="mx-auto flex h-17 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
           className="text-sm font-semibold tracking-tight text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 rounded-sm"
@@ -56,6 +56,12 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <Link
+            href="/cv"
+            className="text-[13px] text-muted-foreground/60 transition-colors hover:text-foreground/90 tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 rounded-sm"
+          >
+            CV
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -71,7 +77,7 @@ export function Header() {
       </div>
 
       {/* Bottom border — gradient fade */}
-      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" aria-hidden="true" />
+      <div className="h-px bg-linear-to-r from-transparent via-border to-transparent" aria-hidden="true" />
 
       {/* Mobile nav */}
       {mobileOpen && (
@@ -90,6 +96,13 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <Link
+            href="/cv"
+            onClick={() => setMobileOpen(false)}
+            className="block py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:text-foreground"
+          >
+            CV
+          </Link>
         </nav>
       )}
     </header>

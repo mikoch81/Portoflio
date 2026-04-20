@@ -2,23 +2,23 @@
 
 import type { ReactNode } from "react";
 
-import { siteConfig } from "@/lib/data";
 import { FadeIn } from "@/components/motion";
-import { Download, Mail, ArrowLeft } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { ArrowLeft, Download, Mail } from "lucide-react";
 import Link from "next/link";
 import {
-  certifications,
-  education,
-  experience,
-  headline,
-  interests,
-  signatureAreas,
-  snapshot,
-  strengths,
-  summary,
-  technologyGroups,
+    certifications,
+    education,
+    experience,
+    headline,
+    interests,
+    signatureAreas,
+    snapshot,
+    strengths,
+    summary,
+    technologyGroups,
 } from "./cv-data";
 
 const pageOneExperience = experience.slice(0, 1);
@@ -40,7 +40,7 @@ function MetaList({ items }: { items: string[] }) {
     <ul className="space-y-2.5 text-[13px] leading-[1.65] text-[#495662]">
       {items.map((item) => (
         <li key={item} className="flex gap-3">
-          <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2d5b59]" aria-hidden="true" />
+          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2d5b59]" aria-hidden="true" />
           <span>{item}</span>
         </li>
       ))}
@@ -51,7 +51,7 @@ function MetaList({ items }: { items: string[] }) {
 export function CvPage() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.14),transparent_24%),linear-gradient(180deg,#06080d_0%,#0b1016_100%)] py-10 sm:py-14 print:bg-white print:py-0">
-      <div className="mx-auto max-w-[1180px] px-4 sm:px-6 print:max-w-none print:px-0">
+      <div className="mx-auto max-w-295 px-4 sm:px-6 print:max-w-none print:px-0">
         <FadeIn>
           <div className="no-print mb-8 flex flex-wrap items-center justify-between gap-3">
             <Link
@@ -94,8 +94,8 @@ export function CvPage() {
               <div className="grid gap-0 lg:grid-cols-[1.7fr_0.92fr] print:grid-cols-[1.7fr_0.92fr]">
                 <div className="border-b border-[#d8cfc2] p-8 sm:p-10 lg:border-b-0 lg:border-r print:border-b-0 print:border-r print:border-[#d8cfc2]">
                   <header className="mb-9">
-                    <div className="mb-7 flex items-start justify-between gap-6 border-b border-[#d8cfc2] pb-6">
-                      <div className="max-w-2xl">
+                    <div className="mb-7 flex flex-col gap-5 border-b border-[#d8cfc2] pb-6 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
+                      <div className="min-w-0 flex-1 max-w-2xl">
                         <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#285b59]">
                           QA Automation / Software Quality / Enterprise Delivery
                         </p>
@@ -110,11 +110,11 @@ export function CvPage() {
                         </p>
                       </div>
 
-                      <div className="hidden min-w-[180px] border-l border-[#d8cfc2] pl-6 lg:block">
+                      <div className="w-full border-t border-[#d8cfc2] pt-5 lg:w-55 lg:shrink-0 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
                         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#285b59]">
                           Contact
                         </p>
-                        <div className="mt-4 space-y-3 text-[12px] uppercase tracking-[0.08em] text-[#65727a]">
+                        <div className="mt-4 space-y-2.5 text-[11.5px] leading-[1.45] tracking-[0.04em] text-[#65727a] wrap-anywhere">
                           <p>Lodz, Poland</p>
                           <p>{siteConfig.email}</p>
                           <p>linkedin.com/in/michalkochaniak</p>

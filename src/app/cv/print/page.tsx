@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 import { siteConfig } from "@/lib/data";
 import {
-  certifications,
-  education,
-  experience,
-  headline,
-  interests,
-  signatureAreas,
-  snapshot,
-  strengths,
-  summary,
-  technologyGroups,
+    certifications,
+    education,
+    experience,
+    headline,
+    interests,
+    signatureAreas,
+    snapshot,
+    strengths,
+    summary,
+    technologyGroups,
 } from "../cv-data";
 
 export const metadata: Metadata = {
@@ -39,8 +38,8 @@ function BulletList({ items, compact = false }: { items: string[]; compact?: boo
   return (
     <ul className={compact ? "space-y-1.5" : "space-y-2"}>
       {items.map((item) => (
-        <li key={item} className="flex gap-2.5 text-[11.5px] leading-[1.5] text-[#4b5963]">
-          <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2c5858]" aria-hidden="true" />
+        <li key={item} className="flex gap-2.5 text-[11.5px] leading-normal text-[#4b5963]">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2c5858]" aria-hidden="true" />
           <span>{item}</span>
         </li>
       ))}
@@ -81,7 +80,7 @@ function RoleBlock({
 export default function PrintPage() {
   return (
     <main className="cv-print-preview min-h-screen bg-[#0b1016] px-4 py-8 print:bg-white print:p-0">
-      <div className="mx-auto flex max-w-[980px] flex-col gap-8 print:max-w-none print:gap-0">
+      <div className="mx-auto flex max-w-245 flex-col gap-8 print:max-w-none print:gap-0">
         <article className="cv-print-sheet overflow-hidden rounded-[20px] bg-[#f7f2ea] text-[#17242d] shadow-[0_28px_80px_-36px_rgba(0,0,0,0.75)] print:rounded-none print:shadow-none">
           <div className="grid h-full grid-cols-[1.7fr_0.95fr]">
             <div className="border-r border-[#ddd5c8] px-[14mm] py-[13mm]">
@@ -123,22 +122,6 @@ export default function PrintPage() {
             </div>
 
             <aside className="bg-[linear-gradient(180deg,rgba(255,255,255,0.48)_0%,rgba(255,255,255,0.14)_100%)] px-[10mm] py-[13mm]">
-              <section className="mb-5 flex flex-col items-center rounded-[16px] border border-[#ddd5c8] bg-white/55 px-4 py-4 text-center">
-                <div className="relative h-[34mm] w-[34mm] overflow-hidden rounded-[14px] border border-[#d3cabd] bg-[#e9e1d6] shadow-[0_10px_24px_-18px_rgba(0,0,0,0.45)]">
-                  <Image
-                    src="/foto-cv.jpg"
-                    alt="Portrait of Michał Kochaniak"
-                    fill
-                    sizes="34mm"
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <p className="mt-3 text-[9.5px] font-semibold uppercase tracking-[0.22em] text-[#6b767d]">
-                  Resume Portrait
-                </p>
-              </section>
-
               <section className="mb-5 rounded-[16px] bg-[#1d3138] px-4 py-4 text-[#eff3ef]">
                 <p className="text-[9.5px] font-semibold uppercase tracking-[0.24em] text-[#9fd0c8]">
                   Contact

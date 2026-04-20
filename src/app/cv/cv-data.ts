@@ -107,7 +107,7 @@ export const education = [
     subtitle: "Computer Science",
     period: "2002 - 2005",
     details:
-      "Education completed up to the 4th year, Faculty of Technical Physics, Information Technology and Applied Mathematics [TO BE CONFIRMED]",
+      "Four years of full-time study, Faculty of Technical Physics, Computer Science and Applied Mathematics.",
   },
   {
     title: "Technical Secondary School of Energy and Electrical Engineering",

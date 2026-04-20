@@ -1,10 +1,10 @@
 "use client";
 
-import { siteConfig } from "@/lib/data";
-import { buttonVariants } from "@/components/ui/button";
 import { FadeIn } from "@/components/motion";
-import { ArrowUpRight, Download, Mail } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight, Download, Eye, Mail } from "lucide-react";
 
 const highlights = [
   {
@@ -78,6 +78,16 @@ export function ForRecruitersSection() {
             >
               <Download className="mr-2 h-4 w-4" />
               Download CV
+            </a>
+            <a
+              href="/cv"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "px-7 h-10 border-border/60 text-muted-foreground hover:text-foreground"
+              )}
+            >
+              <Eye className="mr-2 h-4 w-4" />
+              View CV
             </a>
             <a
               href={`mailto:${siteConfig.email}`}

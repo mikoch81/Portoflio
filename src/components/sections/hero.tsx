@@ -1,10 +1,10 @@
 "use client";
 
-import { siteConfig } from "@/lib/data";
-import { buttonVariants } from "@/components/ui/button";
 import { FadeIn } from "@/components/motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { ArrowDown, Mail } from "lucide-react";
 
 const profileHighlights = [
   "Automation Architecture",
@@ -33,9 +33,9 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center pt-16 overflow-hidden"
     >
       {/* Radial glow */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[700px] w-[1000px] rounded-full bg-cyan/[0.025] blur-[160px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-175 w-250 rounded-full bg-cyan/2.5 blur-[160px]" aria-hidden="true" />
       {/* Secondary warm glow for depth */}
-      <div className="pointer-events-none absolute -top-32 left-1/4 h-[400px] w-[500px] rounded-full bg-cyan/[0.015] blur-[120px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute -top-32 left-1/4 h-100 w-125 rounded-full bg-cyan/1.5 blur-[120px]" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-6xl px-6 py-28 md:py-36 w-full">
         <div className="grid gap-14 sm:gap-16 lg:grid-cols-[1fr_380px] lg:gap-24 items-center">
@@ -109,7 +109,7 @@ export function HeroSection() {
                 </div>
               </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+              <div className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent" />
 
               <div className="space-y-3.5">
                 <h2 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/50">
@@ -127,7 +127,7 @@ export function HeroSection() {
                 </div>
               </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+              <div className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent" />
 
               <div className="space-y-3.5">
                 <h2 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/50">
@@ -135,15 +135,15 @@ export function HeroSection() {
                 </h2>
                 <ul className="space-y-2.5 text-[13px] text-muted-foreground/80">
                   <li className="flex items-start gap-3">
-                    <span className="mt-[7px] h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
+                    <span className="mt-1.75 h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
                     Framework architecture over disposable scripts
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-[7px] h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
+                    <span className="mt-1.75 h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
                     Performance analysis with structured reporting
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-[7px] h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
+                    <span className="mt-1.75 h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
                     Local AI integration for engineering workflows
                   </li>
                 </ul>

@@ -1,7 +1,7 @@
 "use client";
 
-import { projects } from "@/lib/data";
 import { FadeIn, FadeInStagger, FadeInStaggerChild } from "@/components/motion";
+import { projects } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ export function ProjectsSection() {
     >
       {/* Layered background for depth */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-card/60 to-background"
+        className="pointer-events-none absolute inset-0 bg-linear-to-b from-background via-card/60 to-background"
         aria-hidden="true"
       />
       <div
@@ -58,7 +58,7 @@ export function ProjectsSection() {
               >
                 {/* Top accent line */}
                 <div
-                  className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-cyan/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   aria-hidden="true"
                 />
 

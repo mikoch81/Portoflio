@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/data";
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
@@ -66,7 +67,7 @@ export async function GET() {
             marginBottom: "16px",
           }}
         >
-          Michał Kochaniak
+          {siteConfig.name}
         </div>
 
         {/* Title */}

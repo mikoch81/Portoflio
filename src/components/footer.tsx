@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <footer className="py-14" role="contentinfo">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent mb-12" aria-hidden="true" />
+        <div className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent mb-12" aria-hidden="true" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[12px] text-muted-foreground/40 tracking-wide">
             © {new Date().getFullYear()} {siteConfig.name}
