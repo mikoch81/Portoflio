@@ -65,9 +65,16 @@ export function ProjectsSection() {
                 <div className="flex flex-col flex-1 p-7 sm:p-8 lg:p-9">
                   {/* Header: category + number */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className="inline-flex items-center rounded-full border border-border/40 bg-card/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground/50">
-                      {project.category}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="inline-flex items-center rounded-full border border-border/40 bg-card/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground/50">
+                        {project.category}
+                      </span>
+                      {project.badge ? (
+                        <span className="inline-flex items-center rounded-full border border-cyan/20 bg-cyan/[0.08] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-cyan/70">
+                          {project.badge}
+                        </span>
+                      ) : null}
+                    </div>
                     <span className="text-[11px] font-mono text-muted-foreground/20 tabular-nums">
                       {String(i + 1).padStart(2, "0")}
                     </span>

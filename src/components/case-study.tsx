@@ -28,6 +28,7 @@ function SectionDivider() {
 }
 
 export function CaseStudyPage({ study }: { study: CaseStudy }) {
+  const currentProject = projects.find((p) => p.slug === study.slug);
   const currentIndex = projects.findIndex((p) => p.slug === study.slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject =
@@ -76,6 +77,14 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
               {study.subtitle}
             </p>
 
+            {currentProject?.badge ? (
+              <div className="mt-5">
+                <span className="inline-flex items-center rounded-full border border-cyan/20 bg-cyan/[0.08] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan/70">
+                  {currentProject.badge}
+                </span>
+              </div>
+            ) : null}
+
             {/* Quick-glance tech strip */}
             <div className="flex flex-wrap gap-1.5 mt-7">
               {study.stack.flatMap((g) => g.items).slice(0, 8).map((item) => (
@@ -87,6 +96,23 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
                 </span>
               ))}
             </div>
+
+            {study.repositoryUrl ? (
+              <div className="mt-7">
+                <Link
+                  href={study.repositoryUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "sm" }),
+                    "border-border/40 text-muted-foreground/55 hover:text-muted-foreground hover:border-border/60 focus-visible:ring-cyan/50"
+                  )}
+                >
+                  <ArrowUpRight className="mr-2 h-3.5 w-3.5" />
+                  View repository
+                </Link>
+              </div>
+            ) : null}
           </header>
         </FadeIn>
 

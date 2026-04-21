@@ -39,7 +39,70 @@ export const pillars = [
   },
 ];
 
-export const projects = [
+export interface ProjectCard {
+  slug: string;
+  title: string;
+  problem: string;
+  summary: string;
+  tech: string[];
+  outcome: string;
+  category: string;
+  badge?: string;
+}
+
+export const projects: ProjectCard[] = [
+  {
+    slug: "playwright-web-e2e-demo",
+    title: "Playwright Web E2E Demo",
+    problem:
+      "Teams often need a fast, modern regression pack for critical web journeys, but without a heavyweight environment setup or fragile external dependencies.",
+    summary:
+      "Built a local Playwright-based E2E demo covering login, cart, and checkout flows, with CI-ready execution, HTML reporting, and failure diagnostics.",
+    tech: ["Playwright", "TypeScript", "GitHub Actions", "HTML Reports"],
+    outcome:
+      "Shows how manual smoke testing can be converted into a repeatable, pipeline-ready quality gate around the most business-critical user flow.",
+    category: "Automation Architecture",
+    badge: "New / Open Source",
+  },
+  {
+    slug: "selenium-framework-demo",
+    title: "Selenium Framework Demo",
+    problem:
+      "UI automation in Java projects often degrades into isolated scripts instead of a maintainable framework that teams can expand safely over time.",
+    summary:
+      "Created a Selenium + Java framework demo with Page Objects, reusable setup, screenshot artifacts, and a local demo application executed through Maven.",
+    tech: ["Java", "Selenium", "JUnit 5", "Maven", "Page Objects"],
+    outcome:
+      "Demonstrates an enterprise-friendly framework foundation for stable UI regression in teams working in the Java ecosystem.",
+    category: "Automation Architecture",
+    badge: "New / Open Source",
+  },
+  {
+    slug: "api-testing-demo",
+    title: "API Testing Demo",
+    problem:
+      "Backend teams need quick assurance that key endpoints still behave correctly and stay within acceptable response-time guardrails.",
+    summary:
+      "Designed a local API quality demo combining health checks, contract validation, and performance baseline assertions in a lightweight Maven setup.",
+    tech: ["Java", "JUnit 5", "HttpClient", "Jackson", "Maven"],
+    outcome:
+      "Provides a compact example of how to add backend quality signals without depending on a separate shared environment.",
+    category: "Performance Engineering",
+    badge: "New / Open Source",
+  },
+  {
+    slug: "jmeter-performance",
+    title: "JMeter Performance Pack",
+    problem:
+      "Performance work often starts too late, or requires external systems that make small, repeatable baseline checks harder to establish.",
+    summary:
+      "Prepared a JMeter starter pack with a local mock API, reusable test plan, scenario data, and a safe synthetic load setup for baseline performance testing.",
+    tech: ["JMeter", "Python", "Load Testing", "Synthetic Data"],
+    outcome:
+      "Shows a practical entry point into performance engineering using local, reproducible assets that can evolve into broader load testing workflows.",
+    category: "Performance Engineering",
+    badge: "New / Open Source",
+  },
   {
     slug: "ai-performance-reporting",
     title: "AI Performance Reporting System",
@@ -223,6 +286,7 @@ export interface CaseStudy {
   title: string;
   subtitle: string;
   overview: string;
+  repositoryUrl?: string;
   challenge: string[];
   approach: string[];
   stack: { category: string; items: string[] }[];
@@ -369,5 +433,145 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     conclusion:
       "AI in QA works best when it accelerates analysis rather than replacing judgment. A locally-hosted, domain-aware assistant reduced repetitive cognitive work while keeping all data under team control.",
+  },
+
+  "playwright-web-e2e-demo": {
+    slug: "playwright-web-e2e-demo",
+    title: "Playwright Web E2E Demo",
+    subtitle: "Local web regression pack focused on critical user journeys, fast feedback, and CI-ready diagnostics",
+    overview:
+      "This project demonstrates how I approach modern web UI automation when the goal is not broad checkbox coverage, but reliable protection of the most business-critical user flows. The suite is built around a local demo app and focuses on a small set of high-value journeys — login, cart interaction, and purchase completion — supported by Playwright, HTML reporting, and failure diagnostics. The result is a compact, service-ready example of a repeatable smoke/regression layer that can be run locally or in CI.",
+    repositoryUrl: "https://github.com/mikoch81/playwright-web-e2e-demo",
+    challenge: [
+      "Teams often need quick, trustworthy feedback on core web journeys without investing in a large bespoke test environment upfront.",
+      "External dependencies and unstable environments can turn small regression suites into flaky maintenance burdens.",
+      "Manual smoke testing around login and checkout remains common, even when these flows are the most business-critical.",
+      "Early-stage automation efforts need to be understandable, portable, and easy to wire into CI from day one.",
+    ],
+    approach: [
+      "Built a local demo application with synthetic data so the suite can run safely and repeatably without depending on third-party systems.",
+      "Selected a narrow but valuable scope: invalid login handling, successful login and checkout, and rule enforcement for empty-cart payment attempts.",
+      "Used Playwright for fast browser automation, failure screenshots, retry support, and HTML reporting that gives immediate diagnostic value.",
+      "Prepared the project for CI execution with GitHub Actions so the same quality signal is available both locally and in automation pipelines.",
+      "Added a no-sudo bootstrap path for local Node execution to keep the demo portable across different developer environments.",
+    ],
+    stack: [
+      { category: "Core", items: ["Playwright", "TypeScript", "Node.js"] },
+      { category: "Test Design", items: ["Critical User Journeys", "Smoke Pack", "Failure Diagnostics"] },
+      { category: "Execution", items: ["GitHub Actions", "HTML Reporting", "Local Demo App"] },
+    ],
+    outcomes: [
+      "Demonstrates how a manual smoke path can be turned into a repeatable, automated quality gate.",
+      "Shows a modern web automation stack that is easy to run locally and simple to integrate into CI.",
+      "Provides a compact reference implementation for teams starting with Playwright-based web regression.",
+      "Keeps all execution local and synthetic, which makes the demo safe, portable, and easy to present publicly.",
+    ],
+    conclusion:
+      "Effective web automation starts with business-critical journeys and operational simplicity. This project shows how a small Playwright suite can deliver immediate regression value without unnecessary system complexity.",
+  },
+
+  "selenium-framework-demo": {
+    slug: "selenium-framework-demo",
+    title: "Selenium Framework Demo",
+    subtitle: "Maintainable Java-based UI automation framework with Page Objects, local execution, and failure artifacts",
+    overview:
+      "This repository represents a more classical UI automation architecture built for teams working in Java-centric environments. Instead of focusing on individual test scripts, the project emphasizes reusable structure: WebDriver setup, Page Objects, local server execution, and screenshot artifact collection on failure. It is designed to show what an enterprise-friendly Selenium foundation looks like when maintainability and long-term regression stability matter as much as simple test coverage.",
+    repositoryUrl: "https://github.com/mikoch81/selenium-framework-demo",
+    challenge: [
+      "Many Selenium codebases grow organically into tightly coupled test scripts that are expensive to maintain.",
+      "Teams in Java ecosystems often need a framework starter that fits existing build and execution standards.",
+      "Public portfolio examples should avoid third-party dependencies while still demonstrating realistic regression structure.",
+      "Failure diagnostics are often an afterthought, even though they directly affect maintainability and triage speed.",
+    ],
+    approach: [
+      "Designed the demo around Page Objects and shared base test infrastructure to separate UI concerns from test logic.",
+      "Used a local embedded demo application so the suite can run predictably without relying on public sites or external test environments.",
+      "Implemented reusable WebDriver configuration and environment handling suitable for Maven-driven execution in CI.",
+      "Added screenshot capture on failure to model a more production-ready debugging experience.",
+      "Focused scenarios on login and purchase flow behavior to keep the business story clear while still showing framework patterns.",
+    ],
+    stack: [
+      { category: "Core", items: ["Java 21", "Selenium 4", "JUnit 5", "Maven"] },
+      { category: "Architecture", items: ["Page Object Model", "Shared Test Base", "Driver Factory"] },
+      { category: "Execution", items: ["Headless Runs", "Local Demo Server", "Screenshot Artifacts"] },
+    ],
+    outcomes: [
+      "Shows a maintainable Selenium framework style aligned with long-term Java team workflows.",
+      "Demonstrates the value of reusable setup, UI abstraction, and artifact capture over ad hoc test scripting.",
+      "Provides a portfolio-ready example of enterprise-style UI automation without exposing external systems.",
+      "Works as a concrete starting point for expanding into broader regression coverage in Java-based projects.",
+    ],
+    conclusion:
+      "Selenium remains valuable when it is treated as framework architecture rather than a script collection. This demo focuses on maintainability, repeatability, and the operational patterns that matter in real teams.",
+  },
+
+  "api-testing-demo": {
+    slug: "api-testing-demo",
+    title: "API Testing Demo",
+    subtitle: "Local backend quality pack combining health checks, contract validation, and response-time baselines",
+    overview:
+      "This project shows how I approach backend quality when both correctness and responsiveness matter. It uses a local synthetic HTTP service and a Maven-based test suite to validate service health, compare endpoint responses against an expected contract, and assert simple performance baselines such as average response time and p95. The result is a lightweight but concrete example of introducing API quality signals without building a separate integration environment first.",
+    repositoryUrl: "https://github.com/mikoch81/api-testing-demo",
+    challenge: [
+      "Backend teams often validate correctness and performance in separate tools and at separate points in the delivery process.",
+      "Even small services need confidence around contracts and response-time expectations, but teams may not have a dedicated shared test environment.",
+      "Portfolio examples should demonstrate realistic backend verification while staying safe and fully local.",
+      "Quality signals are more useful when they are cheap to run and easy to understand for both engineers and stakeholders.",
+    ],
+    approach: [
+      "Built a local HTTP service with synthetic responses to keep the full validation loop self-contained and reproducible.",
+      "Added a health check test to verify service availability and a contract test to compare payloads with an expected JSON structure.",
+      "Implemented a simple performance baseline using repeated requests and assertions on average latency and p95.",
+      "Used standard Java and Maven tooling so the project looks and behaves like a small, CI-ready backend quality suite.",
+      "Kept the setup intentionally lightweight to show how useful signals can be introduced without heavy infrastructure overhead.",
+    ],
+    stack: [
+      { category: "Core", items: ["Java 21", "JUnit 5", "Maven"] },
+      { category: "API Validation", items: ["Java HttpClient", "JSON Contract Checks", "Health Checks"] },
+      { category: "Performance", items: ["Average Latency", "P95 Baseline", "Synthetic HTTP Service"] },
+    ],
+    outcomes: [
+      "Demonstrates a combined correctness-and-performance view of API quality in one compact suite.",
+      "Shows how contract validation and latency guardrails can be introduced without dedicated external environments.",
+      "Provides a clear, repeatable example of backend quality engineering that is easy to run in CI.",
+      "Keeps the demo safe and public-ready by relying only on local synthetic service behavior.",
+    ],
+    conclusion:
+      "API quality is strongest when correctness and responsiveness are validated together. This demo shows a lightweight path to that combined signal using only local, reproducible assets.",
+  },
+
+  "jmeter-performance": {
+    slug: "jmeter-performance",
+    title: "JMeter Performance Pack",
+    subtitle: "Safe local performance starter pack with a mock API, reusable JMeter plan, and scenario-driven load inputs",
+    overview:
+      "This mini-project is a focused performance engineering starter pack. It combines a local mock API, a reusable JMeter test plan, scenario data in CSV form, and a small execution helper so that baseline load testing can be demonstrated safely on synthetic data. The goal is not to simulate a large platform, but to show how a clean, explainable performance setup can be packaged for fast iteration, learning, and future extension.",
+    repositoryUrl: "https://github.com/mikoch81/jmeter-performance",
+    challenge: [
+      "Performance testing is often postponed because teams lack a safe environment for early experiments.",
+      "Many examples are either too trivial to be useful or too environment-dependent to be easily shared and reused.",
+      "A good starter pack should show more than a single JMX file — it should also model the surrounding execution context.",
+      "Public-facing demonstrations must avoid generating load against systems that are not explicitly owned for testing.",
+    ],
+    approach: [
+      "Created a local Python-based mock API that simulates a simple account-summary backend and supports controllable response delay.",
+      "Prepared a reusable JMeter plan with assertions, scenario inputs from CSV, and a structure ready for dashboard generation.",
+      "Added a lightweight run script to simplify local execution and make the setup easier to present and reuse.",
+      "Designed the project around synthetic data and local-only execution so the demo remains safe, ethical, and portable.",
+      "Positioned the repo as a baseline pack that can later be extended with stronger reporting, thresholds, and additional scenarios.",
+    ],
+    stack: [
+      { category: "Core", items: ["Apache JMeter", "Python 3", "CSV Scenario Data"] },
+      { category: "Performance", items: ["Baseline Load Testing", "Assertions", "Synthetic Delay Simulation"] },
+      { category: "Execution", items: ["Local Mock API", "Reusable JMX Plan", "Safe Local Setup"] },
+    ],
+    outcomes: [
+      "Demonstrates a practical entry point into performance testing using self-contained local assets.",
+      "Shows how to package JMeter work in a way that is easy to understand, reuse, and extend.",
+      "Provides a safe public example of load testing without targeting external systems.",
+      "Strengthens the performance engineering side of the portfolio with a clearly scoped JMeter-focused artifact.",
+    ],
+    conclusion:
+      "Performance engineering does not have to begin with complex infrastructure. This pack shows how a small, local JMeter setup can establish a useful baseline and communicate a practical performance mindset.",
   },
 };
