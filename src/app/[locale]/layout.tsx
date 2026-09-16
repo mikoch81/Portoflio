@@ -2,6 +2,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { htmlLang, isLocale, localePath, locales, ogLocale, type Locale } from "@/i18n/config";
+import { getContent } from "@/i18n/get-content";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
@@ -106,6 +107,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
 export default async function RootLayout({ children, params }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  const content = getContent(locale);
+  const chrome = { nav: content.nav, ui: content.ui, site: content.site };
 
   return (
     <html
@@ -119,11 +122,11 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-brand-fg"
           >
-            {locale === "pl" ? "Przejdź do treści" : "Skip to content"}
+            {content.ui.skipToContent}
           </a>
-          <Header />
+          <Header content={chrome} locale={locale} />
           <main id="main-content" className="flex-1">{children}</main>
-          <Footer />
+          <Footer content={chrome} locale={locale} />
         </ThemeProvider>
         <Analytics />
       </body>

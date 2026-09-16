@@ -1,48 +1,46 @@
-"use client";
+import type { Content } from "@/content/types";
+import { localePath, type Locale } from "@/i18n/config";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
-import { siteConfig } from "@/lib/data";
-import { usePathname } from "next/navigation";
-
-export function Footer() {
-  const pathname = usePathname();
-
-  if (pathname?.startsWith("/cv")) {
-    return null;
-  }
+export function Footer({ content, locale }: { content: Pick<Content, "site" | "ui" | "nav">; locale: Locale }) {
+  const external = [
+    { label: "LinkedIn", href: content.site.linkedin },
+    { label: "GitHub", href: content.site.github },
+  ];
 
   return (
-    <footer className="py-14" role="contentinfo">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent mb-12" aria-hidden="true" />
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[12px] text-muted-foreground/40 tracking-wide">
-            © {new Date().getFullYear()} {siteConfig.name}
+    <footer className="border-t border-line" role="contentinfo">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-end md:justify-between">
+        <div className="space-y-2">
+          <p className="font-display text-lg font-semibold tracking-tight text-fg">{content.site.name}</p>
+          <p className="text-sm text-fg-3">
+            {content.site.role} · {content.site.location}
           </p>
-          <nav aria-label="Footer links" className="flex items-center gap-8">
-            <a
-              href={siteConfig.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[12px] text-muted-foreground/40 transition-colors hover:text-muted-foreground tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 rounded-sm"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[12px] text-muted-foreground/40 transition-colors hover:text-muted-foreground tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 rounded-sm"
-            >
-              GitHub
-            </a>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="text-[12px] text-muted-foreground/40 transition-colors hover:text-muted-foreground tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 rounded-sm"
-            >
-              Email
-            </a>
-          </nav>
+          <p className="text-xs text-fg-3">
+            © {new Date().getFullYear()} {content.site.name}. {content.ui.footerRights}
+          </p>
         </div>
+        <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+          <Link href={localePath(locale, "/cv")} className="text-fg-2 transition-colors hover:text-fg">
+            {content.nav.cv}
+          </Link>
+          <a href={`mailto:${content.site.email}`} className="text-fg-2 transition-colors hover:text-fg">
+            {content.site.email}
+          </a>
+          {external.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-fg-2 transition-colors hover:text-fg"
+            >
+              {l.label}
+              <ArrowUpRight className="size-3.5" aria-hidden="true" />
+            </a>
+          ))}
+        </nav>
       </div>
     </footer>
   );

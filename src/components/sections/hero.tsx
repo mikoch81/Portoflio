@@ -1,156 +1,83 @@
-"use client";
-
 import { FadeIn } from "@/components/motion";
+import { Sparkline } from "@/components/sparkline";
 import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/lib/data";
+import type { Content } from "@/content/types";
 import { cn } from "@/lib/utils";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
+import Image from "next/image";
 
-const profileHighlights = [
-  "Automation Architecture",
-  "Performance Engineering",
-  "CI/CD Integration",
-  "AI-Augmented QA",
-  "Reporting Pipelines",
-  "Mobile & Web",
-];
+export function HeroSection({ content }: { content: Pick<Content, "hero" | "site" | "ui"> }) {
+  const { hero, site, ui } = content;
 
-const techStack = [
-  "Java",
-  "Selenium",
-  "Appium",
-  "JMeter",
-  "Python",
-  "Jenkins",
-  "GitHub Actions",
-  "Ollama",
-];
-
-export function HeroSection() {
   return (
-    <section
-      aria-label="Introduction"
-      className="relative min-h-screen flex items-center pt-16 overflow-hidden"
-    >
-      {/* Radial glow */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-175 w-250 rounded-full bg-cyan/2.5 blur-[160px]" aria-hidden="true" />
-      {/* Secondary warm glow for depth */}
-      <div className="pointer-events-none absolute -top-32 left-1/4 h-100 w-125 rounded-full bg-cyan/1.5 blur-[120px]" aria-hidden="true" />
+    <section aria-label={site.role} className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+      <div className="pointer-events-none absolute inset-0 bg-grid mask-[radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute -top-40 left-1/2 h-144 w-5xl -translate-x-1/2 rounded-full blur-3xl"
+        style={{ background: "radial-gradient(closest-side, var(--brand-soft), transparent)" }}
+        aria-hidden="true"
+      />
 
-      <div className="relative mx-auto max-w-6xl px-6 py-28 md:py-36 w-full">
-        <div className="grid gap-14 sm:gap-16 lg:grid-cols-[1fr_380px] lg:gap-24 items-center">
-          {/* Left — Main content */}
-          <FadeIn>
-            <div className="space-y-10">
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-border/60 bg-card/40 px-4 py-1.5 text-[11px] text-muted-foreground/70 tracking-widest uppercase">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan/70" aria-hidden="true" />
-                Open to opportunities
+      <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+        <FadeIn className="space-y-9">
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface-1/80 py-1.5 pr-4 pl-2.5 text-xs text-fg-2">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand/60" aria-hidden="true" />
+              <span className="relative inline-flex size-2 rounded-full bg-brand" aria-hidden="true" />
+            </span>
+            {site.availability}
+          </div>
+
+          <div className="space-y-6">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-fg-3">{hero.eyebrow}</p>
+            <h1 className="text-[2.6rem] leading-[1.02] font-semibold tracking-[-0.035em] text-fg sm:text-6xl lg:text-[4.25rem]">
+              {hero.headline} <span className="text-brand">{hero.headlineAccent}</span>
+            </h1>
+            <p className="max-w-xl text-lg leading-relaxed text-fg-2">{hero.lead}</p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <a href="#work" className={cn(buttonVariants({ variant: "default", size: "lg" }), "h-11 px-6 text-sm font-medium shadow-glow")}>
+              {ui.viewWork}
+              <ArrowDown className="ml-1 size-4" aria-hidden="true" />
+            </a>
+            <a href={site.cvPdf} download className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 px-6 text-sm")}>
+              <Download className="mr-1 size-4" aria-hidden="true" />
+              {ui.downloadCv}
+            </a>
+          </div>
+
+          <dl className="grid grid-cols-3 gap-6 border-t border-line pt-8">
+            {hero.stats.map((s) => (
+              <div key={s.label} className="flex flex-col">
+                <dd className="order-1 font-display text-3xl font-semibold tracking-tight text-fg sm:text-4xl">{s.value}</dd>
+                <dt className="order-2 mt-1 text-sm leading-snug text-fg-2">{s.label}</dt>
+                {s.detail ? <dd className="order-3 mt-1 font-mono text-[11px] uppercase tracking-wider text-fg-3">{s.detail}</dd> : null}
               </div>
+            ))}
+          </dl>
+        </FadeIn>
 
-              <div className="space-y-5">
-                <h1 className="text-4xl font-bold tracking-[-0.04em] sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.02]">
-                  {siteConfig.name}
-                </h1>
-
-                <p className="text-lg sm:text-xl font-medium text-foreground/90 tracking-tight">
-                  {siteConfig.title}
-                </p>
-
-                <p className="text-[13px] uppercase tracking-[0.2em] text-muted-foreground/50 font-medium">
-                  {siteConfig.subtitle}
-                </p>
-              </div>
-
-              <p className="max-w-lg text-[15px] leading-[1.8] text-muted-foreground">
-                {siteConfig.description}
-              </p>
-
-              <div className="flex flex-wrap gap-3.5 pt-1">
-                <a
-                  href="#projects"
-                  className={cn(
-                    buttonVariants({ variant: "default", size: "lg" }),
-                    "bg-cyan text-background hover:bg-cyan/90 font-medium px-7 h-10 shadow-[0_0_20px_-4px_rgba(34,211,238,0.3)] hover:shadow-[0_0_24px_-4px_rgba(34,211,238,0.4)] transition-shadow focus-visible:ring-cyan/50"
-                  )}
-                >
-                  View Projects
-                  <ArrowDown className="ml-2 h-3.5 w-3.5" />
-                </a>
-                <a
-                  href="#contact"
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "lg" }),
-                    "px-7 h-10 border-border/60 text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  <Mail className="mr-2 h-4 w-4" />
-                  Get in touch
-                </a>
-              </div>
+        <FadeIn delay={0.15} className="relative mx-auto w-full max-w-105 lg:max-w-none">
+          <div className="relative aspect-4/5 overflow-hidden rounded-[2rem] border border-line bg-surface-2 shadow-glow">
+            <Image
+              src="/portrait/portrait.jpg"
+              alt={hero.portraitAlt}
+              width={1200}
+              height={1500}
+              priority
+              sizes="(min-width: 1024px) 460px, (min-width: 640px) 420px, 85vw"
+              className="h-full w-full object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg/40 via-transparent to-transparent" aria-hidden="true" />
+            <div className="absolute top-4 left-4 rounded-full border border-line-strong bg-bg/70 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-2 backdrop-blur">
+              {site.location}
             </div>
-          </FadeIn>
-
-          {/* Right — Technical profile card */}
-          <FadeIn delay={0.2}>
-            <aside aria-label="Professional profile" className="rounded-2xl border border-border/80 bg-card/50 backdrop-blur-xl p-7 sm:p-8 space-y-6">
-              <div className="space-y-3.5">
-                <h2 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/50">
-                  Focus Areas
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {profileHighlights.map((item) => (
-                    <span
-                      key={item}
-                      className="inline-flex items-center rounded-md bg-secondary/40 px-2.5 py-1 text-[11px] text-secondary-foreground/70 tracking-wide"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent" />
-
-              <div className="space-y-3.5">
-                <h2 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/50">
-                  Core Stack
-                </h2>
-                <div className="flex flex-wrap gap-1.5">
-                  {techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="inline-flex items-center rounded-md border border-border/40 px-2.5 py-1 text-[11px] text-foreground/50 font-mono"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent" />
-
-              <div className="space-y-3.5">
-                <h2 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/50">
-                  Approach
-                </h2>
-                <ul className="space-y-2.5 text-[13px] text-muted-foreground/80">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.75 h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
-                    Framework architecture over disposable scripts
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.75 h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
-                    Performance analysis with structured reporting
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.75 h-1 w-1 rounded-full bg-cyan shrink-0" aria-hidden="true" />
-                    Local AI integration for engineering workflows
-                  </li>
-                </ul>
-              </div>
-            </aside>
-          </FadeIn>
-        </div>
+          </div>
+          <div className="mt-4 rounded-2xl border border-line bg-surface-1/90 p-4 backdrop-blur lg:absolute lg:-bottom-8 lg:-left-16 lg:mt-0 lg:w-72 lg:shadow-glow">
+            <Sparkline label={hero.sparklineLabel} />
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

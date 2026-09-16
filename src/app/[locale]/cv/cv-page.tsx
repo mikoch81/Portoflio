@@ -4,7 +4,9 @@ import type { ReactNode } from "react";
 
 import { FadeIn } from "@/components/motion";
 import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/lib/data";
+import { en } from "@/content/en";
+
+const siteConfig = en.site;
 import { cn } from "@/lib/utils";
 import { ArrowLeft, Download, Mail } from "lucide-react";
 import Link from "next/link";

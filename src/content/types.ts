@@ -23,6 +23,7 @@ export interface CaseStudy {
   overview: string;
   role: string;
   context: string;
+  repositoryUrl?: string;
   challenge: string[];
   approach: string[];
   stack: { category: string; items: string[] }[];

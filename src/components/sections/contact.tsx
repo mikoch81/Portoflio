@@ -1,67 +1,43 @@
-"use client";
-
-import { siteConfig } from "@/lib/data";
-import { buttonVariants } from "@/components/ui/button";
+import { CopyEmail } from "@/components/copy-email";
 import { FadeIn } from "@/components/motion";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { Eyebrow } from "@/components/section-header";
+import { buttonVariants } from "@/components/ui/button";
+import type { Content } from "@/content/types";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight, Mail } from "lucide-react";
 
-export function ContactSection() {
+export function ContactSection({ content }: { content: Pick<Content, "contact" | "site" | "ui"> }) {
+  const { contact, site, ui } = content;
+
   return (
-    <section id="contact" aria-label="Contact" className="py-28 sm:py-32 md:py-40">
-      <div className="mx-auto max-w-6xl px-6">
-        <FadeIn>
-          <div className="max-w-xl space-y-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan/60">
-              Next step
-            </p>
-            <h2 className="text-3xl font-bold tracking-[-0.03em] sm:text-4xl lg:text-[2.75rem] leading-[1.1]">
-              Let&apos;s solve a quality problem
-            </h2>
-            <p className="text-[15px] leading-[1.8] text-muted-foreground">
-              I help engineering teams ship faster by building test
-              automation architectures, performance pipelines, and
-              AI-driven quality systems. If your release cycle needs
-              unblocking&nbsp;&mdash; let&apos;s talk scope.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-4">
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className={cn(
-                  buttonVariants({ variant: "default", size: "lg" }),
-                  "bg-cyan text-background hover:bg-cyan/90 font-medium px-7 h-10 shadow-[0_0_20px_-4px_rgba(34,211,238,0.3)] hover:shadow-[0_0_24px_-4px_rgba(34,211,238,0.4)] transition-shadow focus-visible:ring-cyan/50"
-                )}
-              >
-                <Mail className="mr-2 h-4 w-4" />
-                Start a conversation
-              </a>
-              <a
-                href={siteConfig.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "px-7 h-10 border-border/60 text-muted-foreground hover:text-foreground"
-                )}
-              >
-                LinkedIn
-                <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
-              </a>
-              <a
-                href={siteConfig.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "px-7 h-10 border-border/60 text-muted-foreground hover:text-foreground"
-                )}
-              >
-                GitHub
-                <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
-              </a>
-            </div>
+    <section id="contact" aria-labelledby="contact-title" className="scroll-mt-20 border-t border-line py-24 sm:py-32">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+        <FadeIn className="space-y-7">
+          <Eyebrow>{contact.eyebrow}</Eyebrow>
+          <h2 id="contact-title" className="text-4xl font-semibold tracking-[-0.035em] text-fg sm:text-5xl lg:text-6xl">
+            {contact.title}
+          </h2>
+          <p className="max-w-xl text-lg leading-relaxed text-fg-2">{contact.lead}</p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <a href={`mailto:${site.email}`} className={cn(buttonVariants({ variant: "default", size: "lg" }), "h-11 px-6 text-sm font-medium shadow-glow")}>
+              <Mail className="mr-1 size-4" aria-hidden="true" />
+              {contact.emailCta}
+            </a>
+            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 px-6 text-sm")}>
+              {contact.linkedinCta}
+              <ArrowUpRight className="ml-1 size-4" aria-hidden="true" />
+            </a>
+            <a href={site.github} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 px-6 text-sm")}>
+              {contact.githubCta}
+              <ArrowUpRight className="ml-1 size-4" aria-hidden="true" />
+            </a>
           </div>
+        </FadeIn>
+
+        <FadeIn delay={0.1} className="space-y-3 lg:justify-self-end">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-fg-3">{ui.copyEmail}</p>
+          <CopyEmail email={site.email} label={ui.copyEmail} copiedLabel={ui.copied} />
+          <p className="text-sm text-fg-3">{site.location}</p>
         </FadeIn>
       </div>
     </section>

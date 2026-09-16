@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
-import { siteConfig } from "@/lib/data";
+import { en } from "@/content/en";
+
+const siteConfig = en.site;
 import {
     certifications,
     education,
