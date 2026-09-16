@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/data";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -62,11 +63,14 @@ export function Header() {
           >
             CV
           </Link>
+          <ThemeToggle />
         </nav>
 
         {/* Mobile toggle */}
+        <div className="md:hidden flex items-center gap-2">
+        <ThemeToggle />
         <button
-          className="md:hidden text-muted-foreground p-1.5 -mr-1.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50"
+          className="text-muted-foreground p-1.5 -mr-1.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
@@ -74,6 +78,7 @@ export function Header() {
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
+        </div>
       </div>
 
       {/* Bottom border — gradient fade */}
