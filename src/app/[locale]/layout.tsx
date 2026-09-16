@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { HideOnRoutes } from "@/components/route-gate";
 import { ThemeProvider } from "@/components/theme-provider";
 import { htmlLang, isLocale, localePath, locales, ogLocale, type Locale } from "@/i18n/config";
 import { getContent } from "@/i18n/get-content";
@@ -130,7 +131,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
           </a>
           <Header content={chrome} locale={locale} />
           <main id="main-content" className="flex-1">{children}</main>
-          <Footer content={chrome} locale={locale} />
+          <HideOnRoutes prefixes={["/cv"]}>
+            <Footer content={chrome} locale={locale} />
+          </HideOnRoutes>
         </ThemeProvider>
         <Analytics />
       </body>

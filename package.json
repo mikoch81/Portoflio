@@ -10,7 +10,7 @@
     "test:e2e": "playwright test",
     "audit:shots": "node tools/audit-shots.mjs",
     "report:preview": "node tools/render-report-preview.mjs",
-    "cv:pdf": "bash ./tools/generate-cv-pdf.sh",
+    "cv:pdf": "node ./tools/generate-cv-pdf.mjs",
     "cv:portrait:ai": "node ./tools/retouch-portrait.mjs",
     "cv:pdf:ai": "bash ./tools/retouch-and-generate-cv.sh"
   },
