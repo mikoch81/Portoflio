@@ -17,7 +17,7 @@ import {
 } from "../cv-data";
 
 export const metadata: Metadata = {
-  title: "CV Print — Michał Kochaniak",
+  title: "CV print",
   description: "Print-first 2-page CV layout for PDF generation.",
 };
 

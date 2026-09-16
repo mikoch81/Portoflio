@@ -17,7 +17,7 @@ function Terminal({ terminal }: { terminal: Content["ai"]["terminal"] }) {
           <span className="text-[#e8ecf2]">{terminal.command}</span>
           {"\n\n"}
           {terminal.lines.map((l, i) => (
-            <span key={i} className={l.startsWith("✓") ? "text-[#22d3ee]" : undefined}>
+            <span key={i} className={l.startsWith("OK") ? "text-[#22d3ee]" : undefined}>
               {l}
               {"\n"}
             </span>
