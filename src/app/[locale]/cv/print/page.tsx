@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 };
 
 const currentRole = experience[0];
-const priorRoles = experience.slice(1, 5);
-const legacyRole = experience[5];
+const priorRoles = experience.slice(1, 4);
+const earlierRoles = experience.slice(4);
 
 function PrintSectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -63,10 +63,10 @@ function RoleBlock({
   highlights: string[];
 }) {
   return (
-    <div className="break-inside-avoid-page border-b border-[#ddd5c8] pb-4 last:border-b-0 last:pb-0">
-      <div className="mb-2 flex items-start justify-between gap-4">
+    <div className="break-inside-avoid-page border-b border-[#ddd5c8] pb-3 last:border-b-0 last:pb-0">
+      <div className="mb-1.5 flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-[16px] font-semibold tracking-[-0.02em] text-[#12202a]">{role}</h3>
+          <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#12202a]">{role}</h3>
           <p className="mt-1 text-[12.5px] font-medium text-[#24424c]">{company}</p>
           <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-[#69757d]">{meta}</p>
         </div>
@@ -85,8 +85,8 @@ export default function PrintPage() {
       <div className="mx-auto flex max-w-245 flex-col gap-8 print:max-w-none print:gap-0">
         <article className="cv-print-sheet overflow-hidden rounded-[20px] bg-[#f7f2ea] text-[#17242d] shadow-[0_28px_80px_-36px_rgba(0,0,0,0.75)] print:rounded-none print:shadow-none">
           <div className="grid h-full grid-cols-[1.7fr_0.95fr]">
-            <div className="border-r border-[#ddd5c8] px-[14mm] py-[13mm]">
-              <header className="mb-6 border-b border-[#ddd5c8] pb-5">
+            <div className="border-r border-[#ddd5c8] px-[14mm] py-[11mm]">
+              <header className="mb-5 border-b border-[#ddd5c8] pb-4">
                 <p className="mb-2 text-[9.5px] font-semibold uppercase tracking-[0.28em] text-[#2c5858]">
                   QA Automation / Software Quality / Enterprise Delivery
                 </p>
@@ -123,7 +123,7 @@ export default function PrintPage() {
               </section>
             </div>
 
-            <aside className="bg-[linear-gradient(180deg,rgba(255,255,255,0.48)_0%,rgba(255,255,255,0.14)_100%)] px-[10mm] py-[13mm]">
+            <aside className="bg-[linear-gradient(180deg,rgba(255,255,255,0.48)_0%,rgba(255,255,255,0.14)_100%)] px-[10mm] py-[11mm]">
               <section className="mb-5 rounded-[16px] bg-[#1d3138] px-4 py-4 text-[#eff3ef]">
                 <p className="text-[9.5px] font-semibold uppercase tracking-[0.24em] text-[#9fd0c8]">
                   Contact
@@ -171,39 +171,38 @@ export default function PrintPage() {
 
         <article className="cv-print-sheet overflow-hidden rounded-[20px] bg-[#f7f2ea] text-[#17242d] shadow-[0_28px_80px_-36px_rgba(0,0,0,0.75)] print:rounded-none print:shadow-none">
           <div className="grid h-full grid-cols-[1.52fr_1fr]">
-            <div className="border-r border-[#ddd5c8] px-[14mm] py-[13mm]">
-              <header className="mb-5 border-b border-[#ddd5c8] pb-4">
+            <div className="border-r border-[#ddd5c8] px-[14mm] py-[11mm]">
+              <header className="mb-4 border-b border-[#ddd5c8] pb-3">
                 <p className="text-[9.5px] font-semibold uppercase tracking-[0.28em] text-[#2c5858]">
                   Earlier Roles
                 </p>
-                <h2 className="mt-2 text-[24px] font-semibold tracking-[-0.03em] text-[#10202a]">
+                <h2 className="mt-2 text-[21px] font-semibold tracking-[-0.03em] text-[#10202a]">
                   Career History and Technical Foundation
                 </h2>
               </header>
 
               <section>
                 <PrintSectionTitle>Professional Experience</PrintSectionTitle>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {priorRoles.map((job) => (
                     <RoleBlock key={`${job.company}-${job.role}`} {...job} />
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-[16px] border border-[#ddd5c8] bg-white/45 px-4 py-4">
-                  <p className="text-[11.5px] font-semibold text-[#14212b]">
-                    {legacyRole.role} | {legacyRole.company}
-                  </p>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-[#69757d]">
-                    {legacyRole.meta} | {legacyRole.period}
-                  </p>
-                  <p className="mt-2 text-[10.8px] leading-[1.45] text-[#4d5a64]">
-                    {legacyRole.highlights[0]}
-                  </p>
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  {earlierRoles.map((job) => (
+                    <div key={`${job.company}-${job.role}`} className="rounded-[14px] border border-[#ddd5c8] bg-white/45 px-4 py-3">
+                      <p className="text-[11.5px] font-semibold text-[#14212b]">{job.role}</p>
+                      <p className="text-[10.5px] text-[#24424c]">{job.company}</p>
+                      <p className="mt-1 text-[9.5px] uppercase tracking-[0.12em] text-[#69757d]">{job.period}</p>
+                      <p className="mt-2 text-[10.5px] leading-[1.45] text-[#4d5a64]">{job.highlights[0]}</p>
+                    </div>
+                  ))}
                 </div>
               </section>
             </div>
 
-            <aside className="bg-[linear-gradient(180deg,rgba(255,255,255,0.48)_0%,rgba(255,255,255,0.14)_100%)] px-[10mm] py-[13mm]">
+            <aside className="bg-[linear-gradient(180deg,rgba(255,255,255,0.48)_0%,rgba(255,255,255,0.14)_100%)] px-[10mm] py-[11mm]">
               <section className="mb-5 rounded-[16px] border border-[#ddd5c8] bg-white/55 px-4 py-4">
                 <PrintSectionTitle>Selected Tools & Technologies</PrintSectionTitle>
                 <div className="space-y-3">
