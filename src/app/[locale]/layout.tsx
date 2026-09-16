@@ -19,6 +19,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
   display: "swap",
+  preload: false,
 });
 
 const bricolage = Bricolage_Grotesque({
@@ -117,6 +118,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
       className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
+        <noscript>
+          <style>{`.reveal,.reveal-item{opacity:1;translate:none}`}</style>
+        </noscript>
         <ThemeProvider>
           <a
             href="#main-content"

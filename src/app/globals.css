@@ -192,6 +192,31 @@
   animation: marquee 40s linear infinite;
 }
 
+/* Scroll reveal — toggled by the Reveal components; no-JS fallback in layout. */
+.reveal,
+.reveal-item {
+  opacity: 0;
+  translate: 0 12px;
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    translate 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s);
+}
+
+.reveal[data-visible="true"],
+[data-visible="true"] .reveal-item {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-item {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -1,4 +1,3 @@
-import { FadeIn } from "@/components/motion";
 import { Sparkline } from "@/components/sparkline";
 import { buttonVariants } from "@/components/ui/button";
 import type { Content } from "@/content/types";
@@ -19,7 +18,7 @@ export function HeroSection({ content }: { content: Pick<Content, "hero" | "site
       />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
-        <FadeIn className="space-y-9">
+        <div className="space-y-9 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500 motion-safe:fill-mode-both">
           <div className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface-1/80 py-1.5 pr-4 pl-2.5 text-xs text-fg-2">
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand/60" aria-hidden="true" />
@@ -56,9 +55,9 @@ export function HeroSection({ content }: { content: Pick<Content, "hero" | "site
               </div>
             ))}
           </dl>
-        </FadeIn>
+        </div>
 
-        <FadeIn delay={0.15} className="relative mx-auto w-full max-w-105 lg:max-w-none">
+        <div className="relative mx-auto w-full max-w-105 lg:max-w-none motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500 motion-safe:delay-150 motion-safe:fill-mode-both">
           <div className="relative aspect-4/5 overflow-hidden rounded-[2rem] border border-line bg-surface-2 shadow-glow">
             <Image
               src="/portrait/portrait.jpg"
@@ -66,6 +65,7 @@ export function HeroSection({ content }: { content: Pick<Content, "hero" | "site
               width={1200}
               height={1500}
               priority
+              fetchPriority="high"
               sizes="(min-width: 1024px) 460px, (min-width: 640px) 420px, 85vw"
               className="h-full w-full object-cover"
             />
@@ -77,7 +77,7 @@ export function HeroSection({ content }: { content: Pick<Content, "hero" | "site
           <div className="mt-4 rounded-2xl border border-line bg-surface-1/90 p-4 backdrop-blur lg:absolute lg:-bottom-8 lg:-left-16 lg:mt-0 lg:w-72 lg:shadow-glow">
             <Sparkline label={hero.sparklineLabel} />
           </div>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

@@ -10,7 +10,11 @@ CV_URL="http://$HOST:$PORT/cv/print"
 LOG_FILE="${TMPDIR:-/tmp}/michal-cv-pdf.log"
 
 find_chromium() {
-  command -v chromium || command -v chromium-browser || command -v google-chrome || true
+  if [ -n "${CHROMIUM_BIN:-}" ] && [ -x "$CHROMIUM_BIN" ]; then
+    echo "$CHROMIUM_BIN"
+    return
+  fi
+  command -v chromium || command -v chromium-browser || command -v google-chrome || command -v chrome || true
 }
 
 if [ -f "$HOME/.nvm/nvm.sh" ]; then

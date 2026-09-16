@@ -80,11 +80,8 @@ export function Header({ content, locale }: { content: HeaderContent; locale: Lo
         <Link
           href={home}
           className="flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
-          aria-label={content.site.name}
         >
-          <span className="grid size-8 place-items-center rounded-lg bg-fg font-display text-sm font-semibold text-bg" aria-hidden="true">
-            MK
-          </span>
+          <span className="grid size-8 place-items-center rounded-lg bg-fg font-display text-sm font-semibold text-bg">MK</span>
           <span className="hidden font-display text-[15px] font-semibold tracking-tight text-fg sm:block">{content.site.name}</span>
         </Link>
 
@@ -101,7 +98,7 @@ export function Header({ content, locale }: { content: HeaderContent; locale: Lo
             href={switchHref}
             hrefLang={otherLocale}
             lang={otherLocale}
-            aria-label={content.ui.switchLanguage}
+            aria-label={`${content.ui.switchLanguageShort} · ${content.ui.switchLanguage}`}
             title={content.ui.switchLanguage}
             className="inline-flex h-9 items-center justify-center rounded-lg border border-line px-2.5 font-mono text-xs font-medium tracking-wide text-fg-2 transition-colors hover:bg-surface-3 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
           >

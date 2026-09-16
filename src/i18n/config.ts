@@ -13,10 +13,13 @@ export function localePath(locale: Locale, href: string): string {
   return href.startsWith("/") ? `/${locale}${href}` : href;
 }
 
-/** Strips a locale prefix, returning the canonical (default-locale) path. */
+/**
+ * Strips any locale prefix, returning the unprefixed path. The default locale is
+ * included because the proxy rewrites "/" to "/en" and usePathname reports that.
+ */
 export function stripLocale(pathname: string): { locale: Locale; path: string } {
   const [, first = "", ...rest] = pathname.split("/");
-  if (isLocale(first) && first !== defaultLocale) {
+  if (isLocale(first)) {
     return { locale: first, path: `/${rest.join("/")}`.replace(/\/$/, "") || "/" };
   }
   return { locale: defaultLocale, path: pathname || "/" };
