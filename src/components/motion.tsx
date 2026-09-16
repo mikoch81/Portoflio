@@ -1,28 +1,52 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "framer-motion";
-import React from "react";
+import { cn } from "@/lib/utils";
+import React, { useEffect, useRef, useState, type CSSProperties } from "react";
+
+function useInView<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || visible) return;
+    if (!("IntersectionObserver" in window)) {
+      el.dataset.visible = "true";
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -80px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [visible]);
+
+  return { ref, visible };
+}
 
 export function FadeIn({
   children,
   delay = 0,
   className,
   ...props
-}: { children: React.ReactNode; delay?: number; className?: string } & Omit<
-  HTMLMotionProps<"div">,
-  "children" | "className"
->) {
+}: { children: React.ReactNode; delay?: number; className?: string } & React.HTMLAttributes<HTMLDivElement>) {
+  const { ref, visible } = useInView<HTMLDivElement>();
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={className}
+    <div
+      ref={ref}
+      data-visible={visible}
+      className={cn("reveal", className)}
+      style={{ "--reveal-delay": `${delay}s` } as CSSProperties}
       {...props}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -35,38 +59,29 @@ export function FadeInStagger({
   className?: string;
   staggerDelay?: number;
 }) {
+  const { ref, visible } = useInView<HTMLDivElement>();
+  let index = 0;
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: staggerDelay } },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <div ref={ref} data-visible={visible} className={className}>
+      {React.Children.map(children, (child) =>
+        React.isValidElement<{ delay?: number }>(child) ? React.cloneElement(child, { delay: staggerDelay * index++ }) : child
+      )}
+    </div>
   );
 }
 
 export function FadeInStaggerChild({
   children,
   className,
+  delay = 0,
 }: {
   children: React.ReactNode;
   className?: string;
+  delay?: number;
 }) {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 12 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-      }}
-      className={className}
-    >
+    <div className={cn("reveal-item", className)} style={{ "--reveal-delay": `${delay}s` } as CSSProperties}>
       {children}
-    </motion.div>
+    </div>
   );
 }

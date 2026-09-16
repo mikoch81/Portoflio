@@ -23,4 +23,4 @@ echo "Retouching portrait via external AI model..."
 node ./tools/retouch-portrait.mjs --input "$PORTRAIT_INPUT" --output "$PORTRAIT_OUTPUT" "${@:2}"
 
 echo "Generating CV PDF with the updated portrait..."
-bash ./tools/generate-cv-pdf.sh "$PDF_OUTPUT"
+node ./tools/generate-cv-pdf.mjs "$PDF_OUTPUT"

@@ -1,331 +1,187 @@
-"use client";
-
-import { FadeIn, FadeInStagger, FadeInStaggerChild } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
+import { ProjectCover } from "@/components/project-cover";
+import { Eyebrow } from "@/components/section-header";
 import { buttonVariants } from "@/components/ui/button";
-import { type CaseStudy, projects } from "@/lib/data";
+import type { CaseStudy, Content, Project } from "@/content/types";
+import { localePath, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function Block({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 mb-5">
-      <span className="h-px w-6 bg-cyan/30" aria-hidden="true" />
-      <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-cyan/60">
-        {children}
-      </p>
-    </div>
+    <section aria-labelledby={id} className="space-y-6">
+      <h2 id={id} className="flex items-center gap-3 font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand">
+        <span className="h-px w-6 bg-brand/60" aria-hidden="true" />
+        {label}
+      </h2>
+      {children}
+    </section>
   );
 }
 
-function SectionDivider() {
+export function CaseStudyPage({
+  content,
+  study,
+  project,
+  locale,
+}: {
+  content: Pick<Content, "caseStudyUi" | "ui" | "work" | "projects">;
+  study: CaseStudy;
+  project: Project;
+  locale: Locale;
+}) {
+  const { caseStudyUi: t, ui, work } = content;
+  const related = content.projects.filter((p) => p.slug !== project.slug && p.category === project.category).slice(0, 2);
+  const fallback = content.projects.filter((p) => p.slug !== project.slug && !related.includes(p)).slice(0, 2 - related.length);
+  const relatedProjects = [...related, ...fallback];
+  const techAll = study.stack.flatMap((g) => g.items);
+
   return (
-    <div
-      className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent my-14 sm:my-16"
-      aria-hidden="true"
-    />
-  );
-}
-
-export function CaseStudyPage({ study }: { study: CaseStudy }) {
-  const currentProject = projects.find((p) => p.slug === study.slug);
-  const currentIndex = projects.findIndex((p) => p.slug === study.slug);
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-  const nextProject =
-    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
-
-  return (
-    <article className="relative pt-28 pb-24 sm:pt-32 sm:pb-28 md:pt-40 md:pb-36">
-      {/* Background depth layers */}
-      <div
-        className="pointer-events-none absolute inset-0 bg-linear-to-b from-background via-card/30 to-background"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute top-48 left-1/2 -translate-x-1/2 h-150 w-225 rounded-full bg-cyan/1.5 blur-[160px]"
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto max-w-3xl px-6">
-        {/* ── Back link ── */}
+    <article className="relative pt-28 pb-24 sm:pt-32 sm:pb-32">
+      <div className="mx-auto max-w-6xl px-6">
         <FadeIn>
           <Link
-            href="/#projects"
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "sm" }),
-              "px-0 text-muted-foreground/50 hover:text-muted-foreground mb-12 sm:mb-14 -ml-1 focus-visible:ring-cyan/50 group/back"
-            )}
+            href={`${localePath(locale, "/")}#work`}
+            className="inline-flex items-center gap-2 text-sm text-fg-3 transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
           >
-            <ArrowLeft className="mr-2 h-3.5 w-3.5 transition-transform group-hover/back:-translate-x-0.5" aria-hidden="true" />
-            All Projects
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            {ui.allProjects}
           </Link>
         </FadeIn>
 
-        {/* ── Hero header ── */}
-        <FadeIn>
-          <header className="mb-16 sm:mb-20">
-            {/* Project number */}
-            <span className="text-[11px] font-mono text-muted-foreground/20 tabular-nums block mb-4">
-              {String(currentIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-            </span>
-
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-[-0.035em] md:text-4xl lg:text-[2.75rem] leading-[1.1] mb-5">
-              {study.title}
-            </h1>
-
-            <p className="text-[14px] sm:text-[15px] leading-[1.75] text-muted-foreground/70 max-w-2xl">
-              {study.subtitle}
-            </p>
-
-            {currentProject?.badge ? (
-              <div className="mt-5">
-                <span className="inline-flex items-center rounded-full border border-cyan/20 bg-cyan/[0.08] px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan/70">
-                  {currentProject.badge}
-                </span>
-              </div>
-            ) : null}
-
-            {/* Quick-glance tech strip */}
-            <div className="flex flex-wrap gap-1.5 mt-7">
-              {study.stack.flatMap((g) => g.items).slice(0, 8).map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center rounded-md border border-border/30 px-2 py-0.5 text-[10px] text-muted-foreground/40 font-mono"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            {study.repositoryUrl ? (
-              <div className="mt-7">
-                <Link
-                  href={study.repositoryUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "sm" }),
-                    "border-border/40 text-muted-foreground/55 hover:text-muted-foreground hover:border-border/60 focus-visible:ring-cyan/50"
-                  )}
-                >
-                  <ArrowUpRight className="mr-2 h-3.5 w-3.5" />
-                  View repository
-                </Link>
-              </div>
-            ) : null}
-          </header>
+        <FadeIn className="mt-10 max-w-3xl space-y-6">
+          <Eyebrow>{work.categories[project.category]}</Eyebrow>
+          <h1 className="text-4xl font-semibold tracking-[-0.035em] text-fg sm:text-5xl lg:text-6xl">{study.title}</h1>
+          <p className="text-lg leading-relaxed text-fg-2 sm:text-xl">{study.subtitle}</p>
         </FadeIn>
 
-        {/* ── Overview ── */}
-        <FadeIn>
-          <section aria-label="Overview" className="mb-0">
-            <SectionLabel>Overview</SectionLabel>
-            <p className="text-[14px] sm:text-[15px] leading-[1.85] text-muted-foreground/75 max-w-2xl">
-              {study.overview}
-            </p>
-          </section>
+        <FadeIn delay={0.1} className="mt-12">
+          <ProjectCover kind={project.cover} className="aspect-21/9 rounded-3xl border border-line" />
         </FadeIn>
 
-        <SectionDivider />
+        <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-20">
+          <div className="space-y-16">
+            <FadeIn>
+              <Block id="overview" label={t.overview}>
+                <p className="text-lg leading-relaxed text-fg-2">{study.overview}</p>
+              </Block>
+            </FadeIn>
 
-        {/* ── Challenge ── */}
-        <FadeIn>
-          <section aria-label="Challenge">
-            <SectionLabel>Challenge</SectionLabel>
-            <div className="space-y-3">
-              {study.challenge.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 rounded-lg border border-border/25 bg-card/20 px-5 py-3.5 sm:px-6 sm:py-4"
-                >
-                  <span
-                    className="text-[11px] font-mono text-cyan/30 pt-0.5 shrink-0 tabular-nums"
-                    aria-hidden="true"
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-[13px] sm:text-[14px] leading-[1.75] text-muted-foreground/65">
-                    {item}
-                  </p>
+            <FadeIn>
+              <Block id="challenge" label={t.challenge}>
+                <ol className="grid gap-3 sm:grid-cols-2">
+                  {study.challenge.map((item, i) => (
+                    <li key={i} className="flex gap-4 rounded-2xl border border-line bg-surface-1 p-5">
+                      <span className="font-mono text-sm text-brand tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                      <p className="text-[15px] leading-relaxed text-fg-2">{item}</p>
+                    </li>
+                  ))}
+                </ol>
+              </Block>
+            </FadeIn>
+
+            <FadeIn>
+              <Block id="approach" label={t.approach}>
+                <ol className="relative space-y-6 border-l border-line pl-8">
+                  {study.approach.map((item, i) => (
+                    <li key={i} className="relative">
+                      <span className="absolute -left-[2.35rem] top-1.5 grid size-5 place-items-center rounded-full border border-brand/50 bg-bg font-mono text-[10px] text-brand">
+                        {i + 1}
+                      </span>
+                      <p className="text-[15px] leading-relaxed text-fg-2">{item}</p>
+                    </li>
+                  ))}
+                </ol>
+              </Block>
+            </FadeIn>
+
+            <FadeIn>
+              <Block id="outcomes" label={t.outcomes}>
+                <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+                  {study.outcomes.map((item, i) => (
+                    <li key={i} className="bg-bg p-5">
+                      <p className="text-[15px] leading-relaxed text-fg">{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </Block>
+            </FadeIn>
+
+            <FadeIn>
+              <Block id="summary" label={t.summary}>
+                <blockquote className="rounded-3xl border border-line bg-surface-1 p-7 font-display text-xl leading-snug text-fg sm:p-8 sm:text-2xl">
+                  {study.conclusion}
+                </blockquote>
+              </Block>
+            </FadeIn>
+          </div>
+
+          <FadeIn delay={0.15}>
+            <aside className="space-y-6 rounded-3xl border border-line bg-surface-1 p-6 lg:sticky lg:top-28" aria-label={t.atAGlance}>
+              <h2 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-brand">{t.atAGlance}</h2>
+              <dl className="space-y-4 text-sm">
+                <div>
+                  <dt className="text-fg-3">{t.role}</dt>
+                  <dd className="mt-1 font-medium text-fg">{study.role}</dd>
                 </div>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
-
-        <SectionDivider />
-
-        {/* ── Approach ── */}
-        <FadeIn>
-          <section aria-label="Approach">
-            <SectionLabel>Approach</SectionLabel>
-            <div className="relative">
-              {/* Vertical timeline line */}
-              <div
-                className="absolute left-1.25 top-2 bottom-2 w-px bg-linear-to-b from-cyan/25 via-border/30 to-transparent"
-                aria-hidden="true"
-              />
-              <div className="space-y-5">
-                {study.approach.map((item, i) => (
-                  <div key={i} className="relative pl-7 sm:pl-8">
-                    {/* Timeline dot */}
-                    <div
-                      className="absolute left-0 top-1.5 h-2.75 w-2.75 rounded-full border-2 border-cyan/30 bg-background"
-                      aria-hidden="true"
-                    />
-                    <p className="text-[13px] sm:text-[14px] leading-[1.75] text-muted-foreground/70">
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        </FadeIn>
-
-        <SectionDivider />
-
-        {/* ── Technology stack ── */}
-        <FadeIn>
-          <section aria-label="Technology stack">
-            <SectionLabel>Technology Stack</SectionLabel>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {study.stack.map((group) => (
-                <div
-                  key={group.category}
-                  className="rounded-xl border border-border/30 bg-card/30 backdrop-blur-sm p-5 sm:p-6 space-y-3"
-                >
-                  <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan/45">
-                    {group.category}
-                  </h3>
-                  <div className="flex flex-wrap gap-1.5">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="inline-flex items-center rounded-md border border-border/50 bg-card/40 px-2.5 py-1 text-[10px] sm:text-[11px] text-foreground/60 font-mono"
-                      >
+                <div>
+                  <dt className="text-fg-3">{t.context}</dt>
+                  <dd className="mt-1 font-medium text-fg">{study.context}</dd>
+                </div>
+                <div>
+                  <dt className="text-fg-3">{t.category}</dt>
+                  <dd className="mt-1 font-medium text-fg">{work.categories[project.category]}</dd>
+                </div>
+                <div>
+                  <dt className="text-fg-3">{t.stack}</dt>
+                  <dd className="mt-2 flex flex-wrap gap-1.5">
+                    {techAll.map((item) => (
+                      <span key={item} className="rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-[11px] text-fg-2">
                         {item}
                       </span>
                     ))}
+                  </dd>
+                </div>
+              </dl>
+              {study.repositoryUrl ?? project.repositoryUrl ? (
+                <a
+                  href={study.repositoryUrl ?? project.repositoryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-10 w-full text-sm")}
+                >
+                  {ui.viewRepo}
+                  <ArrowUpRight className="ml-1 size-4" aria-hidden="true" />
+                </a>
+              ) : null}
+            </aside>
+          </FadeIn>
+        </div>
+
+        <FadeIn className="mt-24">
+          <h2 className="font-display text-2xl font-semibold tracking-tight text-fg">{t.related}</h2>
+          <ul className="mt-6 grid gap-5 sm:grid-cols-2">
+            {relatedProjects.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={localePath(locale, `/projects/${p.slug}`)}
+                  className="group flex h-full gap-5 rounded-2xl border border-line bg-surface-1 p-5 transition-[border-color,box-shadow] hover:border-line-strong hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+                >
+                  <ProjectCover kind={p.cover} className="hidden w-32 shrink-0 rounded-xl border border-line sm:block" />
+                  <div className="flex flex-col gap-2">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-brand">{work.categories[p.category]}</span>
+                    <h3 className="text-lg font-semibold tracking-tight text-fg">{p.title}</h3>
+                    <p className="text-sm leading-relaxed text-fg-2">{p.outcome}</p>
+                    <span className="mt-auto inline-flex items-center gap-1 pt-1 text-sm font-medium text-fg group-hover:text-brand">
+                      {ui.viewCase}
+                      <ArrowUpRight className="size-4" aria-hidden="true" />
+                    </span>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
-
-        <SectionDivider />
-
-        {/* ── Outcomes ── */}
-        <FadeIn>
-          <section aria-label="Outcomes">
-            <SectionLabel>Outcomes</SectionLabel>
-            <FadeInStagger className="space-y-3" staggerDelay={0.08}>
-              {study.outcomes.map((item, i) => (
-                <FadeInStaggerChild key={i}>
-                  <div className="flex items-start gap-4 sm:gap-5 rounded-xl border border-border/25 bg-card/25 backdrop-blur-sm px-5 py-4 sm:px-6 sm:py-5 transition-colors duration-300 hover:border-cyan/15 hover:bg-card/40">
-                    <div className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full border border-cyan/25 bg-cyan/5">
-                      <span
-                        className="text-[9px] font-mono text-cyan/55 tabular-nums"
-                        aria-hidden="true"
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <p className="text-[13px] sm:text-[14px] leading-[1.8] text-muted-foreground/75">
-                      {item}
-                    </p>
-                  </div>
-                </FadeInStaggerChild>
-              ))}
-            </FadeInStagger>
-          </section>
-        </FadeIn>
-
-        <SectionDivider />
-
-        {/* ── Conclusion ── */}
-        <FadeIn>
-          <section aria-label="Conclusion" className="mb-16 sm:mb-20">
-            <SectionLabel>Summary</SectionLabel>
-            <div className="relative rounded-xl border border-border/30 bg-card/25 backdrop-blur-sm p-6 sm:p-8">
-              {/* Accent corner */}
-              <div
-                className="absolute top-0 left-0 h-12 w-px bg-linear-to-b from-cyan/30 to-transparent"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute top-0 left-0 h-px w-12 bg-linear-to-r from-cyan/30 to-transparent"
-                aria-hidden="true"
-              />
-              <p className="text-[14px] sm:text-[15px] leading-[1.9] text-muted-foreground/80">
-                {study.conclusion}
-              </p>
-            </div>
-          </section>
-        </FadeIn>
-
-        {/* ── Navigation ── */}
-        <FadeIn>
-          <div
-            className="h-px bg-linear-to-r from-transparent via-border/60 to-transparent mb-8 sm:mb-10"
-            aria-hidden="true"
-          />
-          <nav
-            aria-label="Project navigation"
-            className="flex items-stretch justify-between gap-4"
-          >
-            {prevProject ? (
-              <Link
-                href={`/projects/${prevProject.slug}`}
-                className="group/nav flex items-center gap-3 text-muted-foreground/45 hover:text-muted-foreground/80 transition-colors duration-300 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 rounded-md px-1 py-1"
-              >
-                <ArrowLeft className="h-3.5 w-3.5 shrink-0 transition-transform group-hover/nav:-translate-x-0.5" />
-                <div className="min-w-0">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/30 block">
-                    Previous
-                  </span>
-                  <span className="text-[13px] font-medium truncate block">
-                    {prevProject.title}
-                  </span>
-                </div>
-              </Link>
-            ) : (
-              <div />
-            )}
-            {nextProject ? (
-              <Link
-                href={`/projects/${nextProject.slug}`}
-                className="group/nav flex items-center gap-3 text-muted-foreground/45 hover:text-muted-foreground/80 transition-colors duration-300 min-w-0 text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/50 rounded-md px-1 py-1"
-              >
-                <div className="min-w-0">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/30 block">
-                    Next
-                  </span>
-                  <span className="text-[13px] font-medium truncate block">
-                    {nextProject.title}
-                  </span>
-                </div>
-                <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover/nav:translate-x-0.5" />
-              </Link>
-            ) : (
-              <div />
-            )}
-          </nav>
-
-          {/* Back to all projects */}
-          <div className="mt-10 sm:mt-12 text-center">
-            <Link
-              href="/#projects"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "sm" }),
-                "border-border/40 text-muted-foreground/50 hover:text-muted-foreground hover:border-border/60 focus-visible:ring-cyan/50"
-              )}
-            >
-              <ArrowUpRight className="mr-2 h-3.5 w-3.5" />
-              All Projects
-            </Link>
-          </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </FadeIn>
       </div>
     </article>
