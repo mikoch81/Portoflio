@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/projects
       languages: { en: path, pl: `/pl${path}`, "x-default": path },
     },
     openGraph: {
-      title: `${study.title} — Michał Kochaniak`,
+      title: `${study.title} | Michał Kochaniak`,
       description: study.subtitle,
       type: "article",
       locale: ogLocale[locale],

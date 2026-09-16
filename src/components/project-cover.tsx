@@ -101,10 +101,10 @@ function Terminal() {
         $ qa-agent analyze run-142.jtl
       </text>
       {[
-        ["▸ 48 210 samples · 0.42 % errors", "#b4bfd0"],
-        ["▸ p95 812 ms → 1 034 ms (+27 %)", "#b4bfd0"],
-        ["▸ cluster: 91 % HTTP 502 @ gateway", "#b4bfd0"],
-        ["✓ report → run-142-summary.docx", "#22d3ee"],
+        ["> 48 210 samples | 0.42% errors", "#b4bfd0"],
+        ["> p95 812 ms -> 1 034 ms (+27%)", "#b4bfd0"],
+        ["> cluster: 91% HTTP 502 at gateway", "#b4bfd0"],
+        ["OK report -> run-142-summary.docx", "#22d3ee"],
       ].map(([t, c], i) => (
         <text key={t} x="44" y={98 + i * 22} fontSize="11" fontFamily="var(--font-geist-mono), monospace" fill={c}>
           {t}
@@ -141,7 +141,7 @@ function Pipeline() {
       ))}
       <rect x="120" y="44" width="160" height="30" rx="8" fill={base.panel} stroke={base.line} />
       <text x="200" y="64" textAnchor="middle" fontSize="11" fontFamily="var(--font-geist-mono), monospace" fill={base.ink}>
-        cycle #142 · 96 / 98 passed
+        cycle #142 | 96 / 98 passed
       </text>
     </>
   );

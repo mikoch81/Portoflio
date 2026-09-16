@@ -6,7 +6,7 @@ export const en: Content = {
   site: {
     name: "Michał Kochaniak",
     role: "Senior Test Automation Engineer",
-    location: "Łódź, Poland · Remote",
+    location: "Łódź, Poland (remote)",
     email: "kochaniakmichal@gmail.com",
     linkedin: "https://linkedin.com/in/michalkochaniak",
     github: "https://github.com/mikoch81",
@@ -15,10 +15,10 @@ export const en: Content = {
   },
 
   meta: {
-    title: "Michał Kochaniak — Senior Test Automation Engineer",
+    title: "Michał Kochaniak | Senior Test Automation Engineer",
     description:
       "Senior Test Automation Engineer specializing in automation architecture, performance engineering, and AI-driven quality systems. Designing scalable frameworks, building data-driven reporting pipelines, and applying practical AI workflows in modern software delivery environments.",
-    cvTitle: "CV — Michał Kochaniak",
+    cvTitle: "CV",
     cvDescription:
       "Senior Test Automation Engineer. Automation architecture, performance engineering, AI-driven quality systems.",
   },
@@ -58,14 +58,14 @@ export const en: Content = {
   },
 
   hero: {
-    eyebrow: "Senior Test Automation Engineer · Łódź, Poland",
+    eyebrow: "Senior Test Automation Engineer, Łódź, Poland",
     headline: "Quality systems that teams can",
     headlineAccent: "actually maintain.",
-    lead: "I design automation frameworks, performance reporting pipelines and privacy-safe AI workflows for enterprise delivery — currently in banking, across web, mobile and WebView.",
+    lead: "I design automation frameworks, performance reporting pipelines and privacy-safe AI workflows for enterprise delivery. Currently in banking, across web, mobile and WebView.",
     stats: [
-      { value: "15+", label: "years in web & QA", detail: "since 2011" },
+      { value: "15+", label: "years in web and QA", detail: "since 2011" },
       { value: "9", label: "years in test automation", detail: "since 2017" },
-      { value: "4", label: "open-source demo repos", detail: "Playwright · Selenium · API · JMeter" },
+      { value: "4", label: "open-source demo repos", detail: "Playwright, Selenium, API, JMeter" },
     ],
     portraitAlt: "Portrait of Michał Kochaniak",
     sparklineLabel: "Illustrative p95 latency trend across regression runs",
@@ -73,15 +73,15 @@ export const en: Content = {
 
   work: {
     eyebrow: "Selected work",
-    title: "Automation, performance and AI — built as systems, not scripts",
-    lead: "Three engagements that shaped how I work, plus a set of public, runnable demos you can clone and execute in minutes.",
+    title: "Automation, performance and AI, built as systems rather than scripts",
+    lead: "Four engagements that shaped how I work, plus a set of public, runnable demos you can clone and execute in minutes.",
     featuredLabel: "Case studies",
     openSourceLabel: "Open-source demos",
-    openSourceLead: "Small, self-contained repositories — local demo apps, synthetic data, CI-ready. Each one shows a pattern I use in real projects.",
+    openSourceLead: "Small, self-contained repositories: local demo apps, synthetic data, ready for CI. Each one shows a pattern I use in real projects.",
     categories: {
       automation: "Automation architecture",
       performance: "Performance engineering",
-      ci: "CI/CD & traceability",
+      ci: "CI/CD and traceability",
       ai: "Applied AI",
     },
   },
@@ -93,7 +93,7 @@ export const en: Content = {
       category: "automation",
       featured: true,
       summary:
-        "Layered Appium framework for a hybrid banking app — native and WebView flows on Android and iOS, wired into Jenkins.",
+        "Layered Appium framework for a hybrid banking app: native and WebView flows on Android and iOS, wired into Jenkins.",
       outcome: "Stable regression coverage for critical flows that survived several major UI redesigns.",
       tech: ["Java", "Appium", "Selenium", "TestNG", "Jenkins"],
       cover: "mobile",
@@ -116,7 +116,7 @@ export const en: Content = {
       featured: true,
       summary:
         "TestNG listeners and a Zephyr Scale integration that publish every CI run to Jira with requirement-level traceability.",
-      outcome: "Eliminated manual result synchronisation; quality became visible per sprint and release.",
+      outcome: "Eliminated manual result synchronisation. Quality became visible per sprint and release.",
       tech: ["Java", "Zephyr Scale API", "Jenkins", "GitHub Actions"],
       cover: "pipeline",
     },
@@ -126,7 +126,7 @@ export const en: Content = {
       category: "ai",
       featured: true,
       summary:
-        "On-premises LLM assistant (Ollama) that interprets test results, compares baselines and drafts QA reports — no data leaves the network.",
+        "On-premises LLM assistant (Ollama) that interprets test results, compares baselines and drafts QA reports. No data leaves the network.",
       outcome: "Reduced routine analysis effort with a reusable, fully local agent foundation.",
       tech: ["Ollama", "Python", "Prompt design", "Agent orchestration"],
       cover: "terminal",
@@ -137,7 +137,7 @@ export const en: Content = {
       category: "automation",
       featured: false,
       badge: "Open source",
-      summary: "Login, cart and checkout journeys against a local demo app — HTML reports, failure diagnostics, GitHub Actions.",
+      summary: "Login, cart and checkout journeys against a local demo app. HTML reports, failure diagnostics, GitHub Actions.",
       outcome: "Manual smoke path turned into a repeatable quality gate.",
       tech: ["Playwright", "TypeScript", "GitHub Actions"],
       cover: "browser",
@@ -149,7 +149,7 @@ export const en: Content = {
       category: "automation",
       featured: false,
       badge: "Open source",
-      summary: "Java + Selenium 4 framework skeleton — Page Objects, driver factory, screenshot artifacts, embedded demo server.",
+      summary: "Java + Selenium 4 framework skeleton: Page Objects, driver factory, screenshot artifacts, embedded demo server.",
       outcome: "Enterprise-friendly foundation for stable UI regression in Java teams.",
       tech: ["Java 21", "Selenium 4", "JUnit 5", "Maven"],
       cover: "browser",
@@ -174,7 +174,7 @@ export const en: Content = {
       featured: false,
       badge: "Open source",
       summary: "Reusable JMeter plan, CSV scenario data and a Python mock API with controllable latency for safe baseline load tests.",
-      outcome: "A reproducible entry point into performance engineering — no external systems touched.",
+      outcome: "A reproducible entry point into performance engineering, with no external systems touched.",
       tech: ["JMeter", "Python", "CSV scenarios"],
       cover: "chart",
       repositoryUrl: "https://github.com/mikoch81/jmeter-performance",
@@ -204,7 +204,7 @@ export const en: Content = {
       role: "Design and implementation",
       context: "Enterprise performance testing",
       overview:
-        "Performance testing produces large volumes of raw data — JTL files, CSV exports, server-side metrics — that need skilled interpretation before they become actionable. This project replaced a manual analysis workflow with an automated Python pipeline that ingests JMeter results, computes statistical metrics, generates charts, and produces structured DOCX/PDF reports. An LLM layer via Ollama adds narrative summaries, flags anomalies, and provides plain-language interpretation for non-technical readers.",
+        "Performance testing produces large volumes of raw data: JTL files, CSV exports, server-side metrics. All of it needs skilled interpretation before it becomes actionable. This project replaced a manual analysis workflow with an automated Python pipeline that ingests JMeter results, computes statistical metrics, generates charts, and produces structured DOCX/PDF reports. An LLM layer running on Ollama adds narrative summaries, flags anomalies, and provides plain-language interpretation for non-technical readers.",
       challenge: [
         "Manual analysis of JMeter results consumed hours per test cycle and was inconsistent between analysts.",
         "Reports varied in structure, depth, and quality depending on who wrote them.",
@@ -212,10 +212,10 @@ export const en: Content = {
         "Historical trend comparison required tedious manual data extraction across multiple result files.",
       ],
       approach: [
-        "Designed a Python pipeline to parse JTL/CSV result files and compute key performance metrics — response times, throughput, error rates, and percentile distributions.",
-        "Built chart generation — response time distributions, throughput curves, error breakdowns — using matplotlib, embedded directly into report templates.",
-        "Created DOCX/PDF report templates with consistent structure: executive summary, detailed metrics, trend comparison, conclusions, and recommendations.",
-        "Integrated an LLM layer (via Ollama) to generate narrative analysis sections — translating statistical data into clear, human-readable conclusions.",
+        "Designed a Python pipeline to parse JTL/CSV result files and compute key performance metrics: response times, throughput, error rates, and percentile distributions.",
+        "Built chart generation in matplotlib (response time distributions, throughput curves, error breakdowns), embedded directly into report templates.",
+        "Created DOCX/PDF report templates with a consistent structure: executive summary, detailed metrics, trend comparison, conclusions, and recommendations.",
+        "Integrated an LLM layer (Ollama) that generates narrative analysis sections and translates statistical data into clear, human-readable conclusions.",
         "Added historical comparison logic to automatically surface regressions and improvements across test runs.",
       ],
       stack: [
@@ -226,12 +226,12 @@ export const en: Content = {
       ],
       outcomes: [
         "Reduced per-cycle analysis time from hours of manual work to minutes of automated processing.",
-        "Standardized report structure across the team — every report now follows a consistent, professional format.",
+        "Standardized report structure across the team. Every report now follows a consistent, professional format.",
         "Enabled non-technical stakeholders to understand performance results without engineer interpretation.",
         "Historical trend detection surfaced regressions that were previously missed in manual reviews.",
       ],
       conclusion:
-        "The value of performance engineering is in how efficiently results reach decision-makers. Automating the analysis-to-report pipeline — with AI-assisted narrative — turned raw data into structured deliverables that directly supported release decisions.",
+        "The value of performance engineering lies in how efficiently results reach decision-makers. Automating the analysis-to-report pipeline, with an AI-assisted narrative, turned raw data into structured deliverables that directly supported release decisions.",
     },
 
     "mobile-test-automation": {
@@ -239,12 +239,12 @@ export const en: Content = {
       title: "Mobile Test Automation for a Banking App",
       subtitle: "Cross-platform automation framework for critical banking flows on Android and iOS",
       role: "Framework architecture and implementation",
-      context: "Banking · Hybrid mobile app",
+      context: "Banking, hybrid mobile app",
       overview:
-        "A banking application needed reliable automated regression across Android and iOS. The app combined native UI, hybrid WebView screens, and multi-step authentication — creating real challenges for automation stability. This project involved designing a test framework from scratch, with a focus on maintainability, cross-platform reuse, and CI/CD integration.",
+        "A banking application needed reliable automated regression across Android and iOS. The app combined native UI, hybrid WebView screens, and multi-step authentication, which created real challenges for automation stability. This project involved designing a test framework from scratch, with a focus on maintainability, cross-platform reuse, and CI/CD integration.",
       challenge: [
         "Hybrid app architecture with native and WebView contexts required careful handling of context switching during test execution.",
-        "Complex authentication flows (biometrics, OTP, session management) created flaky automation scenarios.",
+        "Complex authentication flows (biometrics, one-time codes, session management) created flaky automation scenarios.",
         "Frequent UI changes across releases demanded a framework designed for minimal maintenance overhead.",
         "Cross-platform coverage needed to be achieved without duplicating the entire test suite for Android and iOS.",
       ],
@@ -268,7 +268,7 @@ export const en: Content = {
         "Provided the team with clear, automated pass/fail signals integrated directly into release pipelines.",
       ],
       conclusion:
-        "Mobile automation in banking demands architecture built for real-world complexity — hybrid apps, complex auth, constant UI evolution. This framework prioritised durability, and its layered structure held up across multiple major releases.",
+        "Mobile automation in banking demands architecture built for real-world complexity: hybrid apps, complex authentication, constant UI evolution. This framework prioritised durability, and its layered structure held up across multiple major releases.",
     },
 
     "jira-zephyr-ci": {
@@ -276,13 +276,13 @@ export const en: Content = {
       title: "Jira + Zephyr + CI Quality Pipeline",
       subtitle: "Connecting automated test execution to Jira and Zephyr Scale for real-time quality traceability",
       role: "Integration design and implementation",
-      context: "Enterprise delivery · Jira ecosystem",
+      context: "Enterprise delivery, Jira ecosystem",
       overview:
-        "Automated tests produce valuable quality signals, but those signals often stay trapped in CI logs — disconnected from where teams plan and decide. This project built a pipeline connecting Maven/TestNG execution with Jira and Zephyr Scale to automatically create test cycles, post results, link to requirements, and surface quality metrics inside the delivery workflow.",
+        "Automated tests produce valuable quality signals, but those signals often stay trapped in CI logs, disconnected from where teams plan and decide. This project built a pipeline connecting Maven/TestNG execution with Jira and Zephyr Scale to automatically create test cycles, post results, link to requirements, and surface quality metrics inside the delivery workflow.",
       challenge: [
-        "Test results lived in CI logs and HTML reports — disconnected from the Jira-based workflow where decisions were made.",
+        "Test results lived in CI logs and HTML reports, disconnected from the Jira-based workflow where decisions were made.",
         "Manual updating of Zephyr test cycles after automated runs was slow, error-prone, and often skipped.",
-        "Traceability between automated tests and requirements/stories was inconsistent, making coverage analysis unreliable.",
+        "Traceability between automated tests and requirements or stories was inconsistent, making coverage analysis unreliable.",
         "Quality metrics reporting required manual data assembly from multiple disconnected sources.",
       ],
       approach: [
@@ -290,7 +290,7 @@ export const en: Content = {
         "Implemented TestNG listeners that capture per-test metadata (pass/fail/skip, duration, error details) and format it for the Zephyr API.",
         "Created a requirement-linking system that maps automated test classes to Jira issues via annotations, maintaining traceability at the code level.",
         "Configured Jenkins and GitHub Actions pipelines to trigger the integration automatically on every build, with configurable environments and test cycle naming.",
-        "Built a lightweight dashboard query layer that aggregates quality metrics from Jira/Zephyr for sprint and release reporting.",
+        "Built a lightweight dashboard query layer that aggregates quality metrics from Jira and Zephyr for sprint and release reporting.",
       ],
       stack: [
         { category: "Core", items: ["Java", "Maven", "TestNG"] },
@@ -299,13 +299,13 @@ export const en: Content = {
         { category: "Reporting", items: ["Quality dashboards", "Sprint metrics", "Traceability mapping"] },
       ],
       outcomes: [
-        "Eliminated manual test cycle updates — every CI run automatically reports results to Zephyr Scale.",
+        "Eliminated manual test cycle updates. Every CI run automatically reports results to Zephyr Scale.",
         "Established full traceability between automated tests and Jira requirements.",
         "Gave product and engineering leadership real-time visibility into quality signals per sprint and release.",
         "Reduced reporting overhead and freed QA engineers to focus on analysis rather than data entry.",
       ],
       conclusion:
-        "Quality engineering is only as valuable as its visibility. Connecting automated results directly to delivery tools made quality a first-class input to sprint planning and release decisions — not an afterthought in CI logs.",
+        "Quality engineering is only as valuable as its visibility. Connecting automated results directly to delivery tools made quality a first-class input to sprint planning and release decisions, not an afterthought in CI logs.",
     },
 
     "agentic-qa-assistant": {
@@ -315,9 +315,9 @@ export const en: Content = {
       role: "Architecture, prompts and orchestration",
       context: "Privacy-sensitive enterprise environment",
       overview:
-        "Quality engineering involves repetitive cognitive work — parsing logs, comparing test runs, writing reports. This project designed a locally-hosted LLM assistant that analyses results, interprets performance data, suggests investigation paths, and supports day-to-day QA decisions. All inference runs on-premises via Ollama — no data leaves the network.",
+        "Quality engineering involves repetitive cognitive work: parsing logs, comparing test runs, writing reports. This project designed a locally hosted LLM assistant that analyses results, interprets performance data, suggests investigation paths, and supports day-to-day QA decisions. All inference runs on-premises through Ollama, so no data leaves the network.",
       challenge: [
-        "A significant share of QA effort goes to predictable, pattern-based tasks — log review, baseline comparison, report formatting.",
+        "A significant share of QA effort goes to predictable, pattern-based tasks: log review, baseline comparison, report formatting.",
         "Performance report interpretation requires domain context that is difficult to transfer to new team members.",
         "Cloud-based AI tools raised data privacy concerns when processing internal test data and system information.",
         "Generic AI assistants lack the domain knowledge needed to provide useful QA guidance without extensive prompting.",
@@ -325,9 +325,9 @@ export const en: Content = {
       approach: [
         "Designed an agent architecture using Ollama for local LLM inference, ensuring all data stays on-premises and no internal information is sent to external services.",
         "Built specialized prompt templates for common QA tasks: test failure analysis, performance comparison, regression investigation, and report generation.",
-        "Implemented an orchestration layer that can chain multiple analysis steps — e.g., parse results → compare to baseline → generate summary → suggest next actions.",
+        "Implemented an orchestration layer that chains analysis steps, for example: parse results, compare to baseline, generate a summary, suggest next actions.",
         "Created a knowledge base of QA patterns, common failure modes, and performance benchmarks that the agent can reference during analysis.",
-        "Designed the system for extensibility — new analysis capabilities can be added as modular prompt chains without restructuring the core architecture.",
+        "Designed the system for extensibility. New analysis capabilities can be added as modular prompt chains without restructuring the core architecture.",
       ],
       stack: [
         { category: "AI / LLM", items: ["Ollama", "Local LLM inference", "Prompt engineering"] },
@@ -339,10 +339,10 @@ export const en: Content = {
         "Demonstrated practical local AI integration for QA without cloud dependency or data privacy concerns.",
         "Reduced time spent on routine result analysis and report interpretation.",
         "Created a reusable framework for building domain-specific QA agents adaptable to different project contexts.",
-        "Established patterns for human-AI collaboration in quality engineering — augmenting judgment, not replacing it.",
+        "Established patterns for human-AI collaboration in quality engineering: augmenting judgment, not replacing it.",
       ],
       conclusion:
-        "AI in QA works best when it accelerates analysis rather than replacing judgment. A locally-hosted, domain-aware assistant reduced repetitive cognitive work while keeping all data under team control.",
+        "AI in QA works best when it accelerates analysis rather than replacing judgment. A locally hosted, domain-aware assistant reduced repetitive cognitive work while keeping all data under team control.",
     },
 
     "playwright-web-e2e-demo": {
@@ -350,9 +350,9 @@ export const en: Content = {
       title: "Playwright Web E2E Demo",
       subtitle: "Local web regression pack focused on critical user journeys, fast feedback, and CI-ready diagnostics",
       role: "Author",
-      context: "Open-source demo · runs locally",
+      context: "Open-source demo, runs locally",
       overview:
-        "This project demonstrates how I approach modern web UI automation when the goal is not broad checkbox coverage, but reliable protection of the most business-critical user flows. The suite is built around a local demo app and focuses on a small set of high-value journeys — login, cart interaction, and purchase completion — supported by Playwright, HTML reporting, and failure diagnostics. The result is a compact, service-ready example of a repeatable smoke/regression layer that can be run locally or in CI.",
+        "This project demonstrates how I approach modern web UI automation when the goal is not broad checkbox coverage, but reliable protection of the most business-critical user flows. The suite is built around a local demo app and focuses on a small set of high-value journeys: login, cart interaction, and purchase completion. It is supported by Playwright, HTML reporting, and failure diagnostics. The result is a compact, service-ready example of a repeatable smoke and regression layer that can run locally or in CI.",
       challenge: [
         "Teams often need quick, trustworthy feedback on core web journeys without investing in a large bespoke test environment upfront.",
         "External dependencies and unstable environments can turn small regression suites into flaky maintenance burdens.",
@@ -386,7 +386,7 @@ export const en: Content = {
       title: "Selenium Framework Demo",
       subtitle: "Maintainable Java-based UI automation framework with Page Objects, local execution, and failure artifacts",
       role: "Author",
-      context: "Open-source demo · Java ecosystem",
+      context: "Open-source demo, Java ecosystem",
       overview:
         "This repository represents a more classical UI automation architecture built for teams working in Java-centric environments. Instead of focusing on individual test scripts, the project emphasizes reusable structure: WebDriver setup, Page Objects, local server execution, and screenshot artifact collection on failure. It is designed to show what an enterprise-friendly Selenium foundation looks like when maintainability and long-term regression stability matter as much as simple test coverage.",
       challenge: [
@@ -422,7 +422,7 @@ export const en: Content = {
       title: "API Testing Demo",
       subtitle: "Local backend quality pack combining health checks, contract validation, and response-time baselines",
       role: "Author",
-      context: "Open-source demo · backend quality",
+      context: "Open-source demo, backend quality",
       overview:
         "This project shows how I approach backend quality when both correctness and responsiveness matter. It uses a local synthetic HTTP service and a Maven-based test suite to validate service health, compare endpoint responses against an expected contract, and assert simple performance baselines such as average response time and p95. The result is a lightweight but concrete example of introducing API quality signals without building a separate integration environment first.",
       challenge: [
@@ -458,13 +458,13 @@ export const en: Content = {
       title: "JMeter Performance Pack",
       subtitle: "Safe local performance starter pack with a mock API, reusable JMeter plan, and scenario-driven load inputs",
       role: "Author",
-      context: "Open-source demo · load testing",
+      context: "Open-source demo, load testing",
       overview:
         "This mini-project is a focused performance engineering starter pack. It combines a local mock API, a reusable JMeter test plan, scenario data in CSV form, and a small execution helper so that baseline load testing can be demonstrated safely on synthetic data. The goal is not to simulate a large platform, but to show how a clean, explainable performance setup can be packaged for fast iteration, learning, and future extension.",
       challenge: [
         "Performance testing is often postponed because teams lack a safe environment for early experiments.",
         "Many examples are either too trivial to be useful or too environment-dependent to be easily shared and reused.",
-        "A good starter pack should show more than a single JMX file — it should also model the surrounding execution context.",
+        "A good starter pack should show more than a single JMX file. It should also model the surrounding execution context.",
         "Public-facing demonstrations must avoid generating load against systems that are not explicitly owned for testing.",
       ],
       approach: [
@@ -494,7 +494,7 @@ export const en: Content = {
     eyebrow: "How I work",
     title: "Quality as systems engineering",
     manifesto:
-      "I treat test automation as an architecture problem, not a scripting task. Frameworks that outlive the next redesign, performance data that reaches decision-makers, and CI signals that people actually trust — that is the job.",
+      "I treat test automation as an architecture problem, not a scripting task. Frameworks that outlive the next redesign, performance data that reaches decision-makers, and CI signals that people actually trust. That is the job.",
     steps: [
       {
         step: "01",
@@ -521,12 +521,12 @@ export const en: Content = {
 
   ai: {
     eyebrow: "Applied AI",
-    title: "AI in quality engineering — local, private, useful",
-    lead: "Not for generating tests. For accelerating analysis, interpreting results and supporting engineering decisions — with models running on-premises via Ollama, so sensitive data never leaves the network.",
+    title: "AI in quality engineering: local, private, useful",
+    lead: "Not for generating tests. For accelerating analysis, interpreting results and supporting engineering decisions. Models run on-premises through Ollama, so sensitive data never leaves the network.",
     useCases: [
       {
         title: "Test result analysis",
-        description: "Parsing logs, clustering failures, and surfacing root causes — faster than manual triage.",
+        description: "Parsing logs, clustering failures, and surfacing root causes faster than manual triage.",
         details: [
           "Summarising test failures across suites",
           "Grouping similar errors by pattern",
@@ -535,7 +535,7 @@ export const en: Content = {
       },
       {
         title: "Performance report interpretation",
-        description: "Interpreting JMeter results and performance baselines into actionable observations.",
+        description: "Turning JMeter results and performance baselines into actionable observations.",
         details: [
           "Explaining throughput and latency anomalies",
           "Comparing runs against historical baselines",
@@ -544,7 +544,7 @@ export const en: Content = {
       },
       {
         title: "AI-assisted reporting",
-        description: "Structured reports from raw test data — consistent format, no manual writing.",
+        description: "Structured reports from raw test data: consistent format, no manual writing.",
         details: [
           "Narrative summaries from execution data",
           "Executive-level conclusions and risk flags",
@@ -552,8 +552,8 @@ export const en: Content = {
         ],
       },
       {
-        title: "Local AI / on-prem systems",
-        description: "Running models locally via Ollama. Sensitive data never leaves the environment.",
+        title: "Local AI and on-premises systems",
+        description: "Running models locally through Ollama. Sensitive data never leaves the environment.",
         details: [
           "No external API calls for analysis",
           "Sensitive data stays inside the network",
@@ -562,18 +562,18 @@ export const en: Content = {
       },
     ],
     terminal: {
-      title: "qa-agent — local session",
+      title: "qa-agent: local session",
       command: "qa-agent analyze results/run-142.jtl --baseline results/run-138.jtl",
       lines: [
-        "▸ parsed 48 210 samples · 6 transactions · 0.42 % errors",
-        "▸ p95 latency: 812 ms → 1 034 ms (+27 %) on POST /transfer",
-        "▸ throughput stable: 118 rps vs 121 rps baseline",
-        "▸ error cluster: 91 % HTTP 502 from gateway between 14:32–14:35",
-        "▸ likely cause: upstream timeout during deploy window (see release notes)",
-        "✓ report written → reports/run-142-summary.docx (local model · no data egress)",
+        "> parsed 48 210 samples | 6 transactions | 0.42% errors",
+        "> p95 latency: 812 ms -> 1 034 ms (+27%) on POST /transfer",
+        "> throughput stable: 118 rps vs 121 rps baseline",
+        "> error cluster: 91% HTTP 502 from gateway between 14:32 and 14:35",
+        "> likely cause: upstream timeout during deploy window (see release notes)",
+        "OK report written -> reports/run-142-summary.docx (local model, no data egress)",
       ],
     },
-    footnote: "I treat AI as an engineering tool — useful when it improves signal quality, reduces manual effort, and keeps decision-making grounded in data.",
+    footnote: "I treat AI as an engineering tool. It is useful when it improves signal quality, reduces manual effort, and keeps decision-making grounded in data.",
   },
 
   stack: {
@@ -590,12 +590,12 @@ export const en: Content = {
         items: ["Apache JMeter", "CSV / JTL analysis", "Performance reporting", "Trend comparison", "Result visualization"],
       },
       {
-        category: "CI/CD & tooling",
+        category: "CI/CD and tooling",
         items: ["Jenkins", "GitHub Actions", "Build pipelines", "Jira integration", "Zephyr Scale", "Git workflow"],
       },
       {
-        category: "AI & agent systems",
-        items: ["LLM integration", "Ollama / local AI", "Agent orchestration", "Prompt & system design", "AI-assisted analysis"],
+        category: "AI and agent systems",
+        items: ["LLM integration", "Ollama / local AI", "Agent orchestration", "Prompt and system design", "AI-assisted analysis"],
       },
     ],
     logos: [
@@ -623,12 +623,12 @@ export const en: Content = {
   proof: {
     eyebrow: "Proof",
     title: "Outcomes, not adjectives",
-    lead: "What the work actually changed — plus a real report from the pipeline and a CV you can read in two minutes.",
+    lead: "What the work actually changed, plus a real report from the pipeline and a CV you can read in two minutes.",
     impact: [
-      { value: "hours → min", label: "performance analysis per test cycle", detail: "AI reporting pipeline" },
+      { value: "Minutes", label: "instead of hours of performance analysis per test cycle", detail: "AI reporting pipeline" },
       { value: "Android + iOS", label: "one framework, both platforms", detail: "Banking app, hybrid WebView" },
       { value: "0", label: "manual result syncs to Zephyr", detail: "Every CI run publishes itself" },
-      { value: "100 %", label: "of AI inference on-premises", detail: "Ollama, no data egress" },
+      { value: "100%", label: "of AI inference on-premises", detail: "Ollama, no data egress" },
     ],
     report: {
       title: "Sample performance report",
@@ -639,14 +639,14 @@ export const en: Content = {
     },
     cv: {
       title: "Curriculum vitae",
-      description: "Two pages, print-ready. Bank Pekao S.A. (2019–now), T-Mobile, Tsunami, Agora — 15+ years across QA, automation and web.",
+      description: "Two pages, print-ready. Bank Pekao S.A. (since 2019), T-Mobile, Tsunami, Agora. Over 15 years across QA, automation and web.",
     },
   },
 
   contact: {
     eyebrow: "Next step",
     title: "Let's solve a quality problem",
-    lead: "I help engineering teams ship with confidence — automation architecture, performance pipelines and AI-assisted quality systems. If your release cycle needs unblocking, let's talk scope.",
+    lead: "I help engineering teams ship with confidence: automation architecture, performance pipelines and AI-assisted quality systems. If your release cycle needs unblocking, let's talk scope.",
     emailCta: "Start a conversation",
     linkedinCta: "LinkedIn",
     githubCta: "GitHub",

@@ -14,9 +14,8 @@ export function Footer({ content, locale }: { content: Pick<Content, "site" | "u
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">
           <p className="font-display text-lg font-semibold tracking-tight text-fg">{content.site.name}</p>
-          <p className="text-sm text-fg-3">
-            {content.site.role} · {content.site.location}
-          </p>
+          <p className="text-sm text-fg-3">{content.site.role}</p>
+          <p className="text-sm text-fg-3">{content.site.location}</p>
           <p className="text-xs text-fg-3">
             © {new Date().getFullYear()} {content.site.name}. {content.ui.footerRights}
           </p>

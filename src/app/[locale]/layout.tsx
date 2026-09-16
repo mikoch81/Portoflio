@@ -43,7 +43,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-const siteTitle = "Michał Kochaniak — Senior Test Automation Engineer";
+const siteTitle = "Michał Kochaniak | Senior Test Automation Engineer";
 
 const descriptions: Record<Locale, string> = {
   en: "Senior Test Automation Engineer specializing in automation architecture, performance engineering, and AI-driven quality systems. Designing scalable frameworks, building data-driven reporting pipelines, and applying practical AI workflows in modern software delivery environments.",

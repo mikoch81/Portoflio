@@ -98,7 +98,7 @@ export function Header({ content, locale }: { content: HeaderContent; locale: Lo
             href={switchHref}
             hrefLang={otherLocale}
             lang={otherLocale}
-            aria-label={`${content.ui.switchLanguageShort} · ${content.ui.switchLanguage}`}
+            aria-label={`${content.ui.switchLanguageShort}: ${content.ui.switchLanguage}`}
             title={content.ui.switchLanguage}
             className="inline-flex h-9 items-center justify-center rounded-lg border border-line px-2.5 font-mono text-xs font-medium tracking-wide text-fg-2 transition-colors hover:bg-surface-3 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
           >
