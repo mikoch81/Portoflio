@@ -21,9 +21,17 @@
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
 
-  /* Legacy aliases kept while old sections are migrated */
-  --color-cyan: var(--brand);
-  --color-cyan-dim: var(--brand-strong);
+  /* Terminal mock surfaces — always dark, independent of the page theme */
+  --color-term-bg: var(--term-bg);
+  --color-term-bar: var(--term-bar);
+  --color-term-fg: var(--term-fg);
+  --color-term-muted: var(--term-muted);
+  --color-term-strong: var(--term-strong);
+  --color-term-accent: var(--term-accent);
+  --color-term-ok: var(--term-ok);
+  --color-term-red: var(--term-red);
+  --color-term-amber: var(--term-amber);
+  --color-term-green: var(--term-green);
 
   /* shadcn aliases */
   --color-background: var(--background);
@@ -98,6 +106,17 @@
   --line-strong: rgba(28, 37, 45, 0.24);
   --glow: rgba(11, 106, 130, 0.22);
 
+  --term-bg: #0b0f16;
+  --term-bar: #131a24;
+  --term-fg: #b4bfd0;
+  --term-muted: #8593a8;
+  --term-strong: #e8ecf2;
+  --term-accent: #67e8f9;
+  --term-ok: #22d3ee;
+  --term-red: #ef4444;
+  --term-amber: #f59e0b;
+  --term-green: #22c55e;
+
   --background: var(--bg);
   --foreground: var(--fg);
   --card: var(--surface-1);
@@ -167,13 +186,6 @@
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation: draw 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-}
-
-@utility bg-grid {
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 32px 32px;
 }
 
 @keyframes draw {
@@ -249,18 +261,46 @@
     color: var(--fg);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
+}
 
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
+/* Reduced motion: drop movement, keep state feedback (colour, focus, opacity). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow !important;
+  }
+
+  /* The technology carousel becomes a static, wrapped list. */
+  .marquee-viewport {
+    mask-image: none;
+    padding-inline: 1.5rem;
+  }
+
+  .marquee-track {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: none;
+  }
+
+  .marquee-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    row-gap: 1.25rem;
+  }
+
+  .marquee-duplicate,
+  .marquee-control {
+    display: none;
   }
 }
 

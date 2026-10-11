@@ -10,9 +10,8 @@ export function HeroSection({ content }: { content: Pick<Content, "hero" | "site
 
   return (
     <section aria-label={site.role} className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-      <div className="pointer-events-none absolute inset-0 bg-grid mask-[radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-144 w-5xl -translate-x-1/2 rounded-full blur-3xl"
+        className="pointer-events-none absolute -top-40 left-1/2 h-144 w-5xl -translate-x-1/2 rounded-full"
         style={{ background: "radial-gradient(closest-side, var(--brand-soft), transparent)" }}
         aria-hidden="true"
       />
@@ -51,7 +50,7 @@ export function HeroSection({ content }: { content: Pick<Content, "hero" | "site
               <div key={s.label} className="flex flex-col">
                 <dd className="order-1 font-display text-3xl font-semibold tracking-tight text-fg sm:text-4xl">{s.value}</dd>
                 <dt className="order-2 mt-1 text-sm leading-snug text-fg-2">{s.label}</dt>
-                {s.detail ? <dd className="order-3 mt-1 font-mono text-[11px] uppercase tracking-wider text-fg-3">{s.detail}</dd> : null}
+                {s.detail ? <dd className="order-3 mt-1 font-mono text-xs uppercase tracking-wider text-fg-3">{s.detail}</dd> : null}
               </div>
             ))}
           </dl>
@@ -70,12 +69,12 @@ export function HeroSection({ content }: { content: Pick<Content, "hero" | "site
               className="h-full w-full object-cover"
             />
             <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg/40 via-transparent to-transparent" aria-hidden="true" />
-            <div className="absolute top-4 left-4 rounded-full border border-line-strong bg-bg/70 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-2 backdrop-blur">
+            <div className="absolute top-4 left-4 rounded-full border border-line-strong bg-bg/70 px-3 py-1 font-mono text-xs uppercase tracking-[0.16em] text-fg-2 backdrop-blur">
               {site.location}
             </div>
           </div>
           <div className="mt-4 rounded-2xl border border-line bg-surface-1/90 p-4 backdrop-blur lg:absolute lg:-bottom-8 lg:-left-16 lg:mt-0 lg:w-72 lg:shadow-glow">
-            <Sparkline label={hero.sparklineLabel} />
+            <Sparkline label={hero.sparklineLabel} source={hero.sparklineSource} />
           </div>
         </div>
       </div>

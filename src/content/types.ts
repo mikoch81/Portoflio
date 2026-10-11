@@ -80,6 +80,10 @@ export interface Content {
     viewRepo: string;
     allProjects: string;
     copyEmail: string;
+    pauseMarquee: string;
+    playMarquee: string;
+    stackLabel: string;
+    opensInNewTab: string;
     copied: string;
     backToPortfolio: string;
     footerRights: string;
@@ -95,6 +99,7 @@ export interface Content {
     stats: Stat[];
     portraitAlt: string;
     sparklineLabel: string;
+    sparklineSource: string;
   };
   work: {
     eyebrow: string;

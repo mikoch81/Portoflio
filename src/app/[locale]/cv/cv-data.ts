@@ -40,6 +40,7 @@ export const experience = [
       "Involved in test automation activities and quality support for enterprise-grade systems.",
       "Using tools and technologies including Java, Selenium, Jenkins, Jira, Git, Maven, Docker, Android Studio, Xcode, Gerrit, Bitbucket, SwiftUI, Carthage, and Tuist.",
       "Supporting quality processes related to mobile application development and internet applications in a regulated enterprise setting.",
+      "Working daily with GitHub Copilot (Chat, agent mode, coding agent) and Microsoft 365 Copilot on Claude, GPT and Gemini models: test code, failure analysis, team prompts and agents, documentation.",
     ],
   },
   {
@@ -118,6 +119,7 @@ export const education = [
 ];
 
 export const certifications = [
+  "Hackathon: GitHub Copilot AI Agents, GitHub Codespaces & Actions, Azure SRE Agent | Microsoft | Oct 2026",
   "ISTQB Certified Tester, Foundation Level",
   "Your Top AI Questions Answered: AI Literacy for Everyone | LinkedIn | Oct 2025",
 ];
@@ -143,7 +145,7 @@ export const technologyGroups = [
   },
   {
     category: "Additional Areas",
-    items: "Scrum, Agile, OpenAI API, LLM, AI literacy, Microsoft Office, Windows systems, AutoCAD, Photoshop",
+    items: "Scrum, Agile, GitHub Copilot, Microsoft 365 Copilot, Claude, GPT, Gemini, Ollama, OpenAI API, LLM, AI literacy, Microsoft Office, Windows systems, AutoCAD, Photoshop",
   },
 ];
 

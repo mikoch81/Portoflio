@@ -43,7 +43,7 @@ export function CaseStudyPage({
         <FadeIn>
           <Link
             href={`${localePath(locale, "/")}#work`}
-            className="inline-flex items-center gap-2 text-sm text-fg-3 transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+            className="inline-flex min-h-11 items-center gap-2 text-sm text-fg-3 transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />
             {ui.allProjects}
@@ -86,7 +86,7 @@ export function CaseStudyPage({
                 <ol className="relative space-y-6 border-l border-line pl-8">
                   {study.approach.map((item, i) => (
                     <li key={i} className="relative">
-                      <span className="absolute -left-[2.35rem] top-1.5 grid size-5 place-items-center rounded-full border border-brand/50 bg-bg font-mono text-[10px] text-brand">
+                      <span className="absolute -left-[2.6rem] top-1 grid size-6 place-items-center rounded-full border border-brand/50 bg-bg font-mono text-xs text-brand" aria-hidden="true">
                         {i + 1}
                       </span>
                       <p className="text-[15px] leading-relaxed text-fg-2">{item}</p>
@@ -137,7 +137,7 @@ export function CaseStudyPage({
                   <dt className="text-fg-3">{t.stack}</dt>
                   <dd className="mt-2 flex flex-wrap gap-1.5">
                     {techAll.map((item) => (
-                      <span key={item} className="rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-[11px] text-fg-2">
+                      <span key={item} className="rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-xs text-fg-2">
                         {item}
                       </span>
                     ))}
@@ -149,9 +149,10 @@ export function CaseStudyPage({
                   href={study.repositoryUrl ?? project.repositoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-10 w-full text-sm")}
+                  className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 w-full text-sm")}
                 >
                   {ui.viewRepo}
+                  <span className="sr-only"> ({ui.opensInNewTab})</span>
                   <ArrowUpRight className="ml-1 size-4" aria-hidden="true" />
                 </a>
               ) : null}
@@ -170,7 +171,7 @@ export function CaseStudyPage({
                 >
                   <ProjectCover kind={p.cover} className="hidden w-32 shrink-0 rounded-xl border border-line sm:block" />
                   <div className="flex flex-col gap-2">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-brand">{work.categories[p.category]}</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.14em] text-brand">{work.categories[p.category]}</span>
                     <h3 className="text-lg font-semibold tracking-tight text-fg">{p.title}</h3>
                     <p className="text-sm leading-relaxed text-fg-2">{p.outcome}</p>
                     <span className="mt-auto inline-flex items-center gap-1 pt-1 text-sm font-medium text-fg group-hover:text-brand">

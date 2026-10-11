@@ -49,6 +49,10 @@ export const pl: Content = {
     viewRepo: "Zobacz repozytorium",
     allProjects: "Wszystkie projekty",
     copyEmail: "Kopiuj adres e-mail",
+    pauseMarquee: "Zatrzymaj karuzelę technologii",
+    playMarquee: "Uruchom karuzelę technologii",
+    stackLabel: "Technologie",
+    opensInNewTab: "otwiera się w nowej karcie",
     copied: "Skopiowano",
     backToPortfolio: "Wróć do portfolio",
     footerRights: "Wszelkie prawa zastrzeżone.",
@@ -63,12 +67,13 @@ export const pl: Content = {
     headlineAccent: "naprawdę utrzymać.",
     lead: "Projektuję frameworki automatyzacji, pipeline'y raportowania wydajności i bezpieczne dla danych rozwiązania AI dla organizacji klasy enterprise. Obecnie pracuję w bankowości: web, mobile i WebView.",
     stats: [
-      { value: "15+", label: "lat w web i QA", detail: "od 2011" },
+      { value: "15+", label: "lat w web i QA", detail: "Bank Pekao, T-Mobile" },
       { value: "9", label: "lat w automatyzacji testów", detail: "od 2017" },
       { value: "4", label: "publiczne repozytoria demo", detail: "Playwright, Selenium, API, JMeter" },
     ],
     portraitAlt: "Portret Michała Kochaniaka",
     sparklineLabel: "Przykładowy trend latencji p95 w kolejnych przebiegach regresji",
+    sparklineSource: "Bankowa aplikacja do obsługi konta, zanonimizowana. Krzywa poglądowa.",
   },
 
   work: {
@@ -521,8 +526,8 @@ export const pl: Content = {
 
   ai: {
     eyebrow: "AI w QA",
-    title: "AI w inżynierii jakości: lokalnie, prywatnie, użytecznie",
-    lead: "Nie do generowania testów. Do przyspieszania analizy, interpretacji wyników i wspierania decyzji inżynierskich. Modele działają lokalnie przez Ollamę, więc wrażliwe dane nie opuszczają sieci.",
+    title: "AI w inżynierii jakości: model dobrany do danych",
+    lead: "Na co dzień w banku pracuję z GitHub Copilotem (Chat, tryb agenta i coding agent) oraz Microsoft 365 Copilotem, na modelach Claude, GPT i Gemini. Tam, gdzie dane testowe są wrażliwe, analiza działa lokalnie przez Ollamę. W obu przypadkach AI przyspiesza pracę inżynierską, a nie zastępuje osądu.",
     useCases: [
       {
         title: "Analiza wyników testów",
@@ -543,21 +548,21 @@ export const pl: Content = {
         ],
       },
       {
-        title: "Raportowanie wspierane AI",
-        description: "Uporządkowane raporty z surowych danych testowych: spójny format, bez ręcznego pisania.",
+        title: "Praca agentowa z Copilotem",
+        description: "GitHub Copilot jako codzienne narzędzie inżynierskie: Chat, tryb agenta i coding agent.",
         details: [
-          "Narracyjne podsumowania z danych wykonania",
-          "Wnioski dla zarządu i oznaczenia ryzyka",
-          "Spójne formatowanie między cyklami raportów",
+          "Pisanie i refaktoryzacja kodu testów w trybie agenta",
+          "Delegowanie wydzielonych zadań coding agentowi, z review jako pull request",
+          "Własne instrukcje, prompty i agenty dla zespołu QA",
         ],
       },
       {
-        title: "Lokalne AI i systemy on-premises",
-        description: "Modele uruchamiane lokalnie przez Ollamę. Wrażliwe dane nie opuszczają środowiska.",
+        title: "Świadomy wybór, gdzie trafiają dane",
+        description: "Modele komercyjne do kodu i dokumentacji, lokalne tam, gdzie dane testowe są wrażliwe.",
         details: [
-          "Brak zewnętrznych wywołań API podczas analizy",
-          "Wrażliwe dane pozostają w sieci firmowej",
-          "Powtarzalne, wersjonowane procesy",
+          "Modele Claude, GPT i Gemini przez GitHub Copilota",
+          "Microsoft 365 Copilot do dokumentacji i raportów",
+          "Ollama on-premises dla wrażliwych wyników testów",
         ],
       },
     ],
@@ -595,7 +600,7 @@ export const pl: Content = {
       },
       {
         category: "AI i systemy agentowe",
-        items: ["Integracja LLM", "Ollama / lokalne AI", "Orkiestracja agentów", "Projektowanie promptów i systemów", "Analiza wspierana AI"],
+        items: ["GitHub Copilot: Chat, tryb agenta, coding agent", "Microsoft 365 Copilot", "Claude, GPT, Gemini", "Ollama / lokalne AI", "Orkiestracja agentów", "Projektowanie promptów i systemów"],
       },
     ],
     logos: [
@@ -611,6 +616,9 @@ export const pl: Content = {
       { slug: "apachemaven", label: "Maven" },
       { slug: "junit5", label: "JUnit 5" },
       { slug: "jira", label: "Jira" },
+      { slug: "githubcopilot", label: "GitHub Copilot" },
+      { slug: "claude", label: "Claude" },
+      { slug: "googlegemini", label: "Gemini" },
       { slug: "ollama", label: "Ollama" },
       { slug: "docker", label: "Docker" },
       { slug: "git", label: "Git" },
@@ -623,12 +631,12 @@ export const pl: Content = {
   proof: {
     eyebrow: "Efekty",
     title: "Wyniki, nie przymiotniki",
-    lead: "Co ta praca realnie zmieniła. Do tego prawdziwy raport z pipeline'u i CV do przeczytania w dwie minuty.",
+    lead: "Co ta praca realnie zmieniła. Do tego CV do przeczytania w dwie minuty.",
     impact: [
       { value: "Minuty", label: "zamiast godzin analizy wydajności w każdym cyklu testowym", detail: "Pipeline raportowania z AI" },
       { value: "Android + iOS", label: "jeden framework, obie platformy", detail: "Aplikacja bankowa, hybrydowy WebView" },
       { value: "0", label: "ręcznych synchronizacji wyników do Zephyra", detail: "Każdy przebieg CI publikuje się sam" },
-      { value: "100%", label: "wnioskowania AI lokalnie, w sieci firmowej", detail: "Ollama, zero wycieku danych" },
+      { value: "2 poziomy", label: "AI: modele komercyjne do kodu, lokalne do wrażliwych danych", detail: "GitHub Copilot + Ollama" },
     ],
     report: {
       title: "Przykładowy raport wydajności",

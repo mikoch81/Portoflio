@@ -8,11 +8,11 @@ import { useLocale } from "@/i18n/use-locale";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type HeaderContent = Pick<Content, "nav" | "ui" | "site">;
 
-const sectionIds = ["work", "how", "ai", "stack", "proof", "contact"] as const;
+const sectionIds = ["work", "proof", "how", "ai", "stack", "contact"] as const;
 type SectionId = (typeof sectionIds)[number];
 
 function useActiveSection(enabled: boolean) {
@@ -43,6 +43,7 @@ function useActiveSection(enabled: boolean) {
 
 export function Header({ content, locale }: { content: HeaderContent; locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const { path } = useLocale();
   const isHome = path === "/";
   const active = useActiveSection(isHome);
@@ -53,6 +54,17 @@ export function Header({ content, locale }: { content: HeaderContent; locale: Lo
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      menuButtonRef.current?.focus();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -70,7 +82,7 @@ export function Header({ content, locale }: { content: HeaderContent; locale: Lo
 
   const linkClass = (isActive: boolean) =>
     cn(
-      "rounded-md px-2.5 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+      "rounded-md px-2.5 py-1.5 pointer-coarse:py-3 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
       isActive ? "text-fg" : "text-fg-3 hover:text-fg"
     );
 
@@ -100,20 +112,21 @@ export function Header({ content, locale }: { content: HeaderContent; locale: Lo
             lang={otherLocale}
             aria-label={`${content.ui.switchLanguageShort}: ${content.ui.switchLanguage}`}
             title={content.ui.switchLanguage}
-            className="inline-flex h-9 items-center justify-center rounded-lg border border-line px-2.5 font-mono text-xs font-medium tracking-wide text-fg-2 transition-colors hover:bg-surface-3 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+            className="inline-flex h-9 pointer-coarse:h-11 pointer-coarse:min-w-11 items-center justify-center rounded-lg border border-line px-2.5 font-mono text-xs font-medium tracking-wide text-fg-2 transition-colors hover:bg-surface-3 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
           >
             {content.ui.switchLanguageShort}
           </Link>
           <ThemeToggle labels={{ light: content.ui.themeLight, dark: content.ui.themeDark }} />
           <Link
             href={localePath(locale, "/cv")}
-            className={cn(buttonVariants({ variant: "default", size: "lg" }), "hidden h-9 px-4 text-sm font-medium sm:inline-flex")}
+            className={cn(buttonVariants({ variant: "default", size: "lg" }), "hidden h-9 pointer-coarse:h-11 px-4 text-sm font-medium sm:inline-flex")}
           >
             {content.nav.cv}
           </Link>
           <button
+            ref={menuButtonRef}
             type="button"
-            className="inline-flex size-9 items-center justify-center rounded-lg border border-line text-fg-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+            className="inline-flex size-11 items-center justify-center rounded-lg border border-line text-fg-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? content.ui.closeMenu : content.ui.openMenu}
             aria-expanded={open}

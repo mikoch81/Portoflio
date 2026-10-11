@@ -2,7 +2,7 @@
 // Usage: node tools/generate-cv-pdf.mjs [output.pdf]
 // Set CV_BASE_URL to reuse a running server; otherwise a production build is served on port 3311.
 import { chromium } from "@playwright/test";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
 
@@ -22,6 +22,27 @@ async function waitFor(url, attempts = 60) {
   throw new Error(`Server did not answer at ${url}`);
 }
 
+async function isAnswering(url) {
+  try {
+    await fetch(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// `npm` runs through a shell, so killing the child alone leaves `next start` orphaned on the port.
+function stopServer(child) {
+  if (!child?.pid) return;
+  if (process.platform === "win32") {
+    spawnSync("taskkill", ["/pid", String(child.pid), "/T", "/F"], { stdio: "ignore" });
+  } else {
+    try {
+      process.kill(-child.pid, "SIGTERM");
+    } catch {}
+  }
+}
+
 function run(cmd, args, opts = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, args, { stdio: "inherit", shell: true, ...opts });
@@ -31,11 +52,19 @@ function run(cmd, args, opts = {}) {
 
 try {
   if (!baseUrl) {
+    baseUrl = `http://127.0.0.1:${port}`;
+    if (await isAnswering(baseUrl)) {
+      // A leftover server would serve a stale build and silently produce an outdated PDF.
+      throw new Error(`Port ${port} is already in use. Stop that server or set CV_BASE_URL to reuse it.`);
+    }
     console.log("Building portfolio application...");
     await run("npm", ["run", "build"]);
     console.log(`Starting server on port ${port}...`);
-    server = spawn("npm", ["run", "start", "--", "--port", String(port)], { stdio: "ignore", shell: true });
-    baseUrl = `http://127.0.0.1:${port}`;
+    server = spawn("npm", ["run", "start", "--", "--port", String(port)], {
+      stdio: "ignore",
+      shell: true,
+      detached: process.platform !== "win32",
+    });
   }
   await waitFor(`${baseUrl}/cv/print`);
 
@@ -50,5 +79,5 @@ try {
   await browser.close();
   console.log(`PDF written to ${path.relative(process.cwd(), output)} (fonts: ${[...new Set(fonts)].join(", ") || "none"})`);
 } finally {
-  server?.kill();
+  stopServer(server);
 }
