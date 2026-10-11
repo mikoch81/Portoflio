@@ -43,3 +43,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# impeccable: keep critique snapshots, ignore per-machine session state
+/.impeccable/hook.cache.json
+/.impeccable/live/
