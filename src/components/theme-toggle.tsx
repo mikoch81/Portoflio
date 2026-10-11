@@ -26,7 +26,7 @@ export function ThemeToggle({
       aria-label={isDark ? labels.light : labels.dark}
       title={isDark ? labels.light : labels.dark}
       className={cn(
-        "inline-flex size-9 items-center justify-center rounded-lg border border-line text-fg-2 transition-colors hover:bg-surface-3 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
+        "inline-flex size-9 pointer-coarse:size-11 items-center justify-center rounded-lg border border-line text-fg-2 transition-colors hover:bg-surface-3 hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60",
         className
       )}
     >

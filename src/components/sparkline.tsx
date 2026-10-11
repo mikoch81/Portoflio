@@ -15,7 +15,7 @@ function toPath(values: number[], w: number, h: number) {
     .join(" ");
 }
 
-export function Sparkline({ label, className }: { label: string; className?: string }) {
+export function Sparkline({ label, source, className }: { label: string; source?: string; className?: string }) {
   const w = 320;
   const h = 96;
   const d = toPath(points, w, h);
@@ -44,10 +44,11 @@ export function Sparkline({ label, className }: { label: string; className?: str
         />
         <circle cx={w} cy={h - ((points[points.length - 1] - 14) / (44 - 14)) * (h - 8) - 4} r="4" fill="var(--brand)" />
       </svg>
-      <figcaption className="mt-2 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-fg-3">
+      <figcaption className="mt-2 flex items-center justify-between font-mono text-xs uppercase tracking-[0.14em] text-fg-3">
         <span>p95 latency</span>
         <span className="text-brand">−32 %</span>
       </figcaption>
+      {source ? <p className="mt-1.5 text-xs leading-snug text-fg-3">{source}</p> : null}
     </figure>
   );
 }

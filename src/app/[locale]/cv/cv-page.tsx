@@ -5,6 +5,9 @@ import type { ReactNode } from "react";
 import { FadeIn } from "@/components/motion";
 import { buttonVariants } from "@/components/ui/button";
 import { en } from "@/content/en";
+import { localePath } from "@/i18n/config";
+import { getContent } from "@/i18n/get-content";
+import { useLocale } from "@/i18n/use-locale";
 
 const siteConfig = en.site;
 import { cn } from "@/lib/utils";
@@ -51,17 +54,20 @@ function MetaList({ items }: { items: string[] }) {
 }
 
 export function CvPage() {
+  const { locale } = useLocale();
+  const { ui, nav } = getContent(locale);
+
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.14),transparent_24%),linear-gradient(180deg,#06080d_0%,#0b1016_100%)] py-10 sm:py-14 print:bg-white print:py-0">
       <div className="mx-auto max-w-295 px-4 sm:px-6 print:max-w-none print:px-0">
         <FadeIn>
           <div className="no-print mb-8 flex flex-wrap items-center justify-between gap-3">
             <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-[12px] text-white/60 transition-colors hover:text-white/85"
+              href={localePath(locale, "/")}
+              className="inline-flex min-h-11 items-center gap-1.5 text-[13px] text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
             >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              Back to portfolio
+              <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+              {ui.backToPortfolio}
             </Link>
 
             <div className="flex flex-wrap gap-3">
@@ -70,21 +76,21 @@ export function CvPage() {
                 download
                 className={cn(
                   buttonVariants({ variant: "default", size: "sm" }),
-                  "h-9 bg-cyan px-5 text-[13px] font-medium text-background hover:bg-cyan/90"
+                  "h-11 bg-brand px-5 text-[13px] font-medium text-brand-fg hover:bg-brand/90"
                 )}
               >
-                <Download className="mr-1.5 h-3.5 w-3.5" />
-                Download PDF
+                <Download className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
+                {ui.downloadCv}
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "sm" }),
-                  "h-9 border-white/15 px-5 text-[13px] text-white/75 hover:bg-white/5 hover:text-white"
+                  "h-11 border-white/15 bg-transparent px-5 text-[13px] text-white/80 hover:bg-white/5 hover:text-white dark:border-white/15 dark:bg-transparent dark:hover:bg-white/5"
                 )}
               >
-                <Mail className="mr-1.5 h-3.5 w-3.5" />
-                Contact
+                <Mail className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
+                {nav.contact}
               </a>
             </div>
           </div>
@@ -116,7 +122,7 @@ export function CvPage() {
                         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#285b59]">
                           Contact
                         </p>
-                        <div className="mt-4 space-y-2.5 text-[11.5px] leading-[1.45] tracking-[0.04em] text-[#65727a] wrap-anywhere">
+                        <div className="mt-4 space-y-2.5 text-[11.5px] leading-[1.45] tracking-[0.04em] text-[#5c6a73] wrap-anywhere">
                           <p>Lodz, Poland</p>
                           <p>{siteConfig.email}</p>
                           <p>linkedin.com/in/michalkochaniak</p>
@@ -145,9 +151,9 @@ export function CvPage() {
                                 {job.role}
                               </h3>
                               <p className="mt-1 text-[14px] font-medium text-[#2e4954]">{job.company}</p>
-                              <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#6a767f]">{job.meta}</p>
+                              <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#5c6a73]">{job.meta}</p>
                             </div>
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6a767f]">
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5c6a73]">
                               {job.period}
                             </p>
                           </div>
@@ -176,7 +182,7 @@ export function CvPage() {
                         <div key={item.title} className="break-inside-avoid-page border-b border-[#e7ddd0] pb-4 last:border-b-0 last:pb-0">
                           <p className="text-[14px] font-semibold text-[#14212b]">{item.title}</p>
                           <p className="text-[13px] text-[#2c4651]">{item.subtitle}</p>
-                          <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#6c7880]">{item.period}</p>
+                          <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#5c6a73]">{item.period}</p>
                           <p className="mt-2 text-[13px] leading-[1.65] text-[#495662]">{item.details}</p>
                         </div>
                       ))}
@@ -214,9 +220,9 @@ export function CvPage() {
                                 {job.role}
                               </h3>
                               <p className="mt-1 text-[14px] font-medium text-[#2e4954]">{job.company}</p>
-                              <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#6a767f]">{job.meta}</p>
+                              <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#5c6a73]">{job.meta}</p>
                             </div>
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6a767f]">
+                            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5c6a73]">
                               {job.period}
                             </p>
                           </div>

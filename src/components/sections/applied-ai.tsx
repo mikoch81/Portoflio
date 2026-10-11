@@ -4,25 +4,25 @@ import type { Content } from "@/content/types";
 
 function Terminal({ terminal }: { terminal: Content["ai"]["terminal"] }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-line-strong bg-[#0b0f16] text-[13px] leading-relaxed text-[#b4bfd0] shadow-glow" aria-label={terminal.title}>
-      <div className="flex items-center gap-2 border-b border-white/10 bg-[#131a24] px-4 py-2.5">
-        <span className="size-2.5 rounded-full bg-[#ef4444]/80" aria-hidden="true" />
-        <span className="size-2.5 rounded-full bg-[#f59e0b]/80" aria-hidden="true" />
-        <span className="size-2.5 rounded-full bg-[#22c55e]/80" aria-hidden="true" />
-        <span className="ml-3 font-mono text-[11px] text-[#8593a8]">{terminal.title}</span>
+    <div className="overflow-hidden rounded-2xl border border-line-strong bg-term-bg text-[13px] leading-relaxed text-term-fg shadow-glow" aria-label={terminal.title}>
+      <div className="flex items-center gap-2 border-b border-white/10 bg-term-bar px-4 py-2.5">
+        <span className="size-2.5 rounded-full bg-term-red/80" aria-hidden="true" />
+        <span className="size-2.5 rounded-full bg-term-amber/80" aria-hidden="true" />
+        <span className="size-2.5 rounded-full bg-term-green/80" aria-hidden="true" />
+        <span className="ml-3 font-mono text-xs text-term-muted">{terminal.title}</span>
       </div>
       <pre className="overflow-x-auto p-5 font-mono whitespace-pre-wrap">
         <code>
-          <span className="text-[#67e8f9]">$ </span>
-          <span className="text-[#e8ecf2]">{terminal.command}</span>
+          <span className="text-term-accent">$ </span>
+          <span className="text-term-strong">{terminal.command}</span>
           {"\n\n"}
           {terminal.lines.map((l, i) => (
-            <span key={i} className={l.startsWith("OK") ? "text-[#22d3ee]" : undefined}>
+            <span key={i} className={l.startsWith("OK") ? "text-term-ok" : undefined}>
               {l}
               {"\n"}
             </span>
           ))}
-          <span className="mt-1 inline-block h-4 w-2 translate-y-0.5 bg-[#22d3ee] motion-safe:animate-pulse" aria-hidden="true" />
+          <span className="mt-1 inline-block h-4 w-2 translate-y-0.5 bg-term-ok motion-safe:animate-pulse" aria-hidden="true" />
         </code>
       </pre>
     </div>

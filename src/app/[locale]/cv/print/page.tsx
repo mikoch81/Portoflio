@@ -68,9 +68,9 @@ function RoleBlock({
         <div>
           <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-[#12202a]">{role}</h3>
           <p className="mt-1 text-[12.5px] font-medium text-[#24424c]">{company}</p>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-[#69757d]">{meta}</p>
+          <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-[#5c6a73]">{meta}</p>
         </div>
-        <p className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#69757d]">
+        <p className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#5c6a73]">
           {period}
         </p>
       </div>
@@ -154,7 +154,7 @@ export default function PrintPage() {
                     <div key={item.title} className="border-b border-[#e6ddd0] pb-3 last:border-b-0 last:pb-0">
                       <p className="text-[11.5px] font-semibold text-[#14212b]">{item.title}</p>
                       <p className="text-[11px] text-[#29414c]">{item.subtitle}</p>
-                      <p className="mt-1 text-[9.5px] uppercase tracking-[0.12em] text-[#68747c]">{item.period}</p>
+                      <p className="mt-1 text-[9.5px] uppercase tracking-[0.12em] text-[#5c6a73]">{item.period}</p>
                       <p className="mt-1.5 text-[10.7px] leading-[1.45] text-[#4d5a64]">{item.details}</p>
                     </div>
                   ))}
@@ -162,8 +162,8 @@ export default function PrintPage() {
               </section>
 
               <section className="rounded-[16px] border border-[#ddd5c8] bg-white/55 px-4 py-4">
-                <PrintSectionTitle>Certifications</PrintSectionTitle>
-                <BulletList items={certifications} compact />
+                <PrintSectionTitle>Interests</PrintSectionTitle>
+                <BulletList items={interests} compact />
               </section>
             </aside>
           </div>
@@ -194,7 +194,7 @@ export default function PrintPage() {
                     <div key={`${job.company}-${job.role}`} className="rounded-[14px] border border-[#ddd5c8] bg-white/45 px-4 py-3">
                       <p className="text-[11.5px] font-semibold text-[#14212b]">{job.role}</p>
                       <p className="text-[10.5px] text-[#24424c]">{job.company}</p>
-                      <p className="mt-1 text-[9.5px] uppercase tracking-[0.12em] text-[#69757d]">{job.period}</p>
+                      <p className="mt-1 text-[9.5px] uppercase tracking-[0.12em] text-[#5c6a73]">{job.period}</p>
                       <p className="mt-2 text-[10.5px] leading-[1.45] text-[#4d5a64]">{job.highlights[0]}</p>
                     </div>
                   ))}
@@ -218,8 +218,8 @@ export default function PrintPage() {
               </section>
 
               <section className="rounded-[16px] border border-[#ddd5c8] bg-white/55 px-4 py-4">
-                <PrintSectionTitle>Interests</PrintSectionTitle>
-                <BulletList items={interests} compact />
+                <PrintSectionTitle>Certifications</PrintSectionTitle>
+                <BulletList items={certifications} compact />
               </section>
             </aside>
           </div>

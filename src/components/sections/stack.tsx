@@ -1,12 +1,14 @@
 import { FadeIn, FadeInStagger, FadeInStaggerChild } from "@/components/motion";
+import { LogoMarquee } from "@/components/logo-marquee";
 import { SectionHeader } from "@/components/section-header";
 import type { Content } from "@/content/types";
 import { techIcons } from "@/lib/tech-icons";
+import { cn } from "@/lib/utils";
 
-function LogoRow({ logos }: { logos: Content["stack"]["logos"] }) {
+function LogoRow({ logos, duplicate = false }: { logos: Content["stack"]["logos"]; duplicate?: boolean }) {
   const items = logos.filter((l) => techIcons[l.slug]);
   return (
-    <ul className="flex shrink-0 items-center gap-10 pr-10" aria-hidden="true">
+    <ul className={cn("marquee-row flex shrink-0 items-center gap-10 pr-10", duplicate && "marquee-duplicate")} aria-hidden="true">
       {items.map((l) => (
         <li key={l.slug} className="flex items-center gap-2.5 text-fg-3">
           <svg viewBox="0 0 24 24" className="size-6 fill-current" role="img" aria-label={l.label}>
@@ -19,8 +21,8 @@ function LogoRow({ logos }: { logos: Content["stack"]["logos"] }) {
   );
 }
 
-export function StackSection({ content }: { content: Pick<Content, "stack"> }) {
-  const { stack } = content;
+export function StackSection({ content }: { content: Pick<Content, "stack" | "ui"> }) {
+  const { stack, ui } = content;
 
   return (
     <section id="stack" aria-labelledby="stack-title" className="scroll-mt-20 border-y border-line bg-surface-1/60 py-24 sm:py-32">
@@ -31,17 +33,15 @@ export function StackSection({ content }: { content: Pick<Content, "stack"> }) {
       </div>
 
       <FadeIn className="mt-12">
-        <div className="group relative overflow-hidden border-y border-line bg-bg py-5 mask-[linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
-          <div className="flex w-max animate-marquee group-hover:paused">
-            <LogoRow logos={stack.logos} />
-            <LogoRow logos={stack.logos} />
-          </div>
-          <ul className="sr-only" aria-label={stack.title}>
-            {stack.logos.map((l) => (
-              <li key={l.slug}>{l.label}</li>
-            ))}
-          </ul>
-        </div>
+        <LogoMarquee labels={{ pause: ui.pauseMarquee, play: ui.playMarquee }}>
+          <LogoRow logos={stack.logos} />
+          <LogoRow logos={stack.logos} duplicate />
+        </LogoMarquee>
+        <ul className="sr-only" aria-label={stack.title}>
+          {stack.logos.map((l) => (
+            <li key={l.slug}>{l.label}</li>
+          ))}
+        </ul>
       </FadeIn>
 
       <div className="mx-auto max-w-6xl px-6">

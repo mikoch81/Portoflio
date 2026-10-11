@@ -92,25 +92,25 @@ function Chart() {
 function Terminal() {
   return (
     <>
-      <rect x="24" y="24" width="352" height="192" rx="10" fill="#0b0f16" stroke={base.line} />
-      <rect x="24" y="24" width="352" height="26" rx="10" fill="#131a24" />
-      <circle cx="42" cy="37" r="4" fill="#ef4444" opacity="0.8" />
-      <circle cx="56" cy="37" r="4" fill="#f59e0b" opacity="0.8" />
-      <circle cx="70" cy="37" r="4" fill="#22c55e" opacity="0.8" />
-      <text x="44" y="76" fontSize="11" fontFamily="var(--font-geist-mono), monospace" fill="#67e8f9">
+      <rect x="24" y="24" width="352" height="192" rx="10" fill="var(--term-bg)" stroke={base.line} />
+      <rect x="24" y="24" width="352" height="26" rx="10" fill="var(--term-bar)" />
+      <circle cx="42" cy="37" r="4" fill="var(--term-red)" opacity="0.8" />
+      <circle cx="56" cy="37" r="4" fill="var(--term-amber)" opacity="0.8" />
+      <circle cx="70" cy="37" r="4" fill="var(--term-green)" opacity="0.8" />
+      <text x="44" y="76" fontSize="11" fontFamily="var(--font-geist-mono), monospace" fill="var(--term-accent)">
         $ qa-agent analyze run-142.jtl
       </text>
       {[
-        ["> 48 210 samples | 0.42% errors", "#b4bfd0"],
-        ["> p95 812 ms -> 1 034 ms (+27%)", "#b4bfd0"],
-        ["> cluster: 91% HTTP 502 at gateway", "#b4bfd0"],
-        ["OK report -> run-142-summary.docx", "#22d3ee"],
+        ["> 48 210 samples | 0.42% errors", "var(--term-fg)"],
+        ["> p95 812 ms -> 1 034 ms (+27%)", "var(--term-fg)"],
+        ["> cluster: 91% HTTP 502 at gateway", "var(--term-fg)"],
+        ["OK report -> run-142-summary.docx", "var(--term-ok)"],
       ].map(([t, c], i) => (
         <text key={t} x="44" y={98 + i * 22} fontSize="11" fontFamily="var(--font-geist-mono), monospace" fill={c}>
           {t}
         </text>
       ))}
-      <rect x="44" y="190" width="8" height="12" fill="#22d3ee" />
+      <rect x="44" y="190" width="8" height="12" fill="var(--term-ok)" />
     </>
   );
 }
@@ -139,7 +139,7 @@ function Pipeline() {
           </text>
         </g>
       ))}
-      <rect x="120" y="44" width="160" height="30" rx="8" fill={base.panel} stroke={base.line} />
+      <rect x="96" y="44" width="208" height="30" rx="8" fill={base.panel} stroke={base.line} />
       <text x="200" y="64" textAnchor="middle" fontSize="11" fontFamily="var(--font-geist-mono), monospace" fill={base.ink}>
         cycle #142 | 96 / 98 passed
       </text>

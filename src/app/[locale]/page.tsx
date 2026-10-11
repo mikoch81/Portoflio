@@ -18,10 +18,10 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
     <>
       <HeroSection content={content} />
       <WorkSection content={content} locale={locale} />
+      <ProofSection content={content} locale={locale} />
       <HowIWorkSection content={content} />
       <AppliedAiSection content={content} />
       <StackSection content={content} />
-      <ProofSection content={content} locale={locale} />
       <ContactSection content={content} />
     </>
   );

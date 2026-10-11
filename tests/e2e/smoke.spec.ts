@@ -80,7 +80,9 @@ test.describe("case studies", () => {
 test.describe("assets", () => {
   test("CV page and PDF are reachable", async ({ page, request }) => {
     await page.goto("/cv");
-    await expect(page.getByRole("link", { name: /download pdf/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: en.ui.downloadCv })).toBeVisible();
+    await page.goto("/pl/cv");
+    await expect(page.getByRole("link", { name: pl.ui.downloadCv })).toBeVisible();
     expect((await request.head("/Michal_Kochaniak_CV.pdf")).status()).toBe(200);
   });
 

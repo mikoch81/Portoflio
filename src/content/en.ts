@@ -49,6 +49,10 @@ export const en: Content = {
     viewRepo: "View repository",
     allProjects: "All projects",
     copyEmail: "Copy e-mail address",
+    pauseMarquee: "Pause technology carousel",
+    playMarquee: "Play technology carousel",
+    stackLabel: "Technologies",
+    opensInNewTab: "opens in a new tab",
     copied: "Copied",
     backToPortfolio: "Back to portfolio",
     footerRights: "All rights reserved.",
@@ -63,12 +67,13 @@ export const en: Content = {
     headlineAccent: "actually maintain.",
     lead: "I design automation frameworks, performance reporting pipelines and privacy-safe AI workflows for enterprise delivery. Currently in banking, across web, mobile and WebView.",
     stats: [
-      { value: "15+", label: "years in web and QA", detail: "since 2011" },
+      { value: "15+", label: "years in web and QA", detail: "Bank Pekao, T-Mobile" },
       { value: "9", label: "years in test automation", detail: "since 2017" },
       { value: "4", label: "open-source demo repos", detail: "Playwright, Selenium, API, JMeter" },
     ],
     portraitAlt: "Portrait of Michał Kochaniak",
     sparklineLabel: "Illustrative p95 latency trend across regression runs",
+    sparklineSource: "Account-management banking app, anonymised. Illustrative curve.",
   },
 
   work: {
@@ -521,8 +526,8 @@ export const en: Content = {
 
   ai: {
     eyebrow: "Applied AI",
-    title: "AI in quality engineering: local, private, useful",
-    lead: "Not for generating tests. For accelerating analysis, interpreting results and supporting engineering decisions. Models run on-premises through Ollama, so sensitive data never leaves the network.",
+    title: "AI in quality engineering: the right model for the data",
+    lead: "Day to day at the bank I work with GitHub Copilot (Chat, agent mode and the coding agent) and Microsoft 365 Copilot, on Claude, GPT and Gemini models. Where test data is sensitive, analysis runs on-premises through Ollama. Either way, AI speeds up engineering work and does not replace judgment.",
     useCases: [
       {
         title: "Test result analysis",
@@ -543,21 +548,21 @@ export const en: Content = {
         ],
       },
       {
-        title: "AI-assisted reporting",
-        description: "Structured reports from raw test data: consistent format, no manual writing.",
+        title: "Agentic engineering with Copilot",
+        description: "GitHub Copilot as a daily engineering partner: Chat, agent mode and the coding agent.",
         details: [
-          "Narrative summaries from execution data",
-          "Executive-level conclusions and risk flags",
-          "Consistent formatting across report cycles",
+          "Writing and refactoring test code in agent mode",
+          "Delegating scoped tasks to the coding agent, reviewed as pull requests",
+          "Custom instructions, prompts and agents for the QA team",
         ],
       },
       {
-        title: "Local AI and on-premises systems",
-        description: "Running models locally through Ollama. Sensitive data never leaves the environment.",
+        title: "Choosing where data goes",
+        description: "Commercial models for code and documentation, local models when test data is sensitive.",
         details: [
-          "No external API calls for analysis",
-          "Sensitive data stays inside the network",
-          "Reproducible and version-controlled workflows",
+          "Claude, GPT and Gemini models through GitHub Copilot",
+          "Microsoft 365 Copilot for documentation and reports",
+          "Ollama on-premises for sensitive test results",
         ],
       },
     ],
@@ -595,7 +600,7 @@ export const en: Content = {
       },
       {
         category: "AI and agent systems",
-        items: ["LLM integration", "Ollama / local AI", "Agent orchestration", "Prompt and system design", "AI-assisted analysis"],
+        items: ["GitHub Copilot: Chat, agent mode, coding agent", "Microsoft 365 Copilot", "Claude, GPT, Gemini", "Ollama / local AI", "Agent orchestration", "Prompt and system design"],
       },
     ],
     logos: [
@@ -611,6 +616,9 @@ export const en: Content = {
       { slug: "apachemaven", label: "Maven" },
       { slug: "junit5", label: "JUnit 5" },
       { slug: "jira", label: "Jira" },
+      { slug: "githubcopilot", label: "GitHub Copilot" },
+      { slug: "claude", label: "Claude" },
+      { slug: "googlegemini", label: "Gemini" },
       { slug: "ollama", label: "Ollama" },
       { slug: "docker", label: "Docker" },
       { slug: "git", label: "Git" },
@@ -623,12 +631,12 @@ export const en: Content = {
   proof: {
     eyebrow: "Proof",
     title: "Outcomes, not adjectives",
-    lead: "What the work actually changed, plus a real report from the pipeline and a CV you can read in two minutes.",
+    lead: "What the work actually changed, plus a CV you can read in two minutes.",
     impact: [
       { value: "Minutes", label: "instead of hours of performance analysis per test cycle", detail: "AI reporting pipeline" },
       { value: "Android + iOS", label: "one framework, both platforms", detail: "Banking app, hybrid WebView" },
       { value: "0", label: "manual result syncs to Zephyr", detail: "Every CI run publishes itself" },
-      { value: "100%", label: "of AI inference on-premises", detail: "Ollama, no data egress" },
+      { value: "2 tiers", label: "of AI: commercial models for code, local models for sensitive data", detail: "GitHub Copilot + Ollama" },
     ],
     report: {
       title: "Sample performance report",

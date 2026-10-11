@@ -37,15 +37,15 @@ export function WorkSection({ content, locale }: { content: Pick<Content, "work"
                 <ProjectCover kind={p.cover} className="aspect-5/3 border-b border-line" />
                 <div className="flex flex-1 flex-col gap-4 p-6 sm:p-7">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-brand">{work.categories[p.category]}</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.16em] text-brand">{work.categories[p.category]}</span>
                     <ArrowUpRight className="size-4 text-fg-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-semibold tracking-tight text-fg">{p.title}</h3>
                   <p className="text-[15px] leading-relaxed text-fg-2">{p.summary}</p>
                   <p className="text-[15px] font-medium leading-relaxed text-fg">{p.outcome}</p>
-                  <ul className="mt-auto flex flex-wrap gap-1.5 pt-2" aria-label="Stack">
+                  <ul className="mt-auto flex flex-wrap gap-1.5 pt-2" aria-label={ui.stackLabel}>
                     {p.tech.slice(0, 4).map((t) => (
-                      <li key={t} className="rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-[11px] text-fg-3">
+                      <li key={t} className="rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-xs text-fg-3">
                         {t}
                       </li>
                     ))}
@@ -68,16 +68,16 @@ export function WorkSection({ content, locale }: { content: Pick<Content, "work"
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                     <Link
                       href={localePath(locale, `/projects/${p.slug}`)}
-                      className="text-lg font-semibold tracking-tight text-fg underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
+                      className="inline-flex min-h-11 items-center text-lg font-semibold tracking-tight text-fg underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60"
                     >
                       {p.title}
                     </Link>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-fg-3">{work.categories[p.category]}</span>
+                    <span className="font-mono text-xs uppercase tracking-[0.14em] text-fg-3">{work.categories[p.category]}</span>
                   </div>
                   <p className="text-[15px] leading-relaxed text-fg-2">{p.summary}</p>
-                  <ul className="flex flex-wrap gap-1.5" aria-label="Stack">
+                  <ul className="flex flex-wrap gap-1.5" aria-label={ui.stackLabel}>
                     {p.tech.map((t) => (
-                      <li key={t} className="font-mono text-[11px] text-fg-3">
+                      <li key={t} className="font-mono text-xs text-fg-3">
                         {t}
                       </li>
                     ))}
@@ -88,10 +88,11 @@ export function WorkSection({ content, locale }: { content: Pick<Content, "work"
                     href={p.repositoryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 self-start rounded-lg border border-line px-3 py-2 text-sm text-fg-2 transition-colors hover:border-line-strong hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 sm:self-center"
+                    className="inline-flex items-center gap-2 self-start rounded-lg border border-line min-h-11 px-3 py-2 text-sm text-fg-2 transition-colors hover:border-line-strong hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 sm:self-center"
                   >
                     <GithubIcon className="size-4" />
                     {ui.viewRepo}
+                    <span className="sr-only"> ({ui.opensInNewTab})</span>
                     <ArrowUpRight className="size-3.5" aria-hidden="true" />
                   </a>
                 ) : null}

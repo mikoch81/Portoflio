@@ -20,11 +20,11 @@ export function Footer({ content, locale }: { content: Pick<Content, "site" | "u
             © {new Date().getFullYear()} {content.site.name}. {content.ui.footerRights}
           </p>
         </div>
-        <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-          <Link href={localePath(locale, "/cv")} className="text-fg-2 transition-colors hover:text-fg">
+        <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-6 gap-y-1 text-sm">
+          <Link href={localePath(locale, "/cv")} className="inline-flex min-h-11 items-center text-fg-2 transition-colors hover:text-fg">
             {content.nav.cv}
           </Link>
-          <a href={`mailto:${content.site.email}`} className="text-fg-2 transition-colors hover:text-fg">
+          <a href={`mailto:${content.site.email}`} className="inline-flex min-h-11 items-center text-fg-2 transition-colors hover:text-fg">
             {content.site.email}
           </a>
           {external.map((l) => (
@@ -33,9 +33,10 @@ export function Footer({ content, locale }: { content: Pick<Content, "site" | "u
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-fg-2 transition-colors hover:text-fg"
+              className="inline-flex min-h-11 items-center gap-1 text-fg-2 transition-colors hover:text-fg"
             >
               {l.label}
+              <span className="sr-only"> ({content.ui.opensInNewTab})</span>
               <ArrowUpRight className="size-3.5" aria-hidden="true" />
             </a>
           ))}
